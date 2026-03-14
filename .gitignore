@@ -1,0 +1,23 @@
+@"
+# Virtual environment
+venv/
+
+# Temp files from processing
+temp/
+
+# Environment secrets
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Model cache
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+"@ | Out-File -FilePath .gitignore -Encoding utf8
