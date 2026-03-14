@@ -30,13 +30,35 @@ def _load_model():
         from faster_whisper import WhisperModel
         import torch
 
-        device = "cuda" if torch.cuda.is_available() else "cpu"
-        compute_type = "float16" if device == "cuda" else "int8"
+        cuda_available = torch.cuda.is_available()
+        device = "cuda" if cuda_available else "cpu"
+        compute_type = "float16" if cuda_available else "int8"
 
-        logger.info(f"Loading faster-whisper model '{model_size}' on {device}...")
+        if cuda_available:
+            gpu_name = torch.cuda.get_device_name(0)
+            vram_gb = torch.cuda.get_device_properties(0).total_memory / 1e9
+            logger.info(f"GPU detected: {gpu_name} ({vram_gb:.1f} GB VRAM)")
+            # Auto-upgrade model size based on available VRAM if user left default
+            if model_size == "base" and vram_gb >= 10:
+                model_size = "large-v3"
+                logger.info("Sufficient VRAM detected — auto-upgrading to large-v3 for best accuracy")
+            elif model_size == "base" and vram_gb >= 5:
+                model_size = "medium"
+                logger.info("Sufficient VRAM detected — auto-upgrading to medium for better accuracy")
+            elif model_size == "base" and vram_gb >= 2:
+                model_size = "small"
+                logger.info("Sufficient VRAM detected — auto-upgrading to small for better accuracy")
+        else:
+            logger.warning(
+                "CUDA not available — running Whisper on CPU. "
+                "Install a CUDA-enabled PyTorch build for GPU acceleration: "
+                "pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121"
+            )
+
+        logger.info(f"Loading faster-whisper model '{model_size}' on {device} ({compute_type})...")
         _faster_whisper_model = WhisperModel(model_size, device=device, compute_type=compute_type)
         _backend = "faster_whisper"
-        logger.info("faster-whisper model loaded successfully.")
+        logger.info(f"faster-whisper '{model_size}' loaded on {device.upper()}.")
         return
     except ImportError:
         logger.info("faster-whisper not available, trying openai-whisper...")
