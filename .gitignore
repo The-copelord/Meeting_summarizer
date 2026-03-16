@@ -4,7 +4,7 @@ venv/
 
 # Temp files from processing
 temp/
-
+uploads/
 # Environment secrets
 .env
 
@@ -16,7 +16,7 @@ __pycache__/
 
 # Model cache
 .cache/
-
+.vscode/
 # OS
 .DS_Store
 Thumbs.db

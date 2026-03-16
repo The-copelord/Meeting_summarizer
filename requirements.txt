@@ -1,32 +1,36 @@
-# Meeting Audio Summarizer — Dependencies
-# Install with: pip install -r requirements.txt
+# MeetingMind Analysis API — Dependencies
 
 # ── Web Framework ──────────────────────────────────────────────────────────────
 fastapi>=0.110.0
 uvicorn[standard]>=0.29.0
 python-multipart>=0.0.9
-pydantic>=2.0.0
+pydantic[email]>=2.0.0
+
+# ── Database ───────────────────────────────────────────────────────────────────
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.9         # PostgreSQL driver
+
+# ── Authentication ─────────────────────────────────────────────────────────────
+passlib[bcrypt]>=1.7.4
+python-jose[cryptography]>=3.3.0
+
+# ── Background Jobs ────────────────────────────────────────────────────────────
+apscheduler>=3.10.0
 
 # ── Audio Processing ───────────────────────────────────────────────────────────
-ffmpeg-python>=0.2.0          # Python bindings for FFmpeg
-# Note: FFmpeg binary must also be installed:
-#   macOS:   brew install ffmpeg
-#   Ubuntu:  sudo apt install ffmpeg
-#   Windows: https://ffmpeg.org/download.html
+ffmpeg-python>=0.2.0
 
-# ── Speech-to-Text (choose one) ────────────────────────────────────────────────
-faster-whisper>=1.0.0          # Recommended: faster & lower memory than openai-whisper
-# openai-whisper>=20231117     # Alternative: pip install openai-whisper
+# ── Speech-to-Text ─────────────────────────────────────────────────────────────
+faster-whisper>=1.0.0
 
 # ── Speaker Diarization ────────────────────────────────────────────────────────
-pyannote.audio>=3.1.0          # Requires HF_TOKEN env var with model access
-torch>=2.0.0                   # PyTorch backend for pyannote + whisper
-torchaudio>=2.0.0              # Audio utilities for pyannote
+pyannote.audio>=3.1.0
+torchaudio>=2.0.0
 
-# ── LLM (at least one required) ────────────────────────────────────────────────
-groq>=0.9.0                    # Fast Llama inference (recommended) - set GROQ_API_KEY
-anthropic>=0.25.0              # Claude fallback - set ANTHROPIC_API_KEY
+# ── LLM Summarization ──────────────────────────────────────────────────────────
+groq>=0.9.0
+anthropic>=0.25.0
 
 # ── Utilities ──────────────────────────────────────────────────────────────────
-python-dotenv>=1.0.0           # Load .env files (optional but convenient)
-aiofiles>=23.0.0               # Async file operations
+python-dotenv>=1.0.0
+aiofiles>=23.0.0

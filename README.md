@@ -1,222 +1,236 @@
-# MeetingMind — AI Meeting Audio Summarizer
+# MeetingMind Analysis API v2
 
-A production-ready system that transforms long meeting recordings (MP3) into structured, speaker-aware meeting notes. Supports recordings of 2–3+ hours through hierarchical chunked processing.
+Async meeting audio analysis system with job queue, JWT authentication, and PostgreSQL. Designed to handle 2–3+ hour recordings without HTTP timeouts by processing everything in the background.
 
 ## Architecture
 
 ```
-MP3 Upload
-   ↓
-Audio Duration Detection (ffprobe)
-   ↓
-Chunk Audio into 10-minute segments (FFmpeg)
-   ↓
-Per Chunk: Speaker Diarization (pyannote.audio)
-   ↓
-Per Chunk: Speech-to-Text Transcription (Whisper)
-   ↓
-Merge Speaker Labels with Transcript Segments
-   ↓
-Chunk-Level Summaries (LLM via Groq/Anthropic)
-   ↓
-Final Structured Meeting Notes (Hierarchical LLM)
+Client
+  │
+  ├── POST /user/signup          Register
+  ├── POST /user/login           Get JWT token
+  │
+  ├── POST /uploadfile           Upload MP3/MP4 → returns job_id
+  ├── POST /analyse              Queue job for processing
+  │
+  ├── GET  /get_status/{job_id}  Poll until status = "done"
+  └── GET  /get_summary          Fetch transcript + summary
+                                       │
+                              Background Scheduler
+                              (APScheduler, 10s poll)
+                                       │
+                              ┌────────▼────────┐
+                              │  Audio Pipeline  │
+                              │                 │
+                              │  FFmpeg chunk   │
+                              │  pyannote GPU   │
+                              │  Whisper GPU    │  ← parallel
+                              │  Groq LLM       │
+                              └─────────────────┘
+                                       │
+                                  PostgreSQL
 ```
+
+## Why this architecture?
+
+The previous single-request approach held the HTTP connection open during processing. For a 2-hour meeting this would time out in most environments (nginx default: 60s, AWS ALB: 60s, Cloudflare: 100s).
+
+The new flow:
+1. Upload returns immediately with a `job_id` (< 1s)
+2. `/analyse` queues the job (< 1s)
+3. Background worker processes it asynchronously (minutes)
+4. Client polls `/get_status/{job_id}` every few seconds
+5. When status is `done`, client fetches `/get_summary`
 
 ## Project Structure
 
 ```
-meeting_summarizer/
-├── main.py              # FastAPI app, pipeline orchestration
-├── audio_utils.py       # Duration detection, FFmpeg chunking
-├── diarization.py       # pyannote.audio speaker diarization
-├── transcriber.py       # faster-whisper / openai-whisper transcription
-├── summarizer.py        # LLM-based chunk + final summarization
-├── requirements.txt     # Python dependencies
-├── .env.example         # Environment variable template
-├── static/
-│   └── index.html       # Single-page web UI
-└── temp/                # Auto-created temporary file storage
+meeting_analysis_api/
+├── main.py                 # FastAPI app, lifespan, middleware
+├── database.py             # SQLAlchemy engine + session
+├── models.py               # User, Job, Result ORM models
+├── auth.py                 # bcrypt + JWT
+├── routes/
+│   ├── user.py             # POST /user/signup, /user/login
+│   ├── upload.py           # POST /uploadfile
+│   └── jobs.py             # POST /analyse, GET /get_status, /get_summary
+├── services/
+│   ├── audio_utils.py      # FFmpeg chunking + MP4 conversion
+│   ├── diarization.py      # pyannote.audio speaker diarization
+│   ├── transcription.py    # faster-whisper GPU transcription
+│   └── summarizer.py       # Groq/Anthropic LLM summarization
+├── workers/
+│   └── scheduler.py        # APScheduler + full pipeline runner
+├── uploads/                # Uploaded audio files (auto-created)
+├── temp/                   # Chunk processing temp dir (auto-created)
+├── requirements.txt
+└── .env.example
 ```
 
 ## Prerequisites
 
-### System Dependencies
+**PostgreSQL** running locally or remotely.
 
-**FFmpeg** (required for audio processing):
 ```bash
-# macOS
-brew install ffmpeg
+# Ubuntu
+sudo apt install postgresql
+sudo -u postgres createdb meeting_analysis
 
-# Ubuntu / Debian
-sudo apt update && sudo apt install ffmpeg
+# macOS
+brew install postgresql
+createdb meeting_analysis
 
 # Windows
-# Download from https://ffmpeg.org/download.html and add to PATH
+# Install from https://www.postgresql.org/download/windows/
+# Then create DB via pgAdmin or psql
 ```
 
-**Python 3.10+** is required.
-
-### API Keys
-
-| Key | Required | Purpose |
-|-----|----------|---------|
-| `GROQ_API_KEY` | Recommended | Fast LLM inference (Llama-3.3-70B) |
-| `ANTHROPIC_API_KEY` | Fallback | Claude Haiku for summarization |
-| `HF_TOKEN` | For diarization | pyannote model access on HuggingFace |
-
-At least one of `GROQ_API_KEY` or `ANTHROPIC_API_KEY` is required for summarization.
-
-### HuggingFace Setup (for speaker diarization)
-
-1. Create account at [huggingface.co](https://huggingface.co)
-2. Accept model terms at: https://huggingface.co/pyannote/speaker-diarization-3.1
-3. Generate an access token at: https://huggingface.co/settings/tokens
-4. Set `HF_TOKEN=your_token` in your `.env` file
-
-> **Note:** The system degrades gracefully without diarization — transcription and summarization still work, but all speech will be attributed to "Speaker 1".
-
-## Installation
-
-### 1. Clone / Set Up
-
+**FFmpeg:**
 ```bash
-cd meeting_summarizer
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+# Windows: https://ffmpeg.org/download.html (add to PATH)
+# macOS: brew install ffmpeg
+# Ubuntu: sudo apt install ffmpeg
 ```
 
-### 2. Install Dependencies
-
+**PyTorch with CUDA** (for GPU acceleration):
 ```bash
-pip install -r requirements.txt
-```
+# Check CUDA version
+nvidia-smi
 
-For GPU support (faster transcription):
-```bash
+# Install matching PyTorch (CUDA 12.1)
 pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
-### 3. Configure Environment
+## Installation
 
 ```bash
+# 1. Clone
+git clone https://github.com/Karthik-B-N/Meeting_summarizer.git
+cd Meeting_summarizer
+
+# 2. Virtual environment
+python -m venv venv
+venv\Scripts\activate        # Windows
+# source venv/bin/activate   # macOS/Linux
+
+# 3. Install PyTorch first (GPU build)
+pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+
+# 4. Install remaining dependencies
+pip install -r requirements.txt
+
+# 5. Configure environment
 cp .env.example .env
-# Edit .env with your API keys
-```
+# Edit .env — set DATABASE_URL, SECRET_KEY, GROQ_API_KEY, HF_TOKEN
 
-### 4. Run the Server
-
-```bash
+# 6. Run
 uvicorn main:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-The web interface will be available at: **http://localhost:8000**
+## API Usage
 
-## Usage
-
-### Web Interface
-
-1. Open http://localhost:8000
-2. Drag & drop or select an MP3 file
-3. Click **Analyze Meeting**
-4. View transcript, segment summaries, and final notes
-
-### REST API
-
-**Endpoint:** `POST /summarize-meeting`
-
+### 1. Sign Up
 ```bash
-curl -X POST http://localhost:8000/summarize-meeting \
-  -F "file=@/path/to/meeting.mp3" \
-  | python -m json.tool
+curl -X POST http://localhost:8000/user/signup \
+  -H "Content-Type: application/json" \
+  -d '{"email": "you@example.com", "password": "yourpassword"}'
 ```
 
-**Response Format:**
+### 2. Login
+```bash
+curl -X POST http://localhost:8000/user/login \
+  -H "Content-Type: application/json" \
+  -d '{"email": "you@example.com", "password": "yourpassword"}'
+# → {"access_token": "eyJ...", "token_type": "bearer"}
+```
+
+### 3. Upload File
+```bash
+curl -X POST http://localhost:8000/uploadfile \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -F "file=@meeting.mp3"
+# → {"job_id": "abc-123", "status": "uploaded"}
+```
+
+### 4. Start Analysis
+```bash
+curl -X POST http://localhost:8000/analyse \
+  -H "Authorization: Bearer YOUR_TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"job_id": "abc-123"}'
+# → {"message": "Job queued for analysis", "job_id": "abc-123"}
+```
+
+### 5. Poll Status
+```bash
+curl http://localhost:8000/get_status/abc-123 \
+  -H "Authorization: Bearer YOUR_TOKEN"
+# → {"job_id": "abc-123", "status": "processing"}
+# Keep polling until status = "done"
+```
+
+### 6. Get Summary
+```bash
+curl "http://localhost:8000/get_summary?job_id=abc-123" \
+  -H "Authorization: Bearer YOUR_TOKEN"
+```
+
+Response:
 ```json
 {
-  "transcript": "Speaker 1: Good morning...\nSpeaker 2: ...",
-  "chunk_summaries": [
-    "Segment 1: The team discussed Q2 roadmap priorities...",
-    "Segment 2: Budget allocations were reviewed..."
-  ],
-  "final_summary": {
-    "overview": "A 2-hour product planning meeting covering Q2 roadmap...",
-    "key_points": ["Q2 roadmap priorities set", "Budget constraints discussed"],
-    "decisions": ["Launch date moved to June 15", "Design team gets 2 new hires"],
-    "action_items": ["Sarah → Draft technical spec by Friday", "Tom → Schedule stakeholder review"],
-    "next_steps": ["Follow-up meeting scheduled for next Tuesday"]
-  },
-  "duration_seconds": 7200,
-  "num_chunks": 12,
-  "speakers_detected": ["Speaker 1", "Speaker 2", "Speaker 3"]
+  "job_id": "abc-123",
+  "transcript": "Speaker 1: Good morning...",
+  "summary": {
+    "overview": "...",
+    "key_points": ["..."],
+    "decisions": ["..."],
+    "action_items": ["..."],
+    "next_steps": ["..."],
+    "chunk_summaries": ["..."]
+  }
 }
 ```
 
-**Additional Endpoints:**
-- `GET /` — Web interface
-- `GET /health` — Health check with backend info
-- `GET /info` — System information
+## Job Statuses
+
+| Status | Meaning |
+|--------|---------|
+| `uploaded` | File saved, not yet queued |
+| `queued` | Waiting for worker to pick up |
+| `processing` | Worker is actively processing |
+| `done` | Complete — summary available |
+| `error` | Failed — check `error` field in status response |
 
 ## Configuration
 
-| Environment Variable | Default | Description |
-|---------------------|---------|-------------|
-| `GROQ_API_KEY` | — | Groq API key for fast LLM inference |
-| `ANTHROPIC_API_KEY` | — | Anthropic API key (fallback LLM) |
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `DATABASE_URL` | `postgresql://...` | PostgreSQL connection string |
+| `SECRET_KEY` | — | JWT signing secret (change in production!) |
+| `ACCESS_TOKEN_EXPIRE_MINUTES` | `1440` | Token lifetime (24h) |
+| `GROQ_API_KEY` | — | Groq LLM API key |
+| `ANTHROPIC_API_KEY` | — | Anthropic fallback API key |
 | `HF_TOKEN` | — | HuggingFace token for pyannote |
-| `WHISPER_MODEL_SIZE` | `base` | Whisper model: tiny/base/small/medium/large-v2/large-v3 |
-
-## Performance Notes
-
-- **Model loading:** Whisper and pyannote models are loaded once at startup and reused across requests
-- **Chunking:** Audio is split into 10-minute segments processed sequentially
-- **Long recordings:** 2-hour meetings are handled via hierarchical summarization (chunk → meta-chunk → final)
-- **Temporary files:** Automatically cleaned up after each request via background task
-- **GPU acceleration:** Automatically used if CUDA is available (significantly speeds up transcription)
-
-## Whisper Model Recommendations
-
-| Model | VRAM | Speed | Accuracy |
-|-------|------|-------|----------|
-| `tiny` | ~1 GB | Fastest | Lower |
-| `base` | ~1 GB | Fast | Good for clear audio |
-| `small` | ~2 GB | Moderate | Better |
-| `medium` | ~5 GB | Slower | High |
-| `large-v3` | ~10 GB | Slowest | Best |
-
-For CPU-only systems, `base` or `small` are recommended.
-
-## Error Handling
-
-The API returns structured error responses:
-
-| HTTP Code | Scenario |
-|-----------|----------|
-| 400 | Unsupported file type or empty file |
-| 422 | Empty transcript (no speech detected) |
-| 500 | Internal processing error |
+| `WHISPER_MODEL_SIZE` | `base` | Whisper model (auto-upgraded on GPU) |
+| `UPLOAD_DIR` | `uploads` | Where uploaded files are stored |
+| `TEMP_DIR` | `temp` | Temporary chunk processing directory |
 
 ## Troubleshooting
 
-**FFmpeg not found:**
+**Database connection error:**
 ```
-RuntimeError: Failed to detect audio duration
+sqlalchemy.exc.OperationalError: could not connect to server
 ```
-→ Install FFmpeg and ensure it's in your PATH.
+→ Ensure PostgreSQL is running and `DATABASE_URL` in `.env` is correct.
 
-**Empty transcript:**
-```
-"Transcription produced empty results"
-```
-→ Check that faster-whisper or openai-whisper is installed. Try a different WHISPER_MODEL_SIZE.
+**PyTorch 2.6 / pyannote weights error:**
+Already patched in `main.py` — `torch.load` is patched before any imports run.
 
-**Diarization disabled:**
+**CUDA not available:**
+```bash
+python -c "import torch; print(torch.cuda.is_available())"
 ```
-WARNING: HF_TOKEN not set. Speaker diarization disabled.
-```
-→ Set HF_TOKEN. Transcription still works; all speech assigned to "Speaker 1".
+→ Reinstall PyTorch with the correct CUDA index URL for your driver version.
 
-**Summarization unavailable:**
-```
-ERROR: No LLM available. Set GROQ_API_KEY or ANTHROPIC_API_KEY.
-```
-→ Set at least one LLM API key.
+**Jobs stuck in `queued`:**
+→ Check scheduler is running — look for `"Background scheduler started"` in logs on startup.
