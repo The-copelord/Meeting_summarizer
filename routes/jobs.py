@@ -3,11 +3,15 @@ routes/jobs.py
 Job management endpoints: start analysis, poll status, fetch summary.
 """
 
+import asyncio
 import json
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
+
+from notifier import subscribe, unsubscribe
 
 from auth import get_current_user
 from database import get_db
@@ -92,6 +96,68 @@ def get_summary(
         "transcript": result.transcript or "",
         "summary": summary,
     }
+
+
+@router.get("/job-stream/{job_id}")
+async def job_stream(
+    job_id: str,
+    request: Request,
+    token: str,
+    db: Session = Depends(get_db),
+):
+    """
+    SSE endpoint — blocks until the worker calls notify(job_id).
+    No DB polling. Worker pushes directly into an asyncio.Queue.
+    """
+    from auth import decode_token
+    from models import User as UserModel
+    payload = decode_token(token)
+    email = payload.get("sub")
+    current_user = db.query(UserModel).filter(UserModel.email == email).first()
+    if not current_user:
+        from fastapi.responses import Response
+        return Response("Unauthorized", status_code=401)
+
+    job = _get_owned_job(job_id, current_user, db)
+
+    # Already finished — return immediately, no need to wait
+    if job.status == JobStatus.done:
+        async def _done():
+            yield f"event: done\ndata: {job_id}\n\n"
+        return StreamingResponse(_done(), media_type="text/event-stream",
+                                 headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+    if job.status == JobStatus.error:
+        async def _error():
+            yield f"event: error\ndata: {job.error_msg or 'Processing failed'}\n\n"
+        return StreamingResponse(_error(), media_type="text/event-stream",
+                                 headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
+
+    async def event_generator():
+        q = subscribe(job_id)
+        try:
+            while True:
+                if await request.is_disconnected():
+                    return
+                try:
+                    # Block here — no loop, no polling. Worker wakes us up.
+                    msg = await asyncio.wait_for(q.get(), timeout=30)
+                    if msg["status"] == "done":
+                        yield f"event: done\ndata: {job_id}\n\n"
+                    else:
+                        yield f"event: error\ndata: {msg.get('detail', 'Processing failed')}\n\n"
+                    return
+                except asyncio.TimeoutError:
+                    # Keepalive comment — prevents proxy/browser from closing idle connection
+                    yield ": keepalive\n\n"
+        finally:
+            unsubscribe(job_id, q)
+
+    return StreamingResponse(
+        event_generator(),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
+    )
+
 
 
 @router.get("/jobs")

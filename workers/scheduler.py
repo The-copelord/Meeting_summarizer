@@ -10,15 +10,23 @@ import asyncio
 import json
 import logging
 import os
+import sys
 import shutil
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime
 from pathlib import Path
 
+# Ensure project root is on sys.path so services.* imports work
+# regardless of where uvicorn is launched from
+_ROOT = str(Path(__file__).resolve().parent.parent)
+if _ROOT not in sys.path:
+    sys.path.insert(0, _ROOT)
+
 from apscheduler.schedulers.background import BackgroundScheduler
 
 from database import SessionLocal
 from models import Job, JobStatus, Result
+from notifier import notify
 
 # Services (carried over from original system)
 from services.audio_utils import get_audio_duration, split_audio, convert_to_mp3
@@ -186,6 +194,7 @@ def _run_job(job_id: str):
         job.updated_at = datetime.utcnow()
         db.commit()
         logger.info(f"Job {job_id} → done ✓")
+        notify(job_id, "done")
 
     except Exception as e:
         logger.exception(f"Job {job_id} failed: {e}")
@@ -196,6 +205,7 @@ def _run_job(job_id: str):
                 job.error_msg = str(e)[:1000]
                 job.updated_at = datetime.utcnow()
                 db.commit()
+                notify(job_id, "error", str(e)[:200])
         except Exception as inner:
             logger.error(f"Could not mark job {job_id} as error: {inner}")
     finally:
