@@ -969,7 +969,7 @@
     }
 
     .transcript-box::-webkit-scrollbar {
-      width: 3px;
+      width: 6px;
     }
 
     .transcript-box::-webkit-scrollbar-thumb {
@@ -1444,7 +1444,10 @@
           if (res.ok) {
             const { status } = await res.json();
             if (status === 'done') {
-              fetchAndRenderSummary(currentJobId);
+              // Only fetch if results aren't already rendered — prevents resetting expanded transcript
+              if (document.getElementById('resultsContent').style.display === 'none') {
+                fetchAndRenderSummary(currentJobId);
+              }
             } else {
               document.getElementById('processingStatus').textContent = status;
             }
@@ -1499,10 +1502,16 @@
         ? chunks.map((c, i) => `<div class="chunk-item"><div class="chunk-num">Segment ${i + 1}</div><div class="chunk-text">${esc(c)}</div></div>`).join('')
         : '<p class="empty-list">No segment summaries available.</p>';
 
-      document.getElementById('transcriptBox').textContent = data.transcript || 'No transcript available.';
-      document.getElementById('transcriptBox').style.maxHeight = '380px';
-      transcriptExpanded = false;
-      document.getElementById('expandToggle').textContent = 'Show full transcript ↓';
+      const transcriptBox = document.getElementById('transcriptBox');
+      const wasExpanded = transcriptExpanded;
+      transcriptBox.textContent = data.transcript || 'No transcript available.';
+      if (!wasExpanded) {
+        transcriptBox.style.maxHeight = '380px';
+        document.getElementById('expandToggle').textContent = 'Show full transcript ↓';
+      } else {
+        transcriptBox.style.maxHeight = 'none';
+        document.getElementById('expandToggle').textContent = 'Collapse ↑';
+      }
     }
 
     function renderList(id, items) {
