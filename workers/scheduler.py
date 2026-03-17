@@ -13,7 +13,10 @@ import os
 import sys
 import shutil
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime
+from datetime import datetime, timezone
+
+def _now():
+    return datetime.now(timezone.utc).astimezone()
 from pathlib import Path
 
 # Ensure project root is on sys.path so services.* imports work
@@ -160,7 +163,7 @@ def _run_job(job_id: str):
 
         # Mark as processing
         job.status = JobStatus.processing
-        job.updated_at = datetime.utcnow()
+        job.updated_at = _now()
         db.commit()
         logger.info(f"Job {job_id} → processing")
 
@@ -172,10 +175,13 @@ def _run_job(job_id: str):
         finally:
             loop.close()
 
-        # Store result
+        # Store result + update duration metadata
         transcript = result.get("transcript", "")
         final_summary = result.get("final_summary", {})
         chunk_summaries = result.get("chunk_summaries", [])
+        duration = result.get("duration_seconds")
+        if duration:
+            job.file_duration_seconds = int(duration)
 
         summary_payload = {**final_summary, "chunk_summaries": chunk_summaries}
 
@@ -191,7 +197,7 @@ def _run_job(job_id: str):
             ))
 
         job.status = JobStatus.done
-        job.updated_at = datetime.utcnow()
+        job.updated_at = _now()
         db.commit()
         logger.info(f"Job {job_id} → done ✓")
         notify(job_id, "done")
@@ -203,7 +209,7 @@ def _run_job(job_id: str):
             if job:
                 job.status = JobStatus.error
                 job.error_msg = str(e)[:1000]
-                job.updated_at = datetime.utcnow()
+                job.updated_at = _now()
                 db.commit()
                 notify(job_id, "error", str(e)[:200])
         except Exception as inner:
@@ -228,7 +234,7 @@ def _poll_and_dispatch():
         for job in queued:
             logger.info(f"Dispatching job {job.id}")
             job.status = JobStatus.processing
-            job.updated_at = datetime.utcnow()
+            job.updated_at = _now()
             db.commit()
             _executor.submit(_run_job, job.id)
     except Exception as e:

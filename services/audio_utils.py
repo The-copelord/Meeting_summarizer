@@ -55,7 +55,7 @@ def split_audio(file_path: str, chunk_length: int = 600, output_dir: str = None)
         output_dir = os.path.join(os.path.dirname(file_path), "chunks")
     
     os.makedirs(output_dir, exist_ok=True)
-    chunk_pattern = os.path.join(output_dir, "chunk_%03d.mp3")
+    chunk_pattern = os.path.join(output_dir, "chunk_%03d.wav")
 
     try:
         subprocess.run(
@@ -64,7 +64,9 @@ def split_audio(file_path: str, chunk_length: int = 600, output_dir: str = None)
                 "-i", file_path,
                 "-f", "segment",
                 "-segment_time", str(chunk_length),
-                "-c", "copy",
+                "-acodec", "pcm_s16le",  # WAV — no decoder issues
+                "-ar", "16000",           # 16kHz — optimal for Whisper + pyannote
+                "-ac", "1",               # mono
                 "-reset_timestamps", "1",
                 "-y",
                 chunk_pattern,
@@ -78,7 +80,7 @@ def split_audio(file_path: str, chunk_length: int = 600, output_dir: str = None)
         raise RuntimeError(f"Failed to split audio: {e.stderr}")
 
     chunks = sorted(
-        str(p) for p in Path(output_dir).glob("chunk_*.mp3")
+        str(p) for p in Path(output_dir).glob("chunk_*.wav")
     )
     logger.info(f"Created {len(chunks)} audio chunks in {output_dir}")
     return chunks

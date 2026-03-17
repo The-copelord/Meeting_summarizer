@@ -1249,7 +1249,7 @@
     let token = localStorage.getItem('mm_token') || null;
     let userEmail = localStorage.getItem('mm_email') || null;
     let selectedFile = null;
-    let pollInterval = null;
+    let sseSource = null;
     let currentJobId = null;
     let transcriptExpanded = false;
     const API = '';  // same origin
@@ -1265,6 +1265,7 @@
     function showPage(name) {
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.getElementById('page-' + name).classList.add('active');
+      if (name !== 'results') closeSse();
     }
 
     // ── Auth ──────────────────────────────────────────────────────────────────────
@@ -1392,7 +1393,8 @@
 
         showToast('Job queued! Processing in background.');
         clearFile();
-        loadJobs();
+        await loadJobs();
+        watchJobWithSse(job_id);
 
       } catch (e) {
         showToast('Error: ' + e.message);
@@ -1412,6 +1414,20 @@
       } catch (e) { /* silent */ }
     }
 
+    function updateJobCardStatus(jobId, status) {
+      // Instantly update just the status badge + dot on the existing card
+      // without waiting for a full loadJobs() re-render
+      const cards = document.querySelectorAll('.job-card');
+      cards.forEach(card => {
+        if (card.onclick && card.onclick.toString().includes(jobId)) {
+          const dot = card.querySelector('.job-status-dot');
+          const badge = card.querySelector('.job-status-badge');
+          if (dot) dot.className = 'job-status-dot dot-' + status;
+          if (badge) { badge.className = 'job-status-badge badge-' + status; badge.textContent = status; }
+        }
+      });
+    }
+
     function renderJobs(jobs) {
       const el = document.getElementById('jobsList');
       if (!jobs.length) {
@@ -1422,7 +1438,7 @@
     <div class="job-card ${j.job_id === currentJobId ? 'active-job' : ''}" onclick="viewJob('${j.job_id}')">
       <span class="job-status-dot dot-${j.status}"></span>
       <div class="job-info">
-        <div class="job-filename">${esc(j.file_path.split(/[\\/]/).pop())}</div>
+        <div class="job-filename">${esc(j.original_filename || j.file_path.split(/[\\/]/).pop())}</div>
         <div class="job-meta">${j.job_id.slice(0, 8)} · ${fmtDate(j.created_at)}</div>
       </div>
       <span class="job-status-badge badge-${j.status}">${j.status}</span>
@@ -1433,31 +1449,47 @@
 
     // ── Polling ───────────────────────────────────────────────────────────────────
     function startJobPolling() {
-      stopJobPolling();
-      pollInterval = setInterval(async () => {
-        await loadJobs();
-        document.getElementById('pollIndicator').textContent = 'Updated ' + new Date().toLocaleTimeString();
-
-        // If we're on the results page for an in-progress job, auto-refresh it
-        if (currentJobId && document.getElementById('page-results').classList.contains('active')) {
-          const res = await apiFetch(`/get_status/${currentJobId}`, 'GET');
-          if (res.ok) {
-            const { status } = await res.json();
-            if (status === 'done') {
-              // Only fetch if results aren't already rendered — prevents resetting expanded transcript
-              if (document.getElementById('resultsContent').style.display === 'none') {
-                fetchAndRenderSummary(currentJobId);
-              }
-            } else {
-              document.getElementById('processingStatus').textContent = status;
-            }
-          }
-        }
-      }, 8000);
+      // No-op — polling replaced by SSE per job. Jobs list refreshes on page actions.
     }
 
     function stopJobPolling() {
-      if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+      closeSse();
+    }
+
+    function closeSse() {
+      if (sseSource) { sseSource.close(); sseSource = null; }
+    }
+
+    function watchJobWithSse(jobId) {
+      closeSse();  // Close any existing connection
+
+      sseSource = new EventSource(`/job-stream/${jobId}?token=${encodeURIComponent(token)}`);
+
+      sseSource.addEventListener('status', async e => {
+        document.getElementById('processingStatus').textContent = e.data;
+        document.getElementById('pollIndicator').textContent = 'Status: ' + e.data;
+        await loadJobs();  // Keep dashboard in sync
+      });
+
+      sseSource.addEventListener('done', async () => {
+        closeSse();
+        await loadJobs();   // Refresh jobs list
+        fetchAndRenderSummary(jobId);
+        document.getElementById('pollIndicator').textContent = 'Done ✓';
+      });
+
+      sseSource.addEventListener('error', async e => {
+        closeSse();
+        await loadJobs();
+        document.getElementById('processingStatus').textContent = 'error';
+        document.getElementById('pollIndicator').textContent = 'Job failed';
+        showToast('Job failed: ' + (e.data || 'Unknown error'));
+      });
+
+      sseSource.onerror = () => {
+        // SSE connection dropped (job done or network issue) — close cleanly
+        closeSse();
+      };
     }
 
     // ── Results view ──────────────────────────────────────────────────────────────
@@ -1477,6 +1509,7 @@
         document.getElementById('processingCard').style.display = 'block';
         document.getElementById('resultsContent').style.display = 'none';
         document.getElementById('processingStatus').textContent = status;
+        watchJobWithSse(jobId);
       }
     }
 

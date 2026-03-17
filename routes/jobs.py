@@ -5,6 +5,7 @@ Job management endpoints: start analysis, poll status, fetch summary.
 
 import asyncio
 import json
+from typing import Optional
 
 from fastapi import APIRouter, Depends, HTTPException, Request
 from fastapi.responses import StreamingResponse
@@ -140,15 +141,17 @@ async def job_stream(
                     return
                 try:
                     # Block here — no loop, no polling. Worker wakes us up.
-                    msg = await asyncio.wait_for(q.get(), timeout=30)
+                    msg = await asyncio.wait_for(q.get(), timeout=5)
                     if msg["status"] == "done":
                         yield f"event: done\ndata: {job_id}\n\n"
                     else:
                         yield f"event: error\ndata: {msg.get('detail', 'Processing failed')}\n\n"
                     return
                 except asyncio.TimeoutError:
-                    # Keepalive comment — prevents proxy/browser from closing idle connection
-                    yield ": keepalive\n\n"
+                    # Send current status as keepalive so dashboard stays in sync
+                    current = db.query(Job).filter(Job.id == job_id).first()
+                    status_val = current.status.value if current else "processing"
+                    yield f"event: status\ndata: {status_val}\n\n"
         finally:
             unsubscribe(job_id, q)
 
@@ -158,6 +161,95 @@ async def job_stream(
         headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
     )
 
+
+
+@router.get("/job-metadata/{job_id}")
+def get_job_metadata(
+    job_id: str,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Returns file metadata for a specific job.
+    Duration is populated after the worker completes the FFmpeg probe.
+    """
+    job = _get_owned_job(job_id, current_user, db)
+
+    duration = job.file_duration_seconds
+    return {
+        "job_id": job.id,
+        "original_filename": job.original_filename,
+        "file_size_bytes": job.file_size_bytes,
+        "file_size_human": _fmt_bytes(job.file_size_bytes),
+        "file_format": job.file_format,
+        "file_duration_seconds": duration,
+        "file_duration_human": _fmt_duration(duration),
+        "status": job.status.value,
+        "uploaded_at": job.created_at.isoformat(),
+    }
+
+
+def _fmt_bytes(size: Optional[int]) -> str:
+    if not size:
+        return "unknown"
+    if size < 1024 * 1024:
+        return f"{size / 1024:.1f} KB"
+    return f"{size / (1024 * 1024):.1f} MB"
+
+
+def _fmt_duration(seconds: Optional[float]) -> str:
+    if not seconds:
+        return "unknown"
+    h, rem = divmod(seconds, 3600)
+    m, s = divmod(rem, 60)
+    if h:
+        return f"{h}h {m}m {s}s"
+    if m:
+        return f"{m}m {s}s"
+    return f"{s}s"
+
+
+@router.get("/file-metadata/{job_id}")
+def get_file_metadata(
+    job_id: str,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Returns stored metadata for the uploaded file associated with a job.
+    Available immediately after upload — no need to wait for processing.
+    """
+    job = _get_owned_job(job_id, current_user, db)
+
+    def fmt_size(b):
+        if b is None:
+            return None
+        if b < 1024 * 1024:
+            return f"{b / 1024:.1f} KB"
+        return f"{b / (1024 * 1024):.1f} MB"
+
+    def fmt_duration(s):
+        if s is None:
+            return None
+        mins = int(s // 60)
+        secs = int(s % 60)
+        hours = mins // 60
+        mins = mins % 60
+        if hours:
+            return f"{hours}h {mins}m {secs}s"
+        return f"{mins}m {secs}s"
+
+    return {
+        "job_id": job_id,
+        "filename":          job.original_filename,
+        "extension":         job.file_extension,
+        "size_bytes":        job.file_size_bytes,
+        "size_human":        fmt_size(job.file_size_bytes),
+        "duration_seconds":  job.file_duration_seconds,
+        "duration_human":    fmt_duration(job.file_duration_seconds),
+        "uploaded_at":       job.created_at.isoformat(),
+        "status":            job.status.value,
+    }
 
 
 @router.get("/jobs")
@@ -176,6 +268,7 @@ def list_jobs(
         {
             "job_id": j.id,
             "status": j.status.value,
+            "original_filename": j.original_filename,
             "file_path": j.file_path,
             "created_at": j.created_at.isoformat(),
             "updated_at": j.updated_at.isoformat() if j.updated_at else None,

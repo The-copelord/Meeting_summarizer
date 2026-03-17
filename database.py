@@ -28,6 +28,31 @@ def get_db():
 
 
 def init_db():
-    """Create all tables. Called once at startup."""
+    """Create all tables and add any missing columns. Called once at startup."""
     from models import User, Job, Result  # noqa: F401 — imported for side effects
     Base.metadata.create_all(bind=engine)
+    _migrate_add_columns()
+
+
+def _migrate_add_columns():
+    """
+    Idempotent migration — adds new metadata columns to jobs table if missing.
+    Handles upgrades from older schema versions without losing data.
+    """
+    new_columns = [
+        ("original_filename",     "VARCHAR(512)"),
+        ("file_size_bytes",       "BIGINT"),
+        ("file_duration_seconds", "FLOAT"),
+        ("file_extension",        "VARCHAR(20)"),
+    ]
+    with engine.connect() as conn:
+        for col_name, col_type in new_columns:
+            try:
+                conn.execute(
+                    __import__("sqlalchemy").text(
+                        f"ALTER TABLE jobs ADD COLUMN IF NOT EXISTS {col_name} {col_type}"
+                    )
+                )
+                conn.commit()
+            except Exception:
+                conn.rollback()
