@@ -33,8 +33,11 @@ class User(Base):
 
     id         = Column(Integer, primary_key=True, index=True)
     email      = Column(String(255), unique=True, index=True, nullable=False)
-    password_hash = Column(String(255), nullable=False)
-    created_at = Column(DateTime(timezone=True), default=_now)
+    password_hash     = Column(String(255), nullable=False)
+    groq_api_key      = Column(String(512), nullable=True)
+    anthropic_api_key = Column(String(512), nullable=True)
+    selected_model    = Column(String(128), nullable=True, default="llama-3.3-70b-versatile")
+    created_at        = Column(DateTime(timezone=True), default=_now)
 
     jobs = relationship("Job", back_populates="user", cascade="all, delete-orphan")
 

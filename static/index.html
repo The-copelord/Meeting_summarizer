@@ -24,6 +24,7 @@
           <span class="user-dot"></span>
           <span id="userEmail">—</span>
         </div>
+        <button class="btn-ghost" id="settingsBtn" onclick="showPage('settings')" style="display:none">Settings</button>
         <button class="btn-ghost" id="logoutBtn" onclick="logout()" style="display:none">Logout</button>
       </div>
     </header>
@@ -74,6 +75,14 @@
             </svg>
             <span class="file-badge-name" id="badgeName">—</span>
             <span class="file-badge-size" id="badgeSize">—</span>
+          </div>
+          <div class="field" style="margin-top:1rem">
+            <label
+              style="font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:0.4rem;">Model</label>
+            <select id="modelSelect"
+              style="width:100%;background:var(--bg);border:1px solid var(--border-light);border-radius:var(--radius);padding:0.7rem 0.9rem;font-family:var(--sans);font-size:0.88rem;color:var(--ink);outline:none;cursor:pointer;">
+              <option value="">Loading models...</option>
+            </select>
           </div>
           <div class="upload-actions">
             <button class="btn-action" id="uploadBtn" disabled onclick="doUploadAndAnalyse()">Upload & Analyse</button>
@@ -195,12 +204,44 @@
       </div>
     </div>
 
+    <!-- ── Settings Page ── -->
+    <div class="page" id="page-settings">
+      <div class="app-inner">
+        <div class="upload-area">
+          <div class="section-label">Settings</div>
+          <div style="margin-bottom:1.5rem">
+            <h3 class="settings-section-title">API Keys &amp; Model</h3>
+            <p class="settings-hint">Keys are stored in the database and used only when processing your jobs. Leave
+              blank to use server-side environment keys.</p>
+            <div class="field">
+              <label>Groq API Key</label>
+              <div class="key-field-wrap">
+                <input type="password" id="settingsGroqKey" placeholder="gsk_..." autocomplete="off" />
+                <button class="key-toggle" onclick="toggleKeyVisibility('settingsGroqKey', this)">Show</button>
+              </div>
+            </div>
+            <div class="field">
+              <label>Preferred Model</label>
+              <select id="settingsModel"
+                style="width:100%;background:var(--bg);border:1px solid var(--border-light);border-radius:var(--radius);padding:0.7rem 0.9rem;font-family:var(--sans);font-size:0.88rem;color:var(--ink);outline:none;cursor:pointer;">
+              </select>
+            </div>
+            <div class="upload-actions">
+              <button class="btn-action" onclick="saveSettings()">Save Settings</button>
+              <button class="btn-outline" onclick="showPage('app')">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </div><!-- /app -->
 
   <div class="toast" id="toast"></div>
 
   <!-- JS loaded in dependency order -->
   <script src="/static/js/utils.js"></script>
+  <script src="/static/js/dashboard.js"></script>
   <script src="/static/js/auth.js"></script>
   <script src="/static/js/upload.js"></script>
   <script src="/static/js/jobs.js"></script>

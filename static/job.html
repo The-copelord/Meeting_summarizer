@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summeet — Job Results</title>
+    <link rel="icon" type="image/png" href="/static/image.png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+    <style>
+        .job-page {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 6rem;
+        }
+
+        .job-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 0.75rem 2rem;
+            background: rgba(10, 9, 8, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .job-page-inner {
+            padding-top: 4rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a class="logo-name" href="/">Summeet</a>
+            <span class="logo-v">beta</span>
+        </div>
+        <div class="header-right">
+            <div class="user-badge" id="userBadge">
+                <span class="user-dot"></span>
+                <span id="userEmail">—</span>
+            </div>
+            <button class="btn-ghost" onclick="window.location.href='/'">← Dashboard</button>
+        </div>
+    </header>
+
+    <div class="job-page">
+        <div class="job-page-inner">
+
+            <!-- Nav bar with filename -->
+            <div class="results-nav"
+                style="position:relative;top:auto;background:none;border:none;padding:0;margin-bottom:1.5rem;backdrop-filter:none;">
+                <button class="back-btn" onclick="window.location.href='/'">← Back</button>
+                <span class="results-job-id" id="resultsJobId">—</span>
+            </div>
+
+            <!-- Processing state -->
+            <div id="processingCard" class="processing-card" style="display:none">
+                <div class="processing-spinner"></div>
+                <div class="processing-title">Analyzing your meeting</div>
+                <div class="processing-status" id="processingStatus">queued</div>
+                <div class="processing-hint">This page auto-refreshes every 5 seconds.</div>
+            </div>
+
+            <!-- Error state -->
+            <div id="errorCard"
+                style="display:none; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:1.5rem; margin-bottom:1.5rem;">
+                <div style="font-family:var(--serif); font-size:1.1rem; color:#ef4444; margin-bottom:0.5rem;">Processing
+                    Failed</div>
+                <div id="errorMsg" style="font-family:var(--mono); font-size:0.82rem; color:#f87171;"></div>
+            </div>
+
+            <!-- Results -->
+            <div id="resultsContent" style="display:none">
+                <div class="result-card fade-in">
+                    <div class="card-head">
+                        <div class="card-head-title">Overview <span class="tag tag-orange">AI Summary</span></div>
+                        <button class="copy-btn" onclick="copyEl('overviewText', this)">Copy</button>
+                    </div>
+                    <div class="card-body">
+                        <p class="overview-text" id="overviewText">—</p>
+                    </div>
+                </div>
+
+                <div class="two-col">
+                    <div class="result-card fade-in" style="animation-delay:0.05s">
+                        <div class="card-head">
+                            <div class="card-head-title">Key Points <span class="tag tag-orange">Topics</span></div>
+                            <button class="copy-btn" onclick="copyEl('listKeyPoints',this)">Copy</button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="item-list list-keypoints" id="listKeyPoints"></ul>
+                        </div>
+                    </div>
+                    <div class="result-card fade-in" style="animation-delay:0.1s">
+                        <div class="card-head">
+                            <div class="card-head-title">Decisions <span class="tag tag-blue">Resolved</span></div>
+                            <button class="copy-btn" onclick="copyEl('listDecisions',this)">Copy</button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="item-list list-decisions" id="listDecisions"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="two-col">
+                    <div class="result-card fade-in" style="animation-delay:0.15s">
+                        <div class="card-head">
+                            <div class="card-head-title">Action Items <span class="tag tag-orange">Tasks</span></div>
+                            <button class="copy-btn" onclick="copyEl('listActions',this)">Copy</button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="item-list list-actions" id="listActions"></ul>
+                        </div>
+                    </div>
+                    <div class="result-card fade-in" style="animation-delay:0.2s">
+                        <div class="card-head">
+                            <div class="card-head-title">Next Steps <span class="tag tag-green">Follow-up</span></div>
+                            <button class="copy-btn" onclick="copyEl('listNextSteps',this)">Copy</button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="item-list list-nextsteps" id="listNextSteps"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-card fade-in" style="animation-delay:0.25s">
+                    <div class="card-head">
+                        <div class="card-head-title">Segment Summaries <span class="tag tag-blue">Hierarchical</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="chunk-list" id="chunkList"></div>
+                    </div>
+                </div>
+
+                <div class="result-card fade-in" style="animation-delay:0.3s">
+                    <div class="card-head">
+                        <div class="card-head-title">Full Transcript <span class="tag tag-green">Speaker-Aware</span>
+                        </div>
+                        <button class="copy-btn" onclick="copyEl('transcriptBox',this)">Copy</button>
+                    </div>
+                    <div class="card-body">
+                        <div class="transcript-box" id="transcriptBox"></div>
+                        <button class="expand-toggle" id="expandToggle" onclick="toggleTranscript()">Show full
+                            transcript ↓</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const token = localStorage.getItem('mm_token');
+        const userEmail = localStorage.getItem('mm_email');
+        const jobId = window.location.pathname.split('/').pop();
+        let pollTimer = null;
+        let transcriptExpanded = false;
+
+        // Redirect to login if no token
+        if (!token) { window.location.href = '/'; }
+
+        // Show user info
+        if (userEmail) {
+            document.getElementById('userBadge').classList.add('visible');
+            document.getElementById('userEmail').textContent = userEmail;
+        }
+
+        // ── Helpers ──
+        function esc(s) {
+            return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+        function copyEl(id, btn) {
+            navigator.clipboard.writeText(document.getElementById(id).textContent || '').then(() => {
+                btn.textContent = 'Copied!'; btn.classList.add('copied');
+                setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
+            });
+        }
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+        async function apiFetch(path, method = 'GET', body = null) {
+            const opts = { method, headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` } };
+            if (body) opts.body = JSON.stringify(body);
+            return fetch(path, opts);
+        }
+
+        // ── Poll status ──
+        async function pollStatus() {
+            try {
+                const res = await apiFetch(`/job-stream/${jobId}?token=${encodeURIComponent(token)}`);
+                if (!res.ok) return;
+                const data = await res.json();
+                const status = data.status;
+
+                document.getElementById('processingStatus').textContent = status;
+
+                if (status === 'done') {
+                    clearInterval(pollTimer);
+                    fetchAndRender();
+                } else if (status === 'error') {
+                    clearInterval(pollTimer);
+                    document.getElementById('processingCard').style.display = 'none';
+                    document.getElementById('errorCard').style.display = 'block';
+                    document.getElementById('errorMsg').textContent = data.error || 'Processing failed';
+                }
+            } catch (e) { /* silent */ }
+        }
+
+        // ── Render results ──
+        async function fetchAndRender() {
+            const res = await apiFetch(`/get_summary?job_id=${jobId}`);
+            if (!res.ok) { showToast('Failed to load summary'); return; }
+            const data = await res.json();
+
+            // Set filename in nav
+            const filename = data.original_filename || ('Job ' + jobId.slice(0, 8) + '…');
+            const navEl = document.getElementById('resultsJobId');
+            navEl.textContent = filename.length > 13 ? filename.slice(0, 13) + '...' : filename;
+            navEl.setAttribute('data-fullname', filename);
+            navEl.title = filename;
+            document.title = `Summeet — ${filename}`;
+
+            document.getElementById('processingCard').style.display = 'none';
+            document.getElementById('resultsContent').style.display = 'block';
+
+            const s = data.summary || {};
+            document.getElementById('overviewText').textContent = s.overview || 'No overview available.';
+            renderList('listKeyPoints', s.key_points);
+            renderList('listDecisions', s.decisions);
+            renderList('listActions', s.action_items);
+            renderList('listNextSteps', s.next_steps);
+
+            const chunks = s.chunk_summaries || [];
+            document.getElementById('chunkList').innerHTML = chunks.length
+                ? chunks.map((c, i) => `<div class="chunk-item"><div class="chunk-num">Segment ${i + 1}</div><div class="chunk-text">${esc(c)}</div></div>`).join('')
+                : '<p class="empty-list">No segment summaries.</p>';
+
+            document.getElementById('transcriptBox').textContent = data.transcript || 'No transcript available.';
+            document.getElementById('transcriptBox').style.maxHeight = '380px';
+        }
+
+        function renderList(id, items) {
+            document.getElementById(id).innerHTML = (items && items.length)
+                ? items.map(i => `<li>${esc(i)}</li>`).join('')
+                : '<li class="empty-list" style="background:none;padding-left:0">None noted</li>';
+        }
+
+        function toggleTranscript() {
+            transcriptExpanded = !transcriptExpanded;
+            document.getElementById('transcriptBox').style.maxHeight = transcriptExpanded ? 'none' : '380px';
+            document.getElementById('expandToggle').textContent = transcriptExpanded ? 'Collapse ↑' : 'Show full transcript ↓';
+        }
+
+        // ── Init ──
+        async function init() {
+            // Check current status
+            const res = await apiFetch(`/get_status/${jobId}`);
+            if (!res.ok) { showToast('Job not found or access denied'); return; }
+            const { status, error } = await res.json();
+
+            if (status === 'done') {
+                fetchAndRender();
+            } else if (status === 'error') {
+                document.getElementById('errorCard').style.display = 'block';
+                document.getElementById('errorMsg').textContent = error || 'Processing failed';
+            } else {
+                document.getElementById('processingCard').style.display = 'block';
+                document.getElementById('processingStatus').textContent = status;
+                // Poll every 5 seconds
+                pollTimer = setInterval(pollStatus, 5000);
+            }
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

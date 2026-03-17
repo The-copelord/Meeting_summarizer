@@ -3,16 +3,13 @@ routes/jobs.py
 Job management endpoints: start analysis, poll status, fetch summary.
 """
 
-import asyncio
 import json
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Request
-from fastapi.responses import StreamingResponse
+from fastapi import APIRouter, Depends, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from sqlalchemy.orm import Session
-
-from notifier import subscribe, unsubscribe
 
 from auth import get_current_user
 from database import get_db
@@ -94,21 +91,21 @@ def get_summary(
 
     return {
         "job_id": job_id,
+        "original_filename": job.original_filename,
         "transcript": result.transcript or "",
         "summary": summary,
     }
 
 
 @router.get("/job-stream/{job_id}")
-async def job_stream(
+def job_stream(
     job_id: str,
-    request: Request,
     token: str,
     db: Session = Depends(get_db),
 ):
     """
-    SSE endpoint — blocks until the worker calls notify(job_id).
-    No DB polling. Worker pushes directly into an asyncio.Queue.
+    DB polling endpoint — returns current job status.
+    Client polls this every few seconds until status is done/error.
     """
     from auth import decode_token
     from models import User as UserModel
@@ -116,50 +113,19 @@ async def job_stream(
     email = payload.get("sub")
     current_user = db.query(UserModel).filter(UserModel.email == email).first()
     if not current_user:
-        from fastapi.responses import Response
-        return Response("Unauthorized", status_code=401)
+        raise HTTPException(status_code=401, detail="Unauthorized")
 
     job = _get_owned_job(job_id, current_user, db)
+    response = {"job_id": job_id, "status": job.status.value}
+    if job.status == JobStatus.error and job.error_msg:
+        response["error"] = job.error_msg
+    return response
 
-    # Already finished — return immediately, no need to wait
-    if job.status == JobStatus.done:
-        async def _done():
-            yield f"event: done\ndata: {job_id}\n\n"
-        return StreamingResponse(_done(), media_type="text/event-stream",
-                                 headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
-    if job.status == JobStatus.error:
-        async def _error():
-            yield f"event: error\ndata: {job.error_msg or 'Processing failed'}\n\n"
-        return StreamingResponse(_error(), media_type="text/event-stream",
-                                 headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"})
 
-    async def event_generator():
-        q = subscribe(job_id)
-        try:
-            while True:
-                if await request.is_disconnected():
-                    return
-                try:
-                    # Block here — no loop, no polling. Worker wakes us up.
-                    msg = await asyncio.wait_for(q.get(), timeout=5)
-                    if msg["status"] == "done":
-                        yield f"event: done\ndata: {job_id}\n\n"
-                    else:
-                        yield f"event: error\ndata: {msg.get('detail', 'Processing failed')}\n\n"
-                    return
-                except asyncio.TimeoutError:
-                    # Send current status as keepalive so dashboard stays in sync
-                    current = db.query(Job).filter(Job.id == job_id).first()
-                    status_val = current.status.value if current else "processing"
-                    yield f"event: status\ndata: {status_val}\n\n"
-        finally:
-            unsubscribe(job_id, q)
-
-    return StreamingResponse(
-        event_generator(),
-        media_type="text/event-stream",
-        headers={"Cache-Control": "no-cache", "X-Accel-Buffering": "no"},
-    )
+@router.get("/job/{job_id}", response_class=FileResponse, include_in_schema=False)
+def job_page(job_id: str):
+    """Serve the standalone job results page."""
+    return FileResponse("static/job.html")
 
 
 

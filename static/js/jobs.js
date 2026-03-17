@@ -15,60 +15,38 @@ function renderJobs(jobs) {
         return;
     }
     el.innerHTML = jobs.map(j => `
-    <div class="job-card ${j.job_id === currentJobId ? 'active-job' : ''}" onclick="viewJob('${j.job_id}', '${esc(j.original_filename || j.job_id)}')">
+    <div class="job-card ${j.job_id === currentJobId ? 'active-job' : ''}" onclick="viewJob('${j.job_id}')">
       <span class="job-status-dot dot-${j.status}"></span>
       <div class="job-info">
         <div class="job-filename">${esc(j.original_filename || j.file_path.split(/[\\\/]/).pop())}</div>
         <div class="job-meta">${j.job_id.slice(0, 8)} · ${fmtDate(j.created_at)}</div>
       </div>
       <span class="job-status-badge badge-${j.status}">${j.status}</span>
-      ${j.status === 'done' ? `<button class="job-view-btn" onclick="event.stopPropagation();viewJob('${j.job_id}', '${esc(j.original_filename || j.job_id)}')">View →</button>` : ''}
+      ${j.status === 'done' ? `<button class="job-view-btn" onclick="event.stopPropagation();viewJob('${j.job_id}')">View →</button>` : ''}
     </div>
   `).join('');
 }
 
-// ── SSE ───────────────────────────────────────────────────────────────────────
-let sseSource = null;
+// Navigate to the dedicated job page
+function viewJob(jobId) {
+    window.location.href = `/job/${jobId}`;
+}
+
+// ── DB Polling ────────────────────────────────────────────────────────────────
+let pollInterval = null;
 
 function startJobPolling() {
-    // No-op — polling replaced by SSE per job
+    stopJobPolling();
+    pollInterval = setInterval(async () => {
+        await loadJobs();
+        const indicator = document.getElementById('pollIndicator');
+        if (indicator) indicator.textContent = 'Updated ' + new Date().toLocaleTimeString();
+    }, 5000);
 }
 
 function stopJobPolling() {
-    closeSse();
+    if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
 }
 
-function closeSse() {
-    if (sseSource) { sseSource.close(); sseSource = null; }
-}
-
-function watchJobWithSse(jobId) {
-    closeSse();
-
-    sseSource = new EventSource(`/job-stream/${jobId}?token=${encodeURIComponent(token)}`);
-
-    sseSource.addEventListener('status', async e => {
-        document.getElementById('processingStatus').textContent = e.data;
-        document.getElementById('pollIndicator').textContent = 'Status: ' + e.data;
-        await loadJobs();
-    });
-
-    sseSource.addEventListener('done', async () => {
-        closeSse();
-        await loadJobs();
-        fetchAndRenderSummary(currentJobId || jobId);
-        document.getElementById('pollIndicator').textContent = 'Done ✓';
-    });
-
-    sseSource.addEventListener('error', async e => {
-        closeSse();
-        await loadJobs();
-        document.getElementById('processingStatus').textContent = 'error';
-        document.getElementById('pollIndicator').textContent = 'Job failed';
-        showToast('Job failed: ' + (e.data || 'Unknown error'));
-    });
-
-    sseSource.onerror = () => {
-        closeSse();
-    };
-}
+// Keep these as no-ops so other files don't break
+function closeSse() { }

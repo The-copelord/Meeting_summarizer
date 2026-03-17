@@ -49,9 +49,12 @@ function copyEl(id, btn) {
 function showPage(name) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('page-' + name).classList.add('active');
-    if (name !== 'results') closeSse();
 }
+
 function truncateFilename(name, maxChars) {
     if (!name || name.length <= maxChars) return name;
     return name.slice(0, maxChars) + '...';
 }
+
+// No-op — SSE removed, kept so other files don't break
+function closeSse() { }

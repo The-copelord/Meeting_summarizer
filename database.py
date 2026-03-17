@@ -45,12 +45,28 @@ def _migrate_add_columns():
         ("file_duration_seconds", "FLOAT"),
         ("file_extension",        "VARCHAR(20)"),
     ]
+    user_columns = [
+        ("groq_api_key",      "VARCHAR(512)"),
+        ("anthropic_api_key", "VARCHAR(512)"),
+        ("selected_model",    "VARCHAR(128)"),
+    ]
     with engine.connect() as conn:
         for col_name, col_type in new_columns:
             try:
                 conn.execute(
                     __import__("sqlalchemy").text(
                         f"ALTER TABLE jobs ADD COLUMN IF NOT EXISTS {col_name} {col_type}"
+                    )
+                )
+                conn.commit()
+            except Exception:
+                conn.rollback()
+    for col_name, col_type in user_columns:
+        with engine.connect() as conn:
+            try:
+                conn.execute(
+                    __import__("sqlalchemy").text(
+                        f"ALTER TABLE users ADD COLUMN IF NOT EXISTS {col_name} {col_type}"
                     )
                 )
                 conn.commit()

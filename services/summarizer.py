@@ -15,9 +15,9 @@ logger = logging.getLogger(__name__)
 
 # ─── LLM Client ──────────────────────────────────────────────────────────────
 
-def _get_groq_client():
-    """Return a Groq client if GROQ_API_KEY is available."""
-    api_key = os.getenv("GROQ_API_KEY")
+def _get_groq_client(api_key: str = None):
+    """Return a Groq client. Uses provided key, falls back to env var."""
+    api_key = api_key or os.getenv("GROQ_API_KEY")
     if not api_key:
         return None
     try:
@@ -31,13 +31,16 @@ def _get_groq_client():
         return None
 
 
-def _call_llm(prompt: str, system: str = "", max_tokens: int = 1500) -> str:
+def _call_llm(prompt: str, system: str = "", max_tokens: int = 1500,
+              groq_api_key: str = None, anthropic_api_key: str = None,
+              model: str = None) -> str:
     """
-    Call an available LLM. Tries Groq first, then Anthropic.
-    Returns the text response or empty string on failure.
+    Call an available LLM using per-user keys and model selection.
+    Tries Groq first, then Anthropic.
     """
+    model = model or "llama-3.3-70b-versatile"
     # Try Groq
-    groq_client = _get_groq_client()
+    groq_client = _get_groq_client(groq_api_key)
     if groq_client:
         try:
             messages = []
@@ -46,7 +49,7 @@ def _call_llm(prompt: str, system: str = "", max_tokens: int = 1500) -> str:
             messages.append({"role": "user", "content": prompt})
 
             response = groq_client.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model=model,
                 messages=messages,
                 max_tokens=max_tokens,
                 temperature=0.3,
@@ -56,7 +59,7 @@ def _call_llm(prompt: str, system: str = "", max_tokens: int = 1500) -> str:
             logger.warning(f"Groq call failed: {e}, trying fallback...")
 
     # Try Anthropic
-    anthropic_key = os.getenv("ANTHROPIC_API_KEY")
+    anthropic_key = anthropic_api_key or os.getenv("ANTHROPIC_API_KEY")
     if anthropic_key:
         try:
             import anthropic
@@ -91,7 +94,7 @@ CHUNK_SUMMARY_PROMPT = """Below is a portion of a meeting transcript. Please sum
 Provide a concise summary (3–6 sentences) of what was discussed in this portion."""
 
 
-def summarize_chunk(transcript: str) -> str:
+def summarize_chunk(transcript: str, groq_api_key: str = None, anthropic_api_key: str = None, model: str = None) -> str:
     """
     Summarize a single transcript chunk.
     
@@ -110,7 +113,8 @@ def summarize_chunk(transcript: str) -> str:
         transcript = transcript[:max_chars] + "\n[... transcript truncated for length ...]"
 
     prompt = CHUNK_SUMMARY_PROMPT.format(transcript=transcript)
-    result = _call_llm(prompt, system=CHUNK_SUMMARY_SYSTEM, max_tokens=600)
+    result = _call_llm(prompt, system=CHUNK_SUMMARY_SYSTEM, max_tokens=600,
+                       groq_api_key=groq_api_key, anthropic_api_key=anthropic_api_key, model=model)
     return result or f"[Summary unavailable for this chunk]"
 
 
@@ -142,7 +146,7 @@ Rules:
 - Use exact JSON format, no markdown"""
 
 
-def generate_final_summary(chunk_summaries: list[str]) -> dict:
+def generate_final_summary(chunk_summaries: list[str], groq_api_key: str = None, anthropic_api_key: str = None, model: str = None) -> dict:
     """
     Generate the final structured meeting summary from all chunk summaries.
     
@@ -168,10 +172,11 @@ def generate_final_summary(chunk_summaries: list[str]) -> dict:
 
     # If we have too many summaries, do a second-level hierarchy
     if len(formatted) > 15000:
-        formatted = _reduce_summaries(valid_summaries)
+        formatted = _reduce_summaries(valid_summaries, groq_api_key=groq_api_key, anthropic_api_key=anthropic_api_key, model=model)
 
     prompt = FINAL_SUMMARY_PROMPT.format(chunk_summaries=formatted)
-    raw = _call_llm(prompt, system=FINAL_SUMMARY_SYSTEM, max_tokens=1500)
+    raw = _call_llm(prompt, system=FINAL_SUMMARY_SYSTEM, max_tokens=1500,
+                   groq_api_key=groq_api_key, anthropic_api_key=anthropic_api_key, model=model)
 
     if not raw:
         return _empty_summary()
@@ -179,7 +184,7 @@ def generate_final_summary(chunk_summaries: list[str]) -> dict:
     return _parse_summary_json(raw)
 
 
-def _reduce_summaries(summaries: list[str]) -> str:
+def _reduce_summaries(summaries: list[str], groq_api_key: str = None, anthropic_api_key: str = None, model: str = None) -> str:
     """
     If there are too many chunk summaries, group them and summarize each group.
     This implements a second hierarchy level.
@@ -191,7 +196,7 @@ def _reduce_summaries(summaries: list[str]) -> str:
     for i, group in enumerate(groups):
         combined = "\n".join(f"- {s}" for s in group)
         prompt = f"Summarize these {len(group)} meeting segment summaries into one concise paragraph:\n\n{combined}"
-        meta = _call_llm(prompt, max_tokens=400)
+        meta = _call_llm(prompt, max_tokens=400, groq_api_key=groq_api_key, anthropic_api_key=anthropic_api_key, model=model)
         if meta:
             meta_summaries.append(f"[Group {i+1}]\n{meta}")
 

@@ -54,7 +54,8 @@ VIDEO_EXTENSIONS = {".mp4", ".mkv", ".avi", ".mov", ".webm", ".flv"}
 
 # ── Single chunk processor (identical to original system) ────────────────────
 
-def _process_chunk(chunk_path: str, chunk_index: int, chunk_offset: float) -> dict:
+def _process_chunk(chunk_path: str, chunk_index: int, chunk_offset: float,
+                    groq_api_key: str = None, anthropic_api_key: str = None, model: str = None) -> dict:
     """
     Transcribe + diarize one audio chunk.
     Runs in a thread pool worker.
@@ -75,7 +76,10 @@ def _process_chunk(chunk_path: str, chunk_index: int, chunk_offset: float) -> di
     )
     speaker_transcript = format_speaker_transcript(merged)
     speakers = list(dict.fromkeys(s["speaker"] for s in merged if s.get("speaker")))
-    summary = summarize_chunk(speaker_transcript or raw_text)
+    summary = summarize_chunk(speaker_transcript or raw_text,
+                               groq_api_key=groq_api_key,
+                               anthropic_api_key=anthropic_api_key,
+                               model=model)
 
     return {
         "index": chunk_index,
@@ -87,7 +91,9 @@ def _process_chunk(chunk_path: str, chunk_index: int, chunk_offset: float) -> di
 
 # ── Full pipeline (async, parallel chunks) ───────────────────────────────────
 
-async def _run_pipeline(file_path: str, session_dir: str) -> dict:
+async def _run_pipeline(file_path: str, session_dir: str,
+                         groq_api_key: str = None, anthropic_api_key: str = None,
+                         model: str = None) -> dict:
     """
     Full audio analysis pipeline.
     Preserves GPU acceleration and parallel chunk processing from original system.
@@ -115,7 +121,10 @@ async def _run_pipeline(file_path: str, session_dir: str) -> dict:
 
     # Process all chunks concurrently (GPU Whisper + pyannote)
     tasks = [
-        loop.run_in_executor(_executor, _process_chunk, chunk_path, i + 1, i * 600.0)
+        loop.run_in_executor(
+            _executor, _process_chunk, chunk_path, i + 1, i * 600.0,
+            groq_api_key, anthropic_api_key, model
+        )
         for i, chunk_path in enumerate(chunks)
     ]
     chunk_results = list(await asyncio.gather(*tasks))
@@ -133,7 +142,8 @@ async def _run_pipeline(file_path: str, session_dir: str) -> dict:
     # Final LLM summary
     logger.info(f"Generating final summary from {len(chunk_summaries)} chunk summaries...")
     final_summary = await loop.run_in_executor(
-        _executor, generate_final_summary, chunk_summaries
+        _executor, generate_final_summary, chunk_summaries,
+        groq_api_key, anthropic_api_key, model
     )
 
     return {
@@ -167,11 +177,23 @@ def _run_job(job_id: str):
         db.commit()
         logger.info(f"Job {job_id} → processing")
 
+        # Fetch user's API keys and model preference
+        from models import User as UserModel
+        user = db.query(UserModel).filter(UserModel.id == job.user_id).first()
+        groq_key = (user.groq_api_key if user else None) or os.getenv("GROQ_API_KEY")
+        anthropic_key = (user.anthropic_api_key if user else None) or os.getenv("ANTHROPIC_API_KEY")
+        selected_model = (user.selected_model if user else None) or "llama-3.3-70b-versatile"
+
         # Run the async pipeline synchronously from this thread
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
         try:
-            result = loop.run_until_complete(_run_pipeline(job.file_path, session_dir))
+            result = loop.run_until_complete(
+                _run_pipeline(job.file_path, session_dir,
+                              groq_api_key=groq_key,
+                              anthropic_api_key=anthropic_key,
+                              model=selected_model)
+            )
         finally:
             loop.close()
 

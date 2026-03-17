@@ -57,8 +57,10 @@ function enterApp() {
     document.getElementById('userBadge').classList.add('visible');
     document.getElementById('userEmail').textContent = userEmail || '';
     document.getElementById('logoutBtn').style.display = 'inline-block';
+    document.getElementById('settingsBtn').style.display = 'inline-block';
     showPage('app');
     loadJobs();
+    loadSettings();
     startJobPolling();
 }
 
@@ -70,5 +72,6 @@ function logout() {
     closeSse();
     document.getElementById('userBadge').classList.remove('visible');
     document.getElementById('logoutBtn').style.display = 'none';
+    document.getElementById('settingsBtn').style.display = 'none';
     showPage('auth');
 }

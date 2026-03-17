@@ -1069,3 +1069,110 @@ header {
         transform: none;
     }
 }
+
+/* ── Settings page ─────────────────────────────────────────────────────────── */
+#page-settings {
+    padding: 2.5rem 1.5rem;
+    align-items: center;
+}
+
+#page-settings .app-inner {
+    width: 100%;
+    max-width: 520px;
+}
+
+.settings-section-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+}
+
+.settings-hint {
+    font-size: 0.83rem;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.55;
+}
+
+/* Key visibility toggle */
+.key-field-wrap {
+    position: relative;
+}
+
+.key-field-wrap input {
+    padding-right: 2.5rem;
+}
+
+.key-toggle {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--ink-muted);
+    font-family: var(--mono);
+    font-size: 0.65rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.3rem;
+}
+
+.key-toggle:hover {
+    color: var(--ink);
+}
+
+/* Model select styling */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238a8278' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.25rem !important;
+    transition: border-color 0.15s;
+}
+
+select:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+
+select option {
+    background: var(--surface);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+}
+
+/* Settings save feedback */
+.settings-saved {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--green);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.settings-saved.show {
+    opacity: 1;
+}
+
+/* Model badge on job cards */
+.job-model {
+    font-family: var(--mono);
+    font-size: 0.6rem;
+    color: var(--ink-faint);
+    letter-spacing: 0.04em;
+    margin-top: 0.1rem;
+}
+
+/* Active nav item */
+.btn-ghost.active-nav {
+    border-color: var(--accent);
+    color: var(--accent);
+}
