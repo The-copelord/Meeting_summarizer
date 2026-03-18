@@ -1,11 +1,8 @@
 """
-summarizer.py
-LLM-based summarization using Groq API (fast inference).
-Falls back to Anthropic Claude if GROQ_API_KEY not set.
-Implements hierarchical chunk summarization to handle long transcripts.
+services/summarizer.py
+LLM-based hierarchical summarization using multi-provider client.
 """
 
-import os
 import json
 import logging
 import re
@@ -13,249 +10,148 @@ from typing import Optional
 
 logger = logging.getLogger(__name__)
 
-# ─── LLM Client ──────────────────────────────────────────────────────────────
+# ── Prompts ───────────────────────────────────────────────────────────────────
 
-def _get_groq_client(api_key: str = None):
-    """Return a Groq client. Uses provided key, falls back to env var."""
-    api_key = api_key or os.getenv("GROQ_API_KEY")
-    if not api_key:
-        return None
-    try:
-        from groq import Groq
-        return Groq(api_key=api_key)
-    except ImportError:
-        logger.warning("groq package not installed")
-        return None
-    except Exception as e:
-        logger.warning(f"Could not init Groq client: {e}")
-        return None
-
-
-def _call_llm(prompt: str, system: str = "", max_tokens: int = 1500,
-              groq_api_key: str = None, anthropic_api_key: str = None,
-              model: str = None) -> str:
-    """
-    Call an available LLM using per-user keys and model selection.
-    Tries Groq first, then Anthropic.
-    """
-    model = model or "llama-3.3-70b-versatile"
-    # Try Groq
-    groq_client = _get_groq_client(groq_api_key)
-    if groq_client:
-        try:
-            messages = []
-            if system:
-                messages.append({"role": "system", "content": system})
-            messages.append({"role": "user", "content": prompt})
-
-            response = groq_client.chat.completions.create(
-                model=model,
-                messages=messages,
-                max_tokens=max_tokens,
-                temperature=0.3,
-            )
-            return response.choices[0].message.content.strip()
-        except Exception as e:
-            logger.warning(f"Groq call failed: {e}, trying fallback...")
-
-    # Try Anthropic
-    anthropic_key = anthropic_api_key or os.getenv("ANTHROPIC_API_KEY")
-    if anthropic_key:
-        try:
-            import anthropic
-            client = anthropic.Anthropic(api_key=anthropic_key)
-            full_prompt = f"{system}\n\n{prompt}" if system else prompt
-            response = client.messages.create(
-                model="claude-haiku-4-5-20251001",
-                max_tokens=max_tokens,
-                messages=[{"role": "user", "content": full_prompt}],
-            )
-            return response.content[0].text.strip()
-        except Exception as e:
-            logger.warning(f"Anthropic call failed: {e}")
-
-    logger.error("No LLM available. Set GROQ_API_KEY or ANTHROPIC_API_KEY.")
-    return ""
-
-
-# ─── Chunk-level summary ──────────────────────────────────────────────────────
-
-CHUNK_SUMMARY_SYSTEM = """You are an expert meeting analyst. 
+CHUNK_SUMMARY_SYSTEM = """You are an expert meeting analyst.
 Summarize the provided meeting transcript chunk concisely and accurately.
-Focus on: key topics discussed, important statements, decisions hinted at, and action items mentioned.
+Focus on: key topics, important statements, decisions, and action items.
 Be factual and preserve speaker attributions when relevant."""
 
-CHUNK_SUMMARY_PROMPT = """Below is a portion of a meeting transcript. Please summarize the key points:
+CHUNK_SUMMARY_PROMPT = """Below is a portion of a meeting transcript. Summarize the key points:
 
 <transcript>
 {transcript}
 </transcript>
 
-Provide a concise summary (3–6 sentences) of what was discussed in this portion."""
-
-
-def summarize_chunk(transcript: str, groq_api_key: str = None, anthropic_api_key: str = None, model: str = None) -> str:
-    """
-    Summarize a single transcript chunk.
-    
-    Args:
-        transcript: Speaker-labeled transcript text.
-    
-    Returns:
-        Summary string.
-    """
-    if not transcript.strip():
-        return ""
-
-    # Trim very long chunks to avoid token limits (~12k chars ≈ ~3k tokens)
-    max_chars = 12000
-    if len(transcript) > max_chars:
-        transcript = transcript[:max_chars] + "\n[... transcript truncated for length ...]"
-
-    prompt = CHUNK_SUMMARY_PROMPT.format(transcript=transcript)
-    result = _call_llm(prompt, system=CHUNK_SUMMARY_SYSTEM, max_tokens=600,
-                       groq_api_key=groq_api_key, anthropic_api_key=anthropic_api_key, model=model)
-    return result or f"[Summary unavailable for this chunk]"
-
-
-# ─── Final meeting summary ────────────────────────────────────────────────────
+Provide a concise summary (3-6 sentences) of what was discussed."""
 
 FINAL_SUMMARY_SYSTEM = """You are a professional meeting secretary producing structured meeting notes.
-Analyze the provided chunk summaries from a full meeting and extract key information.
-Be precise, actionable, and well-organized.
+Analyze the chunk summaries and extract key information.
 Respond ONLY with valid JSON — no markdown fences, no extra text."""
 
 FINAL_SUMMARY_PROMPT = """Below are summaries of sequential portions of a meeting:
 
 {chunk_summaries}
 
-Based on these summaries, produce structured meeting notes as a JSON object with exactly these fields:
+Produce structured meeting notes as a JSON object:
 {{
-  "overview": "2-3 sentence high-level summary of the entire meeting",
-  "key_points": ["point 1", "point 2", "..."],
-  "decisions": ["decision 1", "decision 2", "..."],
-  "action_items": ["Person A → Task description", "Person B → Task description", "..."],
-  "next_steps": ["next step 1", "next step 2", "..."]
+  "overview": "2-3 sentence high-level summary",
+  "key_points": ["point 1", "point 2"],
+  "decisions": ["decision 1"],
+  "action_items": ["Person A → Task"],
+  "next_steps": ["next step 1"]
 }}
 
-Rules:
-- key_points: 4-8 most important discussion topics
-- decisions: concrete decisions made during the meeting (may be empty list [])
-- action_items: specific tasks assigned to people (may be empty list [])
-- next_steps: follow-up items mentioned (may be empty list [])
-- Use exact JSON format, no markdown"""
+Rules: key_points: 4-8 items. decisions/action_items/next_steps may be empty lists.
+Return exact JSON only."""
 
 
-def generate_final_summary(chunk_summaries: list[str], groq_api_key: str = None, anthropic_api_key: str = None, model: str = None) -> dict:
-    """
-    Generate the final structured meeting summary from all chunk summaries.
-    
-    Args:
-        chunk_summaries: List of per-chunk summary strings.
-    
-    Returns:
-        Dict with keys: overview, key_points, decisions, action_items, next_steps
-    """
-    if not chunk_summaries:
-        return _empty_summary()
+# ── LLM call helper ───────────────────────────────────────────────────────────
 
-    # Filter empty summaries
-    valid_summaries = [s for s in chunk_summaries if s.strip()]
-    if not valid_summaries:
-        return _empty_summary()
-
-    # Format summaries with index labels
-    formatted = "\n\n".join(
-        f"[Segment {i+1}]\n{summary}"
-        for i, summary in enumerate(valid_summaries)
+def _llm(prompt: str, system: str = "", max_tokens: int = 1500,
+         provider: str = "groq", model: str = "llama-3.3-70b-versatile",
+         groq_key: str = None, anthropic_key: str = None,
+         openai_key: str = None, together_key: str = None,
+         mistral_key: str = None) -> str:
+    from services.llm_clients import call_llm
+    return call_llm(
+        prompt=prompt, system=system, max_tokens=max_tokens,
+        provider=provider, model=model,
+        groq_key=groq_key, anthropic_key=anthropic_key,
+        openai_key=openai_key, together_key=together_key,
+        mistral_key=mistral_key,
     )
 
-    # If we have too many summaries, do a second-level hierarchy
+
+# ── Public API ────────────────────────────────────────────────────────────────
+
+def summarize_chunk(transcript: str, provider: str = "groq",
+                    model: str = "llama-3.3-70b-versatile",
+                    groq_key: str = None, anthropic_key: str = None,
+                    openai_key: str = None, together_key: str = None,
+                    mistral_key: str = None) -> str:
+    if not transcript.strip():
+        return ""
+    if len(transcript) > 12000:
+        transcript = transcript[:12000] + "\n[... truncated ...]"
+
+    prompt = CHUNK_SUMMARY_PROMPT.format(transcript=transcript)
+    result = _llm(prompt, system=CHUNK_SUMMARY_SYSTEM, max_tokens=600,
+                  provider=provider, model=model,
+                  groq_key=groq_key, anthropic_key=anthropic_key,
+                  openai_key=openai_key, together_key=together_key,
+                  mistral_key=mistral_key)
+    return result or "[Summary unavailable for this chunk]"
+
+
+def generate_final_summary(chunk_summaries: list, provider: str = "groq",
+                           model: str = "llama-3.3-70b-versatile",
+                           groq_key: str = None, anthropic_key: str = None,
+                           openai_key: str = None, together_key: str = None,
+                           mistral_key: str = None) -> dict:
+    if not chunk_summaries:
+        return _empty()
+
+    valid = [s for s in chunk_summaries if s.strip()]
+    if not valid:
+        return _empty()
+
+    formatted = "\n\n".join(
+        f"[Segment {i+1}]\n{s}" for i, s in enumerate(valid)
+    )
+
+    kwargs = dict(provider=provider, model=model, groq_key=groq_key,
+                  anthropic_key=anthropic_key, openai_key=openai_key,
+                  together_key=together_key, mistral_key=mistral_key)
+
     if len(formatted) > 15000:
-        formatted = _reduce_summaries(valid_summaries, groq_api_key=groq_api_key, anthropic_api_key=anthropic_api_key, model=model)
+        formatted = _reduce(valid, **kwargs)
 
     prompt = FINAL_SUMMARY_PROMPT.format(chunk_summaries=formatted)
-    raw = _call_llm(prompt, system=FINAL_SUMMARY_SYSTEM, max_tokens=1500,
-                   groq_api_key=groq_api_key, anthropic_api_key=anthropic_api_key, model=model)
+    raw = _llm(prompt, system=FINAL_SUMMARY_SYSTEM, max_tokens=1500, **kwargs)
 
     if not raw:
-        return _empty_summary()
+        return _empty()
+    return _parse(raw)
 
-    return _parse_summary_json(raw)
 
-
-def _reduce_summaries(summaries: list[str], groq_api_key: str = None, anthropic_api_key: str = None, model: str = None) -> str:
-    """
-    If there are too many chunk summaries, group them and summarize each group.
-    This implements a second hierarchy level.
-    """
-    group_size = 5
-    groups = [summaries[i:i+group_size] for i in range(0, len(summaries), group_size)]
-    meta_summaries = []
-
+def _reduce(summaries: list, **kwargs) -> str:
+    groups = [summaries[i:i+5] for i in range(0, len(summaries), 5)]
+    meta = []
     for i, group in enumerate(groups):
         combined = "\n".join(f"- {s}" for s in group)
-        prompt = f"Summarize these {len(group)} meeting segment summaries into one concise paragraph:\n\n{combined}"
-        meta = _call_llm(prompt, max_tokens=400, groq_api_key=groq_api_key, anthropic_api_key=anthropic_api_key, model=model)
-        if meta:
-            meta_summaries.append(f"[Group {i+1}]\n{meta}")
+        prompt = f"Summarize these {len(group)} meeting segment summaries into one paragraph:\n\n{combined}"
+        result = _llm(prompt, max_tokens=400, **kwargs)
+        if result:
+            meta.append(f"[Group {i+1}]\n{result}")
+    return "\n\n".join(meta) if meta else "\n\n".join(summaries[:10])
 
-    return "\n\n".join(meta_summaries) if meta_summaries else "\n\n".join(summaries[:10])
 
-
-def _parse_summary_json(raw: str) -> dict:
-    """Parse LLM JSON output, handling common formatting issues."""
-    # Strip markdown fences if present
-    text = raw.strip()
-    text = re.sub(r"^```(?:json)?\s*", "", text)
-    text = re.sub(r"\s*```$", "", text)
-    text = text.strip()
-
+def _parse(raw: str) -> dict:
+    text = re.sub(r"^```(?:json)?\s*", "", raw.strip())
+    text = re.sub(r"\s*```$", "", text).strip()
     try:
         data = json.loads(text)
         return {
-            "overview": data.get("overview", ""),
-            "key_points": _ensure_list(data.get("key_points", [])),
-            "decisions": _ensure_list(data.get("decisions", [])),
-            "action_items": _ensure_list(data.get("action_items", [])),
-            "next_steps": _ensure_list(data.get("next_steps", [])),
+            "overview":     data.get("overview", ""),
+            "key_points":   _list(data.get("key_points", [])),
+            "decisions":    _list(data.get("decisions", [])),
+            "action_items": _list(data.get("action_items", [])),
+            "next_steps":   _list(data.get("next_steps", [])),
         }
-    except json.JSONDecodeError as e:
-        logger.warning(f"Could not parse summary JSON: {e}. Raw: {text[:200]}")
-        # Attempt to extract content from malformed JSON
-        return {
-            "overview": text[:500] if text else "Summary generation failed.",
-            "key_points": [],
-            "decisions": [],
-            "action_items": [],
-            "next_steps": [],
-        }
+    except json.JSONDecodeError:
+        return {"overview": text[:500], "key_points": [],
+                "decisions": [], "action_items": [], "next_steps": []}
 
 
-def _ensure_list(value) -> list:
-    if isinstance(value, list):
-        return [str(item) for item in value if item]
-    if isinstance(value, str) and value.strip():
-        return [value]
+def _list(val) -> list:
+    if isinstance(val, list):
+        return [str(i) for i in val if i]
+    if isinstance(val, str) and val.strip():
+        return [val]
     return []
 
 
-def _empty_summary() -> dict:
-    return {
-        "overview": "No transcript content available to summarize.",
-        "key_points": [],
-        "decisions": [],
-        "action_items": [],
-        "next_steps": [],
-    }
-
-
-def get_llm_info() -> dict:
-    """Return info about available LLM backends."""
-    groq_available = bool(os.getenv("GROQ_API_KEY"))
-    anthropic_available = bool(os.getenv("ANTHROPIC_API_KEY"))
-    return {
-        "groq_available": groq_available,
-        "anthropic_available": anthropic_available,
-        "any_available": groq_available or anthropic_available,
-    }
+def _empty() -> dict:
+    return {"overview": "No content to summarize.", "key_points": [],
+            "decisions": [], "action_items": [], "next_steps": []}

@@ -37,6 +37,7 @@ async function doAuth() {
         userEmail = email;
         localStorage.setItem('mm_token', token);
         localStorage.setItem('mm_email', email);
+        _scheduleAutoLogout();
         enterApp();
 
     } catch (e) {
@@ -60,8 +61,9 @@ function enterApp() {
     document.getElementById('settingsBtn').style.display = 'inline-block';
     showPage('app');
     loadJobs();
-    loadSettings();
     startJobPolling();
+    // Load saved provider/model into upload selectors
+    loadUploadSelectors();
 }
 
 function logout() {

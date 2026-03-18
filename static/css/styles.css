@@ -34,6 +34,30 @@
     --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
 }
 
+#uploadProvider option[value="groq"] {
+    color: #fa6800;
+}
+
+#uploadProvider option[value="anthropic"] {
+    color: #d97757;
+}
+
+#uploadProvider option[value="claude"] {
+    color: #a78bfa;
+}
+
+#uploadProvider option[value="openai"] {
+    color: #22c55e;
+}
+
+#uploadProvider option[value="together"] {
+    color: #3b82f6;
+}
+
+#uploadProvider option[value="mistral"] {
+    color: #f59e0b;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -325,6 +349,7 @@ header {
     padding: 2rem;
     margin-bottom: 1.5rem;
     box-shadow: var(--shadow);
+
 }
 
 .drop-zone {

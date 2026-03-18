@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summeet — Settings</title>
+    <link rel="icon" type="image/png" href="/static/image.png" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a class="logo-name" href="/">Summeet</a>
+            <span class="logo-v">beta</span>
+        </div>
+        <div class="header-right">
+            <div class="user-badge" id="userBadge">
+                <span class="user-dot"></span>
+                <span id="userEmail">—</span>
+            </div>
+            <button class="btn-ghost" onclick="window.location.href='/'">← Dashboard</button>
+        </div>
+    </header>
+
+    <div style="max-width:520px;margin:0 auto;padding:2.5rem 1.5rem 6rem">
+        <div class="upload-area">
+            <div class="section-label">Settings</div>
+
+            <h3 class="settings-section-title">API Keys</h3>
+            <p class="settings-hint">Add keys for any providers you want to use. Models are fetched live and cached for
+                7 days. Leave blank to use server environment keys.</p>
+
+            <div class="field">
+                <label>Groq API Key</label>
+                <div class="key-field-wrap">
+                    <input type="password" id="settingsGroqKey" placeholder="gsk_..." autocomplete="off" />
+                    <button class="key-toggle" onclick="toggleKeyVisibility('settingsGroqKey', this)">Show</button>
+                </div>
+            </div>
+            <div class="field">
+                <label>Anthropic / Claude API Key</label>
+                <div class="key-field-wrap">
+                    <input type="password" id="settingsAnthropicKey" placeholder="sk-ant-..." autocomplete="off" />
+                    <button class="key-toggle" onclick="toggleKeyVisibility('settingsAnthropicKey', this)">Show</button>
+                </div>
+            </div>
+            <div class="field">
+                <label>OpenAI API Key</label>
+                <div class="key-field-wrap">
+                    <input type="password" id="settingsOpenAIKey" placeholder="sk-..." autocomplete="off" />
+                    <button class="key-toggle" onclick="toggleKeyVisibility('settingsOpenAIKey', this)">Show</button>
+                </div>
+            </div>
+            <div class="field">
+                <label>Together AI API Key</label>
+                <div class="key-field-wrap">
+                    <input type="password" id="settingsTogetherKey" placeholder="..." autocomplete="off" />
+                    <button class="key-toggle" onclick="toggleKeyVisibility('settingsTogetherKey', this)">Show</button>
+                </div>
+            </div>
+            <div class="field">
+                <label>Mistral API Key</label>
+                <div class="key-field-wrap">
+                    <input type="password" id="settingsMistralKey" placeholder="..." autocomplete="off" />
+                    <button class="key-toggle" onclick="toggleKeyVisibility('settingsMistralKey', this)">Show</button>
+                </div>
+            </div>
+
+            <div class="upload-actions" style="margin-top:1.5rem">
+                <button class="btn-action" id="saveBtn" onclick="saveSettings()">Save Settings</button>
+                <button class="btn-outline" onclick="window.location.href='/'">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <script>
+        const token = localStorage.getItem('mm_token');
+        const userEmail = localStorage.getItem('mm_email');
+        if (!token) { window.location.href = '/'; }
+
+        if (userEmail) {
+            document.getElementById('userBadge').classList.add('visible');
+            document.getElementById('userEmail').textContent = userEmail;
+        }
+
+        // ── Helpers ──
+        async function apiFetch(path, method = 'GET', body = null) {
+            const _token = token || localStorage.getItem('mm_token');
+            const opts = {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(_token ? { 'Authorization': `Bearer ${_token}` } : {}),
+                },
+            };
+            if (body) opts.body = JSON.stringify(body);
+            return fetch(path, opts);
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.textContent = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 3000);
+        }
+
+        function toggleKeyVisibility(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (!input) return;
+            const isHidden = input.type === 'password';
+            input.type = isHidden ? 'text' : 'password';
+            btn.textContent = isHidden ? 'Hide' : 'Show';
+        }
+
+        // ── Load existing settings ──
+        async function loadSettings() {
+            const res = await apiFetch('/user/settings');
+            if (!res.ok) return;
+            const data = await res.json();
+            document.getElementById('settingsGroqKey').value = data.groq_api_key || '';
+            document.getElementById('settingsAnthropicKey').value = data.anthropic_api_key || '';
+            document.getElementById('settingsOpenAIKey').value = data.openai_api_key || '';
+            document.getElementById('settingsTogetherKey').value = data.together_api_key || '';
+            document.getElementById('settingsMistralKey').value = data.mistral_api_key || '';
+        }
+
+        // ── Save ──
+        async function saveSettings() {
+            const btn = document.getElementById('saveBtn');
+            btn.disabled = true; btn.textContent = 'Saving…';
+
+            const body = {
+                groq_api_key: document.getElementById('settingsGroqKey').value.trim(),
+                anthropic_api_key: document.getElementById('settingsAnthropicKey').value.trim(),
+                openai_api_key: document.getElementById('settingsOpenAIKey').value.trim(),
+                together_api_key: document.getElementById('settingsTogetherKey').value.trim(),
+                mistral_api_key: document.getElementById('settingsMistralKey').value.trim(),
+                selected_provider: 'groq',
+                selected_model: 'llama-3.3-70b-versatile',
+            };
+
+            const res = await apiFetch('/user/settings', 'PUT', body);
+            btn.disabled = false; btn.textContent = 'Save Settings';
+
+            if (res.ok) {
+                // Clear model cache so new keys fetch fresh models
+                await apiFetch('/user/models/cache', 'DELETE').catch(() => { });
+                showToast('Settings saved');
+                setTimeout(() => window.location.href = '/', 800);
+            } else {
+                const err = await res.json().catch(() => ({}));
+                showToast('Error: ' + (err.detail || 'Could not save'));
+            }
+        }
+
+        loadSettings();
+    </script>
+</body>
+
+</html>

@@ -36,7 +36,11 @@ class User(Base):
     password_hash     = Column(String(255), nullable=False)
     groq_api_key      = Column(String(512), nullable=True)
     anthropic_api_key = Column(String(512), nullable=True)
-    selected_model    = Column(String(128), nullable=True, default="llama-3.3-70b-versatile")
+    openai_api_key    = Column(String(512), nullable=True)
+    together_api_key  = Column(String(512), nullable=True)
+    mistral_api_key   = Column(String(512), nullable=True)
+    selected_model    = Column(String(256), nullable=True, default="llama-3.3-70b-versatile")
+    selected_provider = Column(String(64),  nullable=True, default="groq")
     created_at        = Column(DateTime(timezone=True), default=_now)
 
     jobs = relationship("Job", back_populates="user", cascade="all, delete-orphan")
@@ -60,6 +64,19 @@ class Job(Base):
     user   = relationship("User", back_populates="jobs")
     result = relationship("Result", back_populates="job", uselist=False,
                           cascade="all, delete-orphan")
+
+
+class ModelCache(Base):
+    """Caches available models per user per provider. Refreshed weekly."""
+    __tablename__ = "model_cache"
+
+    id         = Column(Integer, primary_key=True, index=True)
+    user_id    = Column(Integer, ForeignKey("users.id"), nullable=False)
+    provider   = Column(String(64), nullable=False)
+    models_json = Column(Text, nullable=False)   # JSON array of model id strings
+    cached_at  = Column(DateTime(timezone=True), default=_now)
+
+    user = relationship("User")
 
 
 class Result(Base):

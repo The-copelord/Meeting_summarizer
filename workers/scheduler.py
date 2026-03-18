@@ -55,7 +55,10 @@ VIDEO_EXTENSIONS = {".mp4", ".mkv", ".avi", ".mov", ".webm", ".flv"}
 # ── Single chunk processor (identical to original system) ────────────────────
 
 def _process_chunk(chunk_path: str, chunk_index: int, chunk_offset: float,
-                    groq_api_key: str = None, anthropic_api_key: str = None, model: str = None) -> dict:
+                    provider: str = "groq", model: str = "llama-3.3-70b-versatile",
+                    groq_key: str = None, anthropic_key: str = None,
+                    openai_key: str = None, together_key: str = None,
+                    mistral_key: str = None) -> dict:
     """
     Transcribe + diarize one audio chunk.
     Runs in a thread pool worker.
@@ -77,9 +80,10 @@ def _process_chunk(chunk_path: str, chunk_index: int, chunk_offset: float,
     speaker_transcript = format_speaker_transcript(merged)
     speakers = list(dict.fromkeys(s["speaker"] for s in merged if s.get("speaker")))
     summary = summarize_chunk(speaker_transcript or raw_text,
-                               groq_api_key=groq_api_key,
-                               anthropic_api_key=anthropic_api_key,
-                               model=model)
+                               provider=provider, model=model,
+                               groq_key=groq_key, anthropic_key=anthropic_key,
+                               openai_key=openai_key, together_key=together_key,
+                               mistral_key=mistral_key)
 
     return {
         "index": chunk_index,
@@ -92,8 +96,10 @@ def _process_chunk(chunk_path: str, chunk_index: int, chunk_offset: float,
 # ── Full pipeline (async, parallel chunks) ───────────────────────────────────
 
 async def _run_pipeline(file_path: str, session_dir: str,
-                         groq_api_key: str = None, anthropic_api_key: str = None,
-                         model: str = None) -> dict:
+                         provider: str = "groq", model: str = "llama-3.3-70b-versatile",
+                         groq_key: str = None, anthropic_key: str = None,
+                         openai_key: str = None, together_key: str = None,
+                         mistral_key: str = None) -> dict:
     """
     Full audio analysis pipeline.
     Preserves GPU acceleration and parallel chunk processing from original system.
@@ -123,7 +129,7 @@ async def _run_pipeline(file_path: str, session_dir: str,
     tasks = [
         loop.run_in_executor(
             _executor, _process_chunk, chunk_path, i + 1, i * 600.0,
-            groq_api_key, anthropic_api_key, model
+            provider, model, groq_key, anthropic_key, openai_key, together_key, mistral_key
         )
         for i, chunk_path in enumerate(chunks)
     ]
@@ -143,7 +149,7 @@ async def _run_pipeline(file_path: str, session_dir: str,
     logger.info(f"Generating final summary from {len(chunk_summaries)} chunk summaries...")
     final_summary = await loop.run_in_executor(
         _executor, generate_final_summary, chunk_summaries,
-        groq_api_key, anthropic_api_key, model
+        provider, model, groq_key, anthropic_key, openai_key, together_key, mistral_key
     )
 
     return {
@@ -177,12 +183,16 @@ def _run_job(job_id: str):
         db.commit()
         logger.info(f"Job {job_id} → processing")
 
-        # Fetch user's API keys and model preference
+        # Fetch user's API keys, provider, and model preference
         from models import User as UserModel
         user = db.query(UserModel).filter(UserModel.id == job.user_id).first()
-        groq_key = (user.groq_api_key if user else None) or os.getenv("GROQ_API_KEY")
-        anthropic_key = (user.anthropic_api_key if user else None) or os.getenv("ANTHROPIC_API_KEY")
-        selected_model = (user.selected_model if user else None) or "llama-3.3-70b-versatile"
+        provider       = (getattr(user, "selected_provider", None) if user else None) or "groq"
+        model          = (user.selected_model if user else None) or "llama-3.3-70b-versatile"
+        groq_key       = (user.groq_api_key if user else None) or os.getenv("GROQ_API_KEY")
+        anthropic_key  = (user.anthropic_api_key if user else None) or os.getenv("ANTHROPIC_API_KEY")
+        openai_key     = (user.openai_api_key if user else None) or os.getenv("OPENAI_API_KEY")
+        together_key   = (user.together_api_key if user else None) or os.getenv("TOGETHER_API_KEY")
+        mistral_key    = (user.mistral_api_key if user else None) or os.getenv("MISTRAL_API_KEY")
 
         # Run the async pipeline synchronously from this thread
         loop = asyncio.new_event_loop()
@@ -190,9 +200,10 @@ def _run_job(job_id: str):
         try:
             result = loop.run_until_complete(
                 _run_pipeline(job.file_path, session_dir,
-                              groq_api_key=groq_key,
-                              anthropic_api_key=anthropic_key,
-                              model=selected_model)
+                              provider=provider, model=model,
+                              groq_key=groq_key, anthropic_key=anthropic_key,
+                              openai_key=openai_key, together_key=together_key,
+                              mistral_key=mistral_key)
             )
         finally:
             loop.close()

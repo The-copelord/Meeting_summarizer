@@ -29,7 +29,7 @@ def get_db():
 
 def init_db():
     """Create all tables and add any missing columns. Called once at startup."""
-    from models import User, Job, Result  # noqa: F401 — imported for side effects
+    from models import User, Job, Result, ModelCache  # noqa: F401 — imported for side effects
     Base.metadata.create_all(bind=engine)
     _migrate_add_columns()
 
@@ -48,7 +48,11 @@ def _migrate_add_columns():
     user_columns = [
         ("groq_api_key",      "VARCHAR(512)"),
         ("anthropic_api_key", "VARCHAR(512)"),
-        ("selected_model",    "VARCHAR(128)"),
+        ("openai_api_key",    "VARCHAR(512)"),
+        ("together_api_key",  "VARCHAR(512)"),
+        ("mistral_api_key",   "VARCHAR(512)"),
+        ("selected_model",    "VARCHAR(256)"),
+        ("selected_provider", "VARCHAR(64)"),
     ]
     with engine.connect() as conn:
         for col_name, col_type in new_columns:

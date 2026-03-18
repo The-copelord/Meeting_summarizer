@@ -88,6 +88,11 @@ def serve_ui():
     return FileResponse("static/index.html")
 
 
+@app.get("/settings", response_class=FileResponse, include_in_schema=False)
+def serve_settings():
+    return FileResponse("static/settings.html")
+
+
 @app.get("/health")
 def health():
     return {"status": "ok", "version": "2.0.0"}

@@ -51,16 +51,9 @@ async function doUploadAndAnalyse() {
         if (!upRes.ok) { const e = await upRes.json(); throw new Error(e.detail || 'Upload failed'); }
         const { job_id } = await upRes.json();
 
-        // 2. Save selected model then queue
+        // 2. Save selected provider+model then queue
         btn.textContent = 'Queuing…';
-        const selModel = document.getElementById('modelSelect');
-        if (selModel && selModel.value) {
-            await apiFetch('/user/settings', 'PUT', {
-                groq_api_key: document.getElementById('settingsGroqKey')?.value?.trim() || '',
-                anthropic_api_key: document.getElementById('settingsAnthropicKey')?.value?.trim() || '',
-                selected_model: selModel.value,
-            });
-        }
+        await saveSelectedModel();
         const anRes = await apiFetch('/analyse', 'POST', { job_id });
         if (!anRes.ok) { const e = await anRes.json(); throw new Error(e.detail || 'Queue failed'); }
 
