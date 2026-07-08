@@ -4,19 +4,87 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Summeet</title>
+  <title>Aria - Your personal meeting summarizer</title>
   <link rel="icon" type="image/png" href="/static/image.png" />
   <link
     href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="/static/css/styles.css" />
+  <style>
+    .trial-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.75rem 1.1rem;
+      margin-top: 1rem;
+      font-family: var(--mono);
+    }
+
+    .trial-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .trial-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+    }
+
+    .trial-pips {
+      display: flex;
+      gap: 5px;
+    }
+
+    .trial-pip {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--border);
+    }
+
+    .trial-pip.used {
+      background: #ef4444;
+    }
+
+    .trial-pip.free {
+      background: #22c55e;
+    }
+
+    .trial-counter {
+      font-size: 0.70rem;
+      color: var(--ink-muted);
+    }
+
+    .trial-counter strong {
+      color: var(--ink);
+    }
+
+    .trial-exhausted-text {
+      font-size: 0.65rem;
+      color: #ef4444;
+      letter-spacing: 0.04em;
+    }
+
+    .trial-subscribed-text {
+      font-size: 0.65rem;
+      color: #22c55e;
+      letter-spacing: 0.04em;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
     <header>
       <div class="logo">
-        <a class="logo-name" href="http://localhost:8000/">Summeet</a>
+        <a class="logo-name" href="http://localhost:8000/">Aria</a>
         <span class="logo-v">beta</span>
       </div>
       <div class="header-right">
@@ -102,6 +170,18 @@
           <div class="upload-actions">
             <button class="btn-action" id="uploadBtn" disabled onclick="doUploadAndAnalyse()">Upload & Analyse</button>
             <button class="btn-outline" id="clearFileBtn" onclick="clearFile()" style="display:none">Clear</button>
+          </div>
+
+          <!-- Trial usage meter -->
+          <div class="trial-banner" id="trialBanner" style="display:none">
+            <div class="trial-banner-left">
+              <span class="trial-label">Trial</span>
+              <div class="trial-pips" id="trialPips"></div>
+              <span class="trial-counter" id="trialCounter"></span>
+            </div>
+            <span class="trial-exhausted-text" id="trialExhaustedMsg" style="display:none">Limit reached — upgrade to
+              continue</span>
+            <span class="trial-subscribed-text" id="trialSubMsg" style="display:none">✓ Subscribed</span>
           </div>
         </div>
 
@@ -242,5 +322,8 @@
     });
   </script>
 </body>
+<footer>
+  <div class="footer"> Powered by Whisper, pyannote.audio &amp; LLMs · Built with FastAPI </div>
+</footer>
 
 </html>

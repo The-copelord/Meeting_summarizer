@@ -39,6 +39,9 @@ async function loadUploadSelectors() {
         // so models appear immediately without needing to switch provider
         delete _providerModels[provider];
         await loadProviderModels(provider, model, 'modelSelect');
+
+        // Load trial usage banner
+        loadTrialBanner(data.trial);
     } catch (e) { /* silent */ }
 }
 
@@ -84,6 +87,46 @@ async function onUploadProviderChange() {
     const prov = document.getElementById('uploadProvider')?.value || 'groq';
     updateProviderSelectColor('uploadProvider');   // ← add this
     await loadProviderModels(prov, null, 'modelSelect');
+}
+
+function loadTrialBanner(trial) {
+    const banner = document.getElementById('trialBanner');
+    const pipsEl = document.getElementById('trialPips');
+    const counterEl = document.getElementById('trialCounter');
+    const exhaustedEl = document.getElementById('trialExhaustedMsg');
+    const subEl = document.getElementById('trialSubMsg');
+    const uploadBtn = document.getElementById('uploadBtn');
+
+    if (!banner || !trial) return;
+    banner.style.display = 'flex';
+
+    if (trial.is_subscribed) {
+        pipsEl.innerHTML = '';
+        counterEl.textContent = '';
+        if (subEl) subEl.style.display = 'inline';
+        return;
+    }
+
+    const limit = trial.uploads_limit || 3;
+    const used = trial.uploads_used || 0;
+    const remaining = trial.uploads_remaining ?? Math.max(0, limit - used);
+
+    pipsEl.innerHTML = Array.from({ length: limit }, (_, i) => {
+        const cls = i < used ? 'used' : 'free';
+        return `<div class="trial-pip ${cls}" title="${i < used ? 'Used' : 'Available'}"></div>`;
+    }).join('');
+
+    counterEl.innerHTML = `<strong>${remaining}</strong> of ${limit} free files left`;
+
+    if (trial.trial_exhausted) {
+        if (exhaustedEl) exhaustedEl.style.display = 'inline';
+        // Disable upload button and sync trial flag into upload.js
+        if (uploadBtn) {
+            uploadBtn.disabled = true;
+            uploadBtn.title = 'Trial limit reached';
+        }
+        if (typeof setTrialExhausted === 'function') setTrialExhausted(true);
+    }
 }
 
 // Save selected provider+model when user uploads

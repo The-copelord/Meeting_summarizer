@@ -1,0 +1,577 @@
+
+================================================================================
+[2026-03-30 19:48:24.560]  Mode A — Chunk 1/1
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 1.76s
+Tokens (prompt)   : 981
+Tokens (output)   : 457
+Tokens (total)    : 1438
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 1 of 1
+  Rollup Batch: Batch 1 (chunks 1–1)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+NONE
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 1: Allez, dis-toi tout ça !
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 1 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-1.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-1.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-1.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 1
+  [Topic B] → CLOSED | resolved chunk 1
+
+DECISIONS (cumulative this batch):
+  D-1.N: [Decision] | [Owner] | Chunk 1
+
+ACTIONS (cumulative this batch):
+  A-1.N: [Task] | [Owner] | [Deadline] | Chunk 1
+
+OPEN QUESTIONS:
+  Q-1.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 1 | Batch 1
+  Speakers    : [Speaker 1]
+  Language(s) : [French]
+  Tone        : [Emotive / Urgent]
+  Thread      : [FRESH START]
+
+CHUNK SUMMARY
+  The chunk starts with Speaker 1 saying "Allez, dis-toi tout ça !" which translates to "Come on, tell yourself all that!" in English. This expression seems to be an encouragement or exhortation. The tone is emotive and urgent. The chunk ends with Speaker 1's statement.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Encouragement — ★ NEW — Speaker 1 encourages someone to reflect on everything.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    NONE
+
+  ENTITIES (first appearance this session)
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The next chunk should be aware that the active topic is Encouragement, and the last speaker was Speaker 1. There is an open thread on what Speaker 1 is encouraging someone to reflect on.
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+
+TOPICS:
+  Encouragement → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  NONE
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone is emotive and urgent. There are no active tensions to carry forward.
+
+LAST_TOPIC    : Encouragement
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : NO
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-03-30 19:48:25.742]  Mode C — S0 Overall Summary
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 1.18s
+Tokens (prompt)   : 460
+Tokens (output)   : 172
+Tokens (total)    : 632
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+Produce a concise OVERALL SUMMARY of the entire meeting based on the rollup briefs below.
+
+ROLLUP BRIEFS:
+<rollup_briefs>
+[Chunk 1 Summary]
+The chunk starts with Speaker 1 saying "Allez, dis-toi tout ça !" which translates to "Come on, tell yourself all that!" in English. This expression seems to be an encouragement or exhortation. The tone is emotive and urgent. The chunk ends with Speaker 1's statement.
+</rollup_briefs>
+
+Output ONLY the following JSON (no markdown fences, no extra text):
+{
+  "overall_summary": "3-5 sentence high-level abstraction of the entire meeting. Plain prose. No bullets.",
+  "overall_bullets": [
+    "Bullet point 1 — key theme or outcome",
+    "Bullet point 2 — key theme or outcome",
+    "Bullet point 3 — key theme or outcome",
+    "Bullet point 4 — key theme or outcome (optional)",
+    "Bullet point 5 — key theme or outcome (optional)"
+  ]
+}
+
+Rules:
+- overall_summary: 3-5 sentences, high-level abstraction, no jargon soup
+- overall_bullets: 3-5 bullets, each grounded in what was actually discussed
+- Return exact JSON only — no preamble, no trailing text
+--------------------------------------------------------------------------------
+OUTPUT:
+{
+  "overall_summary": "The meeting began with an emotive and urgent tone set by Speaker 1. The speaker encouraged someone to reflect on certain matters, using the phrase 'Allez, dis-toi tout ça !' which translates to 'Come on, tell yourself all that!' in English. The meeting's early stage focused on introspection and possibly addressing key issues. The overall direction and further discussions are not clear from the provided information.",
+  "overall_bullets": [
+    "The meeting started with Speaker 1's emotive and urgent tone.",
+    "Speaker 1 encouraged introspection using the phrase 'Allez, dis-toi tout ça !'.",
+    "The initial focus was on encouraging someone to reflect on certain matters.",
+    "The meeting's further discussions and outcomes are not clear from the provided information."
+  ]
+}
+================================================================================
+
+================================================================================
+[2026-03-30 19:48:28.437]  Mode C — Master Brief
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.69s
+Tokens (prompt)   : 1985
+Tokens (output)   : 852
+Tokens (total)    : 2837
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE C — MASTER BRIEF (ARIA Final Intelligence Report).
+
+ALL ROLLUP BRIEFS:
+<rollup_briefs>
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 1 | Batch 1
+  Speakers    : [Speaker 1]
+  Language(s) : [French]
+  Tone        : [Emotive / Urgent]
+  Thread      : [FRESH START]
+
+CHUNK SUMMARY
+  The chunk starts with Speaker 1 saying "Allez, dis-toi tout ça !" which translates to "Come on, tell yourself all that!" in English. This expression seems to be an encouragement or exhortation. The tone is emotive and urgent. The chunk ends with Speaker 1's statement.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Encouragement — ★ NEW — Speaker 1 encourages someone to reflect on everything.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    NONE
+
+  ENTITIES (first appearance this session)
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The next chunk should be aware that the active topic is Encouragement, and the last speaker was Speaker 1. There is an open thread on what Speaker 1 is encouraging someone to reflect on.
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+
+TOPICS:
+  Encouragement → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  NONE
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone is emotive and urgent. There are no active tensions to carry forward.
+
+LAST_TOPIC    : Encouragement
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : NO
+=== END STATE CAPSULE ===
+</rollup_briefs>
+
+FINAL ROLLUP STATE CAPSULE:
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+
+TOPICS:
+  Encouragement → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  NONE
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone is emotive and urgent. There are no active tensions to carry forward.
+
+LAST_TOPIC    : Encouragement
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : NO
+=== END STATE CAPSULE ===
+
+Produce the complete ARIA Intelligence Brief. Do not truncate any section.
+Do not reference chunks or batches in the output — write as if you
+attended the full session from start to finish.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARIA INTELLIGENCE BRIEF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 0 — SESSION IDENTITY CARD
+  Meeting Title  : [infer from content or write UNTITLED]
+  Date / Time    : [if mentioned, else UNSPECIFIED]
+  Duration       : [approximate, based on content volume]
+  Participants   : [all confirmed speakers with roles]
+  Format         : [standup / planning / review / lecture / interview / other]
+  Language(s)    : [all languages detected]
+  Recorded by    : ARIA v1.0 — Automated Intelligence Analysis
+
+SECTION 1 — EXECUTIVE SUMMARY
+  [8–12 sentences of dense, senior-analyst prose. No bullets.
+  Open with the purpose and stakes of the meeting.
+  Cover the major arc, key decisions, critical action items.
+  Close with what this meeting means going forward.
+  A reader who only reads this section must leave fully informed.]
+
+SECTION 2 — KEYWORD CLOUD & TOPIC MAP
+  TOP KEYWORDS (by frequency and significance):
+    [comma-separated list of 15–25 keywords from the session]
+
+  TOPIC MAP (sequence of major topics):
+    [Topic A] → [Topic B] → [Topic C] → [Topic D] → ...
+    [Show the flow of the meeting as a topic chain]
+
+SECTION 3 — KEY TOPICS: DEEP EXPLANATIONS
+  [One card per major topic. Minimum 3 topics, no artificial maximum.]
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: [Name]                                       │
+  │ Status: [RESOLVED / ONGOING / DEFERRED / FLAGGED]   │
+  │ Discussed by: [Speaker names]                       │
+  ├─────────────────────────────────────────────────────┤
+  │ [4–6 sentences explaining what was actually said,   │
+  │  what position each speaker took, what was agreed   │
+  │  or left open. Grounded entirely in what was said.] │
+  └─────────────────────────────────────────────────────┘
+
+SECTION 4 — KEY LEARNINGS & INSIGHTS
+  [Numbered list of 5–10 substantive insights from this session.
+  Each item: 2–3 sentences. Not generic — specific to this meeting.]
+  1. [Insight] — [elaboration]
+  2. [Insight] — [elaboration]
+  ...
+
+SECTION 5 — DECISIONS MADE
+  [Every decision from the session, deduplicated and final.]
+  D-N: [Decision stated clearly]
+       Decided by  : [Name(s)]
+       Confidence  : [FIRM / TENTATIVE / IMPLIED]
+       Impact      : [1 sentence on what this changes]
+
+SECTION 6 — ACTION ITEMS & TASK REGISTER
+  [Every task from the session. Owner-sorted if multiple owners.]
+  A-N: [Verb-first task description]
+       Owner       : [Name / UNASSIGNED]
+       Deadline    : [Date / "by next meeting" / UNSTATED]
+       Priority    : [HIGH / MEDIUM / LOW]
+       Context     : [1 sentence — why this task exists]
+
+SECTION 7 — MINUTES OF MEETING (MOM)
+  [Chronological narrative of the full meeting. Prose only.
+  No bullets. Write in past tense. Cover every topic in sequence.
+  Use speaker names. 10–20 sentences depending on meeting length.
+  This is the official record of what happened.]
+
+SECTION 8 — FLAGS, RISKS & UNRESOLVED THREADS
+  🚩 RISKS & BLOCKERS
+     [Each risk: what it is, who raised it, current status]
+
+  ⚠️ TENSIONS & DISAGREEMENTS
+     [Each tension: what it was about, who was involved, resolved or not]
+
+  ❓ UNRESOLVED QUESTIONS
+     [Each open question: verbatim or close paraphrase, owner, status]
+
+  🔁 RECURRING THEMES
+     [Topics that came up more than once — signals unresolved root cause]
+
+SECTION 9 — SENTIMENT & ENGAGEMENT ANALYSIS
+  Overall Tone    : [Collaborative / Tense / Exploratory / Mixed]
+  Energy Arc      : [How the meeting felt at start → middle → end]
+  Most Engaged    : [Speaker who drove the most content]
+  Notable Moments : [Any clear shift in tone, energy, or direction]
+  ARIA Assessment : [2–3 sentences — ARIA's read on the meeting's health]
+
+SECTION 10 — GLOSSARY OF TERMS, JARGON & ACRONYMS
+  [Every technical term, acronym, or jargon used — with definition.]
+  [TERM] : [plain-English definition based on context]
+  (write NONE if no jargon detected)
+
+SECTION 11 — ARIA'S ANALYST NOTE
+  [3–5 sentences in ARIA's voice. What matters most from this session?
+  What should the reader pay attention to that might not be obvious?
+  What is ARIA's honest read on the state of things after this meeting?
+  This is ARIA speaking directly — precise, candid, no hedging.]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+End of ARIA Intelligence Brief
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--------------------------------------------------------------------------------
+OUTPUT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARIA INTELLIGENCE BRIEF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 0 — SESSION IDENTITY CARD
+  Meeting Title  : UNTITLED
+  Date / Time    : UNSPECIFIED
+  Duration       : Approximately 1 chunk (limited content)
+  Participants   : Speaker 1
+  Format         : Other (single speaker, emotive tone)
+  Language(s)    : French
+  Recorded by    : ARIA v1.0 — Automated Intelligence Analysis
+
+SECTION 1 — EXECUTIVE SUMMARY
+  The meeting began with Speaker 1 expressing an urgent and emotive encouragement. The speaker said "Allez, dis-toi tout ça !" which translates to "Come on, tell yourself all that!" in English. This expression seems to be an encouragement or exhortation, urging someone to reflect on everything. The tone was emotive and urgent, suggesting a sense of importance or crisis. However, due to the limited content, the purpose and stakes of the meeting remain unclear. No decisions, action items, or open questions were explicitly stated. The meeting's significance and implications going forward are uncertain. The brief encouragement may be part of a larger discussion or a standalone message. Further context is needed to fully understand the meeting's objectives.
+
+SECTION 2 — KEYWORD CLOUD & TOPIC MAP
+  TOP KEYWORDS (by frequency and significance):
+    encouragement, reflection, urgent, emotive
+
+  TOPIC MAP (sequence of major topics):
+    Encouragement → [No further topics discussed]
+
+SECTION 3 — KEY TOPICS: DEEP EXPLANATIONS
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: Encouragement                                 │
+  │ Status: ONGOING                                       │
+  │ Discussed by: Speaker 1                               │
+  ├─────────────────────────────────────────────────────┤
+  │ Speaker 1 encouraged someone to reflect on everything │
+  │ using the phrase "Allez, dis-toi tout ça !" which      │
+  │ translates to "Come on, tell yourself all that!" in    │
+  │ English. The tone was emotive and urgent.              │
+  └─────────────────────────────────────────────────────┘
+
+SECTION 4 — KEY LEARNINGS & INSIGHTS
+  1. The meeting began with an urgent and emotive tone, suggesting a sense of importance or crisis. 
+    The tone was set by Speaker 1's encouragement.
+  2. Speaker 1 encouraged someone to reflect on everything using a specific phrase.
+    The phrase "Allez, dis-toi tout ça !" was used.
+
+SECTION 5 — DECISIONS MADE
+  NONE
+
+SECTION 6 — ACTION ITEMS & TASK REGISTER
+  NONE
+
+SECTION 7 — MINUTES OF MEETING (MOM)
+  The meeting began with Speaker 1 saying "Allez, dis-toi tout ça !" which translates to "Come on, tell yourself all that!" in English. This was the only statement made during the meeting. The tone was emotive and urgent.
+
+SECTION 8 — FLAGS, RISKS & UNRESOLVED THREADS
+  🚩 RISKS & BLOCKERS
+     NONE
+
+  ⚠️ TENSIONS & DISAGREEMENTS
+     NONE
+
+  ❓ UNRESOLVED QUESTIONS
+     What is Speaker 1 encouraging someone to reflect on?
+
+  🔁 RECURRING THEMES
+     NONE
+
+SECTION 9 — SENTIMENT & ENGAGEMENT ANALYSIS
+  Overall Tone    : Exploratory
+  Energy Arc      : Emotive → Emotive (no change)
+  Most Engaged    : Speaker 1
+  Notable Moments : The urgent and emotive tone at the beginning
+  ARIA Assessment : The meeting had a brief but intense start.
+
+SECTION 10 — GLOSSARY OF TERMS, JARGON & ACRONYMS
+  NONE
+
+SECTION 11 — ARIA'S ANALYST NOTE
+  The meeting's brevity and limited content make it difficult to draw concrete conclusions. 
+  However, the urgent and emotive tone suggests that the encouragement is important. 
+  The context and purpose of the encouragement remain unclear, leaving room for further discussion or clarification.
+================================================================================

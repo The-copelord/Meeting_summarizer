@@ -20,8 +20,10 @@ UPLOAD_DIR.mkdir(exist_ok=True)
 
 ALLOWED_EXTENSIONS = {
     ".mp3", ".wav", ".m4a", ".ogg", ".flac",
-    ".mp4", ".mkv", ".avi", ".mov", ".webm", ".flv",
+    ".mp4", ".mkv", ".avi", ".mov", ".webm", ".flv", ".mpeg", ".mpg",
 }
+
+TRIAL_UPLOAD_LIMIT = 3  # lifetime free uploads per user
 
 router = APIRouter(tags=["upload"])
 
@@ -32,6 +34,25 @@ async def upload_file(
     current_user: User = Depends(get_current_user),
     db: Session = Depends(get_db),
 ):
+    # ── Trial / subscription gate ──────────────────────────────────────────
+    is_subscribed = bool(getattr(current_user, "is_subscribed", 0))
+    trial_used    = getattr(current_user, "trial_uploads_used", 0) or 0
+
+    if not is_subscribed and trial_used >= TRIAL_UPLOAD_LIMIT:
+        raise HTTPException(
+            status_code=402,
+            detail={
+                "code": "TRIAL_LIMIT_REACHED",
+                "message": (
+                    f"You have used all {TRIAL_UPLOAD_LIMIT} free trial uploads. "
+                    "Please subscribe to continue uploading new files. "
+                    "You can still view and download your existing meetings."
+                ),
+                "trial_limit": TRIAL_UPLOAD_LIMIT,
+                "trial_used":  trial_used,
+                "subscribe_url": "/settings",
+            },
+        )
     # Validate extension
     ext = Path(file.filename or "").suffix.lower()
     if ext not in ALLOWED_EXTENSIONS:
@@ -70,12 +91,25 @@ async def upload_file(
         status=JobStatus.uploaded,
     )
     db.add(job)
+
+    # Increment trial counter (even for subscribers — tracks lifetime uploads)
+    if not is_subscribed:
+        current_user.trial_uploads_used = trial_used + 1
+
     db.commit()
     db.refresh(job)
+
+    trial_remaining = None if is_subscribed else max(0, TRIAL_UPLOAD_LIMIT - (trial_used + 1))
 
     return {
         "job_id": job_id,
         "status": job.status.value,
+        "trial": {
+            "is_subscribed":   is_subscribed,
+            "uploads_used":    trial_used + (0 if is_subscribed else 1),
+            "uploads_limit":   None if is_subscribed else TRIAL_UPLOAD_LIMIT,
+            "uploads_remaining": trial_remaining,
+        },
         "metadata": {
             "filename": job.original_filename,
             "size_bytes": job.file_size_bytes,

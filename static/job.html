@@ -4,36 +4,312 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Summeet — Job Results</title>
+    <title>Aria — Job Results</title>
     <link rel="icon" type="image/png" href="/static/image.png" />
     <link
         href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="/static/css/styles.css" />
+    <link rel="stylesheet" href="/static/css/styles.css?v=2" />
     <style>
-        .job-page {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem 6rem;
+        .aria-section {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            color: var(--ink);
         }
 
-        .job-nav {
+        .aria-section-head {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            padding: 0.75rem 2rem;
-            background: rgba(10, 9, 8, 0.85);
-            backdrop-filter: blur(12px);
+            justify-content: space-between;
+            padding: 0.75rem 1.25rem;
             border-bottom: 1px solid var(--border);
+            cursor: pointer;
+            user-select: none;
+            color: var(--ink);
         }
 
-        .job-page-inner {
-            padding-top: 4rem;
+        .aria-section-head:hover {
+            background: var(--surface-2);
+            color: var(--ink);
+        }
+
+        .aria-section-title {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .aria-section-body {
+            padding: 1.25rem 1.5rem;
+            white-space: pre-wrap;
+            font-size: 0.85rem;
+            line-height: 1.75;
+            color: var(--ink-muted);
+            font-family: var(--sans);
+            display: none;
+        }
+
+        .aria-section-body.open {
+            display: block;
+            color: var(--ink);
+        }
+
+        .aria-chevron {
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--ink-faint);
+            transition: transform 0.15s;
+        }
+
+        .aria-chevron.open {
+            transform: rotate(180deg);
+        }
+
+        .trial-banner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 0.85rem 1.25rem;
+            margin-bottom: 1.25rem;
+            font-family: var(--mono);
+        }
+
+        .trial-banner-left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .trial-label {
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--ink-faint);
+        }
+
+        .trial-pips {
+            display: flex;
+            gap: 5px;
+        }
+
+        .trial-pip {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+        }
+
+        .trial-pip.used {
+            background: #ef4444;
+        }
+
+        .trial-pip.current {
+            background: #f97316;
+        }
+
+        .trial-pip.free {
+            background: #22c55e;
+        }
+
+        .trial-counter {
+            font-size: 0.72rem;
+            color: var(--ink-muted);
+        }
+
+        .trial-counter strong {
+            color: var(--ink);
+        }
+
+        .trial-exhausted-text {
+            font-size: 0.68rem;
+            color: #ef4444;
+            letter-spacing: 0.05em;
+        }
+
+        .trial-subscribed-text {
+            font-size: 0.68rem;
+            color: #22c55e;
+            letter-spacing: 0.05em;
+        }
+
+        .aria-header-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .aria-title {
+            font-family: var(--serif);
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        .aria-subtitle {
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--ink-faint);
+            letter-spacing: 0.06em;
+        }
+
+        .pdf-btn {
+            background: none;
+            border: 1px solid var(--border-light);
+            color: var(--ink-muted);
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            padding: 0.35rem 0.85rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .pdf-btn:hover {
+            border-color: var(--ink-muted);
+            color: var(--ink);
+        }
+
+        /* ── Print styles ── */
+        @media print {
+            @page {
+                margin: 1.5cm 1.8cm;
+            }
+
+            header,
+            #resultsNav,
+            .trial-banner,
+            .copy-btn,
+            .pdf-btn,
+            .aria-chevron,
+            #expandToggle,
+            .expand-toggle,
+            .back-btn {
+                display: none !important;
+            }
+
+            body {
+                background: #fff !important;
+                color: #111 !important;
+            }
+
+            .aria-header-card,
+            .result-card,
+            .aria-section {
+                background: #fff !important;
+                border-color: #ddd !important;
+            }
+
+            .aria-section-head {
+                background: #f7f7f7 !important;
+            }
+
+            .aria-section-body {
+                display: block !important;
+                color: #222 !important;
+                white-space: pre-wrap;
+            }
+
+            .aria-section-body[style*="white-space:normal"] {
+                white-space: normal !important;
+            }
+
+            .aria-section,
+            .result-card {
+                break-inside: auto;
+            }
+
+            .aria-title {
+                color: #111 !important;
+            }
+
+            .aria-subtitle,
+            .aria-section-title,
+            .card-head-title {
+                color: #444 !important;
+            }
+
+            .two-col {
+                display: block !important;
+            }
+
+            .transcript-box {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .overview-text {
+                color: #111 !important;
+            }
+
+            .chunk-num {
+                color: #111 !important;
+            }
+
+            .chunk-text {
+                color: #222 !important;
+            }
+
+            /* Key Topics cards — override inline dark-theme styles */
+            .aria-section-body[style*="white-space:normal"] > div {
+                border-color: #ddd !important;
+            }
+
+            /* Topic header row */
+            .aria-section-body[style*="white-space:normal"] > div > div:first-child {
+                background: #222 !important;
+                border-bottom-color: #444 !important;
+            }
+
+            /* Topic name, status badge, speaker label — all white on dark header */
+            .aria-section-body[style*="white-space:normal"] > div > div:first-child > span {
+                color: #fff !important;
+            }
+
+            /* Description paragraph */
+            .aria-section-body[style*="white-space:normal"] > div > div:last-child {
+                color: #111 !important;
+            }
+
+            #segmentBriefsCard .card-body {
+                padding-top: 0.25rem !important;
+            }
+
+            #segmentBriefsCard .card-head {
+                padding-bottom: 0.4rem !important;
+            }
+
+            .chunk-list {
+                gap: 0.5rem !important;
+            }
+
+            .chunk-item {
+                break-inside: auto;
+                border-left-color: #bbb !important;
+                padding-top: 0.4rem !important;
+                padding-bottom: 0.4rem !important;
+            }
         }
     </style>
 </head>
@@ -41,7 +317,7 @@
 <body>
     <header>
         <div class="logo">
-            <a class="logo-name" href="/">Summeet</a>
+            <a class="logo-name" href="/">Aria</a>
             <span class="logo-v">beta</span>
         </div>
         <div class="header-right">
@@ -53,110 +329,122 @@
         </div>
     </header>
 
-    <div class="job-page">
-        <div class="job-page-inner">
+    <div style="max-width:860px;margin:0 auto;padding:2rem 1.5rem 6rem">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;position:sticky;top:0;background:rgba(10,9,8,0.85);backdrop-filter:blur(12px);padding:0.75rem 0;z-index:50;border-bottom:1px solid transparent"
+            id="resultsNav">
+            <button class="back-btn" onclick="window.location.href='/'">← Back</button>
+            <span class="results-job-id" id="resultsJobId">—</span>
+        </div>
 
-            <!-- Nav bar with filename -->
-            <div class="results-nav"
-                style="position:relative;top:auto;background:none;border:none;padding:0;margin-bottom:1.5rem;backdrop-filter:none;">
-                <button class="back-btn" onclick="window.location.href='/'">← Back</button>
-                <span class="results-job-id" id="resultsJobId">—</span>
+        <!-- Trial usage banner (shown regardless of job state) -->
+        <div class="trial-banner" id="trialBanner" style="display:none">
+            <div class="trial-banner-left">
+                <span class="trial-label">Trial</span>
+                <div class="trial-pips" id="trialPips"></div>
+                <span class="trial-counter" id="trialCounter"></span>
+            </div>
+            <span class="trial-exhausted-text" id="trialExhaustedMsg" style="display:none">Trial limit reached — <a
+                    href="/settings" style="color:#ef4444;text-decoration:underline">upgrade</a></span>
+            <span class="trial-subscribed-text" id="trialSubMsg" style="display:none">✓ Subscribed — unlimited
+                uploads</span>
+        </div>
+
+        <!-- Processing -->
+        <div id="processingCard" class="processing-card" style="display:none">
+            <div class="processing-spinner"></div>
+            <div class="processing-title">ARIA is analyzing your meeting</div>
+            <div class="processing-status" id="processingStatus">queued</div>
+            <div class="processing-hint">This page auto-refreshes every 5 seconds.</div>
+        </div>
+
+        <!-- Error -->
+        <div id="errorCard"
+            style="display:none;background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.3);border-radius:8px;padding:1.5rem;margin-bottom:1.5rem">
+            <div style="font-family:var(--serif);font-size:1.1rem;color:#ef4444;margin-bottom:0.5rem">Processing Failed
+            </div>
+            <div id="errorMsg" style="font-family:var(--mono);font-size:0.82rem;color:#f87171"></div>
+        </div>
+
+        <!-- Results -->
+        <div id="resultsContent" style="display:none">
+
+            <!-- ARIA Header -->
+            <div class="aria-header-card fade-in">
+                <div>
+                    <div class="aria-title">ARIA Intelligence Brief</div>
+                    <div class="aria-subtitle" id="ariaSessionId">—</div>
+                </div>
+                <button class="pdf-btn" onclick="downloadPDF()">⬇ Download PDF</button>
             </div>
 
-            <!-- Processing state -->
-            <div id="processingCard" class="processing-card" style="display:none">
-                <div class="processing-spinner"></div>
-                <div class="processing-title">Analyzing your meeting</div>
-                <div class="processing-status" id="processingStatus">queued</div>
-                <div class="processing-hint">This page auto-refreshes every 5 seconds.</div>
+            <!-- Overall Summary (overview text, not S1 executive summary) -->
+            <div class="result-card fade-in">
+                <div class="card-head">
+                    <div class="card-head-title">Overall Summary <span class="tag tag-green">ARIA Overview</span></div>
+                    <button class="copy-btn" onclick="copyEl('overallSummary',this)">Copy</button>
+                </div>
+                <div class="card-body">
+                    <p class="overview-text" id="overallSummary">—</p>
+                </div>
             </div>
 
-            <!-- Error state -->
-            <div id="errorCard"
-                style="display:none; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:1.5rem; margin-bottom:1.5rem;">
-                <div style="font-family:var(--serif); font-size:1.1rem; color:#ef4444; margin-bottom:0.5rem;">Processing
-                    Failed</div>
-                <div id="errorMsg" style="font-family:var(--mono); font-size:0.82rem; color:#f87171;"></div>
-            </div>
-
-            <!-- Results -->
-            <div id="resultsContent" style="display:none">
-                <div class="result-card fade-in">
+            <!-- Quick cards row: decisions + action items -->
+            <div class="two-col">
+                <div class="result-card fade-in" style="animation-delay:0.05s">
                     <div class="card-head">
-                        <div class="card-head-title">Overview <span class="tag tag-orange">AI Summary</span></div>
-                        <button class="copy-btn" onclick="copyEl('overviewText', this)">Copy</button>
+                        <div class="card-head-title">Decisions <span class="tag tag-blue">S5</span></div><button
+                            class="copy-btn" onclick="copyEl('listDecisions',this)">Copy</button>
                     </div>
                     <div class="card-body">
-                        <p class="overview-text" id="overviewText">—</p>
+                        <ul class="item-list list-decisions" id="listDecisions"></ul>
                     </div>
                 </div>
-
-                <div class="two-col">
-                    <div class="result-card fade-in" style="animation-delay:0.05s">
-                        <div class="card-head">
-                            <div class="card-head-title">Key Points <span class="tag tag-orange">Topics</span></div>
-                            <button class="copy-btn" onclick="copyEl('listKeyPoints',this)">Copy</button>
-                        </div>
-                        <div class="card-body">
-                            <ul class="item-list list-keypoints" id="listKeyPoints"></ul>
-                        </div>
-                    </div>
-                    <div class="result-card fade-in" style="animation-delay:0.1s">
-                        <div class="card-head">
-                            <div class="card-head-title">Decisions <span class="tag tag-blue">Resolved</span></div>
-                            <button class="copy-btn" onclick="copyEl('listDecisions',this)">Copy</button>
-                        </div>
-                        <div class="card-body">
-                            <ul class="item-list list-decisions" id="listDecisions"></ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="two-col">
-                    <div class="result-card fade-in" style="animation-delay:0.15s">
-                        <div class="card-head">
-                            <div class="card-head-title">Action Items <span class="tag tag-orange">Tasks</span></div>
-                            <button class="copy-btn" onclick="copyEl('listActions',this)">Copy</button>
-                        </div>
-                        <div class="card-body">
-                            <ul class="item-list list-actions" id="listActions"></ul>
-                        </div>
-                    </div>
-                    <div class="result-card fade-in" style="animation-delay:0.2s">
-                        <div class="card-head">
-                            <div class="card-head-title">Next Steps <span class="tag tag-green">Follow-up</span></div>
-                            <button class="copy-btn" onclick="copyEl('listNextSteps',this)">Copy</button>
-                        </div>
-                        <div class="card-body">
-                            <ul class="item-list list-nextsteps" id="listNextSteps"></ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="result-card fade-in" style="animation-delay:0.25s">
+                <div class="result-card fade-in" style="animation-delay:0.1s">
                     <div class="card-head">
-                        <div class="card-head-title">Segment Summaries <span class="tag tag-blue">Hierarchical</span>
-                        </div>
+                        <div class="card-head-title">Action Items <span class="tag tag-orange">S6</span></div><button
+                            class="copy-btn" onclick="copyEl('listActions',this)">Copy</button>
                     </div>
                     <div class="card-body">
+                        <ul class="item-list list-actions" id="listActions"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ARIA Sections accordion -->
+            <div style="margin-bottom:1.25rem">
+                <div
+                    style="font-family:var(--mono);font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.75rem">
+                    Full ARIA Report — click to expand</div>
+                <div id="ariaSections"></div>
+            </div>
+
+            <!-- Segment Briefs accordion -->
+            <div class="result-card fade-in" id="segmentBriefsCard" style="animation-delay:0.3s">
+                <div class="card-head">
+                    <div class="card-head-title">Segment Briefs <span class="tag tag-blue">ARIA Mode A</span></div>
+                    <button class="copy-btn" onclick="copyEl('chunkBriefsWrap',this)">Copy All</button>
+                </div>
+                <div class="card-body">
+                    <div id="chunkBriefsWrap">
                         <div class="chunk-list" id="chunkList"></div>
                     </div>
                 </div>
+            </div>
 
-                <div class="result-card fade-in" style="animation-delay:0.3s">
-                    <div class="card-head">
-                        <div class="card-head-title">Full Transcript <span class="tag tag-green">Speaker-Aware</span>
-                        </div>
-                        <button class="copy-btn" onclick="copyEl('transcriptBox',this)">Copy</button>
-                    </div>
-                    <div class="card-body">
-                        <div class="transcript-box" id="transcriptBox"></div>
-                        <button class="expand-toggle" id="expandToggle" onclick="toggleTranscript()">Show full
-                            transcript ↓</button>
-                    </div>
+            <!-- Full Transcript -->
+            <div class="result-card fade-in" style="animation-delay:0.35s">
+                <div class="card-head">
+                    <div class="card-head-title">Full Transcript <span class="tag tag-green">Speaker-Aware</span></div>
+                    <button class="copy-btn" onclick="copyEl('transcriptBox',this)">Copy</button>
+                </div>
+                <div class="card-body">
+                    <div class="transcript-box" id="transcriptBox"></div>
+                    <button class="expand-toggle" id="expandToggle" onclick="toggleTranscript()">Show full transcript
+                        ↓</button>
                 </div>
             </div>
-        </div>
+
+        </div><!-- /resultsContent -->
     </div>
 
     <div class="toast" id="toast"></div>
@@ -168,10 +456,7 @@
         let pollTimer = null;
         let transcriptExpanded = false;
 
-        // Redirect to login if no token
         if (!token) { window.location.href = '/'; }
-
-        // Show user info
         if (userEmail) {
             document.getElementById('userBadge').classList.add('visible');
             document.getElementById('userEmail').textContent = userEmail;
@@ -182,7 +467,7 @@
             return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
         }
         function copyEl(id, btn) {
-            navigator.clipboard.writeText(document.getElementById(id).textContent || '').then(() => {
+            navigator.clipboard.writeText(document.getElementById(id)?.textContent || '').then(() => {
                 btn.textContent = 'Copied!'; btn.classList.add('copied');
                 setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000);
             });
@@ -192,10 +477,135 @@
             t.textContent = msg; t.classList.add('show');
             setTimeout(() => t.classList.remove('show'), 3000);
         }
-        async function apiFetch(path, method = 'GET', body = null) {
-            const opts = { method, headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` } };
-            if (body) opts.body = JSON.stringify(body);
-            return fetch(path, opts);
+        async function apiFetch(path, method = 'GET') {
+            const _token = token || localStorage.getItem('mm_token');
+            return fetch(path, {
+                method, headers: {
+                    'Content-Type': 'application/json',
+                    ...(_token ? { 'Authorization': `Bearer ${_token}` } : {})
+                }
+            });
+        }
+
+        // ── ARIA section accordion ──
+        const SECTION_LABELS = {
+            session_identity: 'S0 — Session Identity',
+            executive_summary: 'S1 — Executive Summary',
+            keyword_map: 'S2 — Keyword Cloud & Topic Map',
+            key_topics: 'S3 — Key Topics',
+            key_learnings: 'S4 — Key Learnings & Insights',
+            decisions: 'S5 — Decisions Made',
+            action_items: 'S6 — Action Items',
+            minutes_of_meeting: 'S7 — Minutes of Meeting',
+            flags_risks: 'S8 — Flags, Risks & Unresolved Threads',
+            sentiment: 'S9 — Sentiment & Engagement',
+            glossary: 'S10 — Glossary',
+            analyst_note: 'S11 — ARIA Analyst Note',
+        };
+
+        const SECTION_TAGS = {
+            session_identity: 'tag-blue',
+            executive_summary: 'tag-orange',
+            keyword_map: 'tag-blue',
+            key_topics: 'tag-orange',
+            key_learnings: 'tag-green',
+            decisions: 'tag-blue',
+            action_items: 'tag-orange',
+            minutes_of_meeting: 'tag-green',
+            flags_risks: 'tag-orange',
+            sentiment: 'tag-green',
+            glossary: 'tag-blue',
+            analyst_note: 'tag-orange',
+        };
+
+        // ── Key Topics parser & renderer ──
+        function parseKeyTopics(text) {
+            const topics = [];
+            const blocks = text.split(/┌[─\s]+/);
+            for (const block of blocks) {
+                if (!block.includes('TOPIC')) continue;
+                const topic = { name: '', status: '', discussedBy: '', description: '' };
+                const descLines = [];
+                let inDesc = false;
+                for (const line of block.split('\n')) {
+                    const clean = line.replace(/[┌┐└┘├┤─]/g, '').replace(/^\s*│\s?/, '').trimEnd();
+                    if (/^TOPIC\s*:/i.test(clean)) {
+                        topic.name = clean.replace(/^TOPIC\s*:\s*/i, '').trim();
+                        inDesc = false;
+                    } else if (/^Status\s*:/i.test(clean)) {
+                        topic.status = clean.replace(/^Status\s*:\s*/i, '').trim();
+                        inDesc = false;
+                    } else if (/^Discussed\s+by\s*:/i.test(clean)) {
+                        topic.discussedBy = clean.replace(/^Discussed\s+by\s*:\s*/i, '').trim();
+                        inDesc = false;
+                    } else if (line.includes('├') || line.includes('┼')) {
+                        inDesc = true;
+                    } else if (inDesc && clean.trim()) {
+                        descLines.push(clean.trim());
+                    }
+                }
+                topic.description = descLines.join(' ').trim();
+                if (topic.name) topics.push(topic);
+            }
+            return topics;
+        }
+
+        function renderKeyTopics(text) {
+            const topics = parseKeyTopics(text);
+            if (!topics.length)
+                return `<div style="white-space:pre-wrap;font-size:0.83rem;line-height:1.75">${esc(text)}</div>`;
+
+            const STATUS_STYLE = {
+                'RESOLVED': 'background:rgba(34,197,94,0.12);border:1px solid rgba(34,197,94,0.3);color:#22c55e',
+                'ONGOING': 'background:rgba(59,130,246,0.12);border:1px solid rgba(59,130,246,0.3);color:#60a5fa',
+                'DEFERRED': 'background:rgba(249,115,22,0.12);border:1px solid rgba(249,115,22,0.3);color:#f97316',
+                'FLAGGED': 'background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);color:#ef4444',
+            };
+
+            return topics.map(t => {
+                const statusKey = t.status.toUpperCase().split(/[\s\/]/)[0];
+                const statusStyle = STATUS_STYLE[statusKey] || 'background:rgba(255,255,255,0.06);border:1px solid var(--border);color:var(--ink-muted)';
+                return `
+                <div style="border:1px solid var(--border);border-radius:8px;margin-bottom:0.85rem;overflow:hidden">
+                    <div style="padding:0.75rem 1rem;border-bottom:1px solid var(--border);background:var(--surface-2);display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap">
+                        <span style="font-family:var(--sans);font-weight:500;font-size:0.88rem;flex:1;min-width:0">${esc(t.name)}</span>
+                        ${t.status ? `<span style="font-family:var(--mono);font-size:0.67rem;padding:0.2rem 0.55rem;border-radius:4px;white-space:nowrap;${statusStyle}">${esc(t.status)}</span>` : ''}
+                        ${t.discussedBy ? `<span style="font-family:var(--mono);font-size:0.67rem;color:var(--ink-faint);white-space:nowrap">👤 ${esc(t.discussedBy)}</span>` : ''}
+                    </div>
+                    ${t.description ? `<div style="padding:0.85rem 1rem;font-size:0.83rem;line-height:1.75;color:var(--ink-muted)">${esc(t.description)}</div>` : ''}
+                </div>`;
+            }).join('');
+        }
+
+        function buildAriaSections(sections) {
+            const container = document.getElementById('ariaSections');
+            container.innerHTML = '';
+            for (const [key, label] of Object.entries(SECTION_LABELS)) {
+                const text = (sections[key] || '').trim();
+                if (!text) continue;
+                const tagClass = SECTION_TAGS[key] || 'tag-blue';
+                const isTopics = key === 'key_topics';
+                const div = document.createElement('div');
+                div.className = 'aria-section';
+                div.innerHTML = `
+          <div class="aria-section-head" onclick="toggleSection(this)">
+            <div class="aria-section-title">
+              <span class="tag ${tagClass}">${label.split('—')[0].trim()}</span>
+              ${esc(label.split('—')[1]?.trim() || label)}
+            </div>
+            <span class="aria-chevron">▼</span>
+          </div>
+          <div class="aria-section-body"${isTopics ? ' style="white-space:normal"' : ''}>${isTopics ? renderKeyTopics(text) : esc(text)}</div>`;
+                container.appendChild(div);
+            }
+        }
+
+        function toggleSection(head) {
+            const body = head.nextElementSibling;
+            const chevron = head.querySelector('.aria-chevron');
+            const isOpen = body.classList.contains('open');
+            body.classList.toggle('open', !isOpen);
+            chevron.classList.toggle('open', !isOpen);
         }
 
         // ── Poll status ──
@@ -204,14 +614,9 @@
                 const res = await apiFetch(`/job-stream/${jobId}?token=${encodeURIComponent(token)}`);
                 if (!res.ok) return;
                 const data = await res.json();
-                const status = data.status;
-
-                document.getElementById('processingStatus').textContent = status;
-
-                if (status === 'done') {
-                    clearInterval(pollTimer);
-                    fetchAndRender();
-                } else if (status === 'error') {
+                document.getElementById('processingStatus').textContent = data.status;
+                if (data.status === 'done') { clearInterval(pollTimer); fetchAndRender(); }
+                else if (data.status === 'error') {
                     clearInterval(pollTimer);
                     document.getElementById('processingCard').style.display = 'none';
                     document.getElementById('errorCard').style.display = 'block';
@@ -226,29 +631,54 @@
             if (!res.ok) { showToast('Failed to load summary'); return; }
             const data = await res.json();
 
-            // Set filename in nav
+            // Nav filename
             const filename = data.original_filename || ('Job ' + jobId.slice(0, 8) + '…');
             const navEl = document.getElementById('resultsJobId');
             navEl.textContent = filename.length > 13 ? filename.slice(0, 13) + '...' : filename;
             navEl.setAttribute('data-fullname', filename);
             navEl.title = filename;
-            document.title = `Summeet — ${filename}`;
+            document.title = `Aria — ${filename}`;
+            document.getElementById('ariaSessionId').textContent = `Job ID: ${jobId}`;
 
             document.getElementById('processingCard').style.display = 'none';
             document.getElementById('resultsContent').style.display = 'block';
 
             const s = data.summary || {};
-            document.getElementById('overviewText').textContent = s.overview || 'No overview available.';
-            renderList('listKeyPoints', s.key_points);
-            renderList('listDecisions', s.decisions);
-            renderList('listActions', s.action_items);
-            renderList('listNextSteps', s.next_steps);
+            const sections = data.sections || s.sections || {};
 
-            const chunks = s.chunk_summaries || [];
-            document.getElementById('chunkList').innerHTML = chunks.length
-                ? chunks.map((c, i) => `<div class="chunk-item"><div class="chunk-num">Segment ${i + 1}</div><div class="chunk-text">${esc(c)}</div></div>`).join('')
-                : '<p class="empty-list">No segment summaries.</p>';
+            // Overall summary — use S0 overall_summary field (distinct from S1 executive_summary)
+            const overallText = data.overall_summary || s.overall_summary || '—';
+            document.getElementById('overallSummary').textContent = overallText;
 
+            // Quick list cards
+            renderList('listDecisions', s.decisions || data.decisions || []);
+            renderList('listActions', s.action_items || data.action_items || []);
+
+            // Build ARIA sections accordion
+            buildAriaSections(sections);
+
+            // Auto-open analyst note and session identity
+            document.querySelectorAll('.aria-section').forEach(sec => {
+                const label = sec.querySelector('.aria-section-title')?.textContent || '';
+                if (label.includes('S11') || label.includes('S0')) {
+                    const body = sec.querySelector('.aria-section-body');
+                    const chev = sec.querySelector('.aria-chevron');
+                    if (body) body.classList.add('open');
+                    if (chev) chev.classList.add('open');
+                }
+            });
+
+            // Chunk briefs
+            const chunkBriefs = data.chunk_briefs || [];
+            document.getElementById('chunkList').innerHTML = chunkBriefs.length
+                ? chunkBriefs.map((c, i) => `
+            <div class="chunk-item">
+              <div class="chunk-num">Segment ${i + 1} — ARIA Mode A Brief</div>
+              <div class="chunk-text" style="white-space:pre-wrap;font-size:0.8rem">${esc(c)}</div>
+            </div>`).join('')
+                : '<p class="empty-list">No segment briefs available.</p>';
+
+            // Transcript
             document.getElementById('transcriptBox').textContent = data.transcript || 'No transcript available.';
             document.getElementById('transcriptBox').style.maxHeight = '380px';
         }
@@ -265,13 +695,84 @@
             document.getElementById('expandToggle').textContent = transcriptExpanded ? 'Collapse ↑' : 'Show full transcript ↓';
         }
 
+        // ── Trial banner ──
+        async function fetchAndRenderTrialBanner() {
+            try {
+                const res = await apiFetch('/user/trial-status');
+                if (!res.ok) return;
+                const t = await res.json();
+
+                const banner = document.getElementById('trialBanner');
+                const pipsEl = document.getElementById('trialPips');
+                const counterEl = document.getElementById('trialCounter');
+                const exhaustedEl = document.getElementById('trialExhaustedMsg');
+                const subEl = document.getElementById('trialSubMsg');
+
+                banner.style.display = 'flex';
+
+                if (t.is_subscribed) {
+                    pipsEl.innerHTML = '';
+                    counterEl.textContent = '';
+                    subEl.style.display = 'inline';
+                    return;
+                }
+
+                const limit = t.uploads_limit || 3;
+                const used = t.uploads_used || 0;
+                const remaining = t.uploads_remaining ?? Math.max(0, limit - used);
+
+                // Build pips: used=red, remaining=green
+                pipsEl.innerHTML = Array.from({ length: limit }, (_, i) => {
+                    const cls = i < used ? 'used' : 'free';
+                    return `<div class="trial-pip ${cls}" title="${i < used ? 'Used' : 'Available'}"></div>`;
+                }).join('');
+
+                counterEl.innerHTML = `<strong>${remaining}</strong> of ${limit} free files left`;
+
+                if (t.trial_exhausted) {
+                    exhaustedEl.style.display = 'inline';
+                }
+            } catch (e) { /* silent */ }
+        }
+
+        // ── PDF download ──
+        function downloadPDF() {
+            // Expand all accordion sections
+            const sectionStates = [];
+            document.querySelectorAll('.aria-section').forEach(sec => {
+                const body = sec.querySelector('.aria-section-body');
+                const chev = sec.querySelector('.aria-chevron');
+                sectionStates.push(body.classList.contains('open'));
+                body.classList.add('open');
+                chev && chev.classList.add('open');
+            });
+
+            // Expand transcript
+            const transcriptBox = document.getElementById('transcriptBox');
+            const prevMaxHeight = transcriptBox.style.maxHeight;
+            transcriptBox.style.maxHeight = 'none';
+
+            window.print();
+
+            // Restore state after print dialog closes
+            window.addEventListener('afterprint', function restore() {
+                document.querySelectorAll('.aria-section').forEach((sec, i) => {
+                    const body = sec.querySelector('.aria-section-body');
+                    const chev = sec.querySelector('.aria-chevron');
+                    body.classList.toggle('open', sectionStates[i]);
+                    chev && chev.classList.toggle('open', sectionStates[i]);
+                });
+                transcriptBox.style.maxHeight = prevMaxHeight;
+                window.removeEventListener('afterprint', restore);
+            });
+        }
+
         // ── Init ──
         async function init() {
-            // Check current status
+            fetchAndRenderTrialBanner(); // show trial status immediately, regardless of job state
             const res = await apiFetch(`/get_status/${jobId}`);
             if (!res.ok) { showToast('Job not found or access denied'); return; }
             const { status, error } = await res.json();
-
             if (status === 'done') {
                 fetchAndRender();
             } else if (status === 'error') {
@@ -280,7 +781,6 @@
             } else {
                 document.getElementById('processingCard').style.display = 'block';
                 document.getElementById('processingStatus').textContent = status;
-                // Poll every 5 seconds
                 pollTimer = setInterval(pollStatus, 5000);
             }
         }

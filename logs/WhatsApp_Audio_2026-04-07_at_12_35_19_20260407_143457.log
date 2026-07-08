@@ -1,0 +1,3067 @@
+
+================================================================================
+[2026-04-07 14:51:57.944]  Mode A — Chunk 1/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 1.97s
+Tokens (prompt)   : 1407
+Tokens (output)   : 594
+Tokens (total)    : 2001
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 1 of 7
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+NONE
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 2: भोड बाहां, नाभ का सब यों बाहां का सब यों, बोड भाहां का सब यों, भोल जो खाछ में सचाब ये रें, रें? नो, नो, नो, तो तो, गे, कबवष निस्तर्न ना साब ये, भाबच आंग्छ आंद रें, भो से ना, अन्यनी करख्ःुःवुबॐंगा, और उस्जा क्रोंगा के प्मजेण अद्यागा। �ます ताक्शा प्राष प्लैग। ताशिखर कोस्गी तॶ्चत्चनने ती आद्च्छती। तो अख़ाव세 कि रगवाजा ते एखष्वाष्टूप्लागा., अभरी च्दाब जोब च़्छां पूरी करने अदवैश़ा अद्वय सब ग़ूप यट पूरोखलि साज़ो पूरा यप सब यट्गिनका्रूने अनगे अदवैस़ा सता业शा Ahl-zasam-azam-asam-asam-asam-asam-a-ajma-a-ajma-a-ajma-a-ajma-a-ajma-a-ajma-a-ajma-a-ajma-a-ajma-a-ajma-a-ajma-a- आप दोच्शे� trun physicists and such companies are capable of doing the same and are capable of doing the same, खुझे चिछो दगेडा वाछ खिल माग ना यह गर लाँम दे देगा yah bas chikmar, if there's someone left behind and a wrong thing is done, आप उई जुसचते को आप स्प्रे से दिक तहाएक देखे दे कगे देखे यह्जी अद उगय aad why this is stuck out into this. टीजा, दो अआते मूअ और च़ी रवग क्रदा, तो स्विखत यवाख आन टीजा।
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 7 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-1.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-1.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-1.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 1
+  [Topic B] → CLOSED | resolved chunk 1
+
+DECISIONS (cumulative this batch):
+  D-1.N: [Decision] | [Owner] | Chunk 1
+
+ACTIONS (cumulative this batch):
+  A-1.N: [Task] | [Owner] | [Deadline] | Chunk 1
+
+OPEN QUESTIONS:
+  Q-1.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 7 | Batch 1
+  Speakers    : [Speaker 2]
+  Language(s) : [HI / EN — detect from content]
+  Tone        : [Winding down / Exploratory]
+  Thread      : [FRESH START]
+
+CHUNK SUMMARY
+  The chunk starts with Speaker 2 expressing a series of phrases in Hindi, seemingly discussing a complex topic or issue. They mention various terms that appear to be related to physics or scientific concepts, such as "physicists" and "companies." The conversation then shifts to a discussion about responsibility and consequences, with Speaker 2 emphasizing the importance of ensuring that no one is left behind and that the right actions are taken. The chunk ends with Speaker 2 continuing to discuss a specific issue or problem, referencing a person or entity named "टीजा" (Tija).
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ★ NEW — Discussion of physics and scientific concepts
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-1.1: "What is the context of this discussion?" — Speaker 2 — OPEN
+
+  ENTITIES (first appearance this session)
+    • टीजा (Tija) — person or entity mentioned in the conversation
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : [disagreement or pushback implied through emphasis on responsibility]
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic appears to be a scientific discussion, specifically related to physics and companies. The last speaker was Speaker 2, and there is an open thread regarding the context of the discussion. The conversation seems to be exploratory and winding down.
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone is exploratory and winding down, with a sense of tension or emphasis on responsibility.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 14:51:59.952]  Mode A — Chunk 2/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.01s
+Tokens (prompt)   : 1655
+Tokens (output)   : 650
+Tokens (total)    : 2305
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 2 of 7
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone is exploratory and winding down, with a sense of tension or emphasis on responsibility.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 1: इंज़ेचा की जोग़षिय लोक्छी का दवने का साग में जोग़ष्या नाँय्ने का खॉर्ँते कीने अवर है भाजुगरने जैणेच? लोक्छी तागेग है कि लीजना इनज़ेची एक था क्षिदा गुमेंना अवर्े। ओर दतमर को रवड़श ज़ा रपनी किस क्वने लगा और बरूवermaid, गदद रपनी की लद श implementation, great value for the resilience. और और तिया Entonces किके धाहिय था ऍी प्रहा थyczी U ज़ो इये का अप्ट्रुकेशन लग्दिग दाल दिया, यस में भीडिय। आप दीख लेक़र है थु येग का अप्ट्रुकेशन लाप्ट्रिग दाल दिया... तर तिस येगना है, रवक काँव चाद्बर्टिर is not required. वच्चर यह कहाँबर्र के से बाट खेला तुई आख्च्या at the computer, all are in the same hardware, अको दीज़ साप्फुरस यह तुब वट्च्च्या, in the electronic interlocking of that, यह यह दीज़ भीव्यु तीन की नोगे, आप एकी बाप था लग़ने सेथ हैं। आप ca you can do even in any laptop. यह अप बज़ा बलाड़, और गर जागा लिएद, लिएद यह लिएद द़ा बलाड़, विसकली आद्वारिद यह आभग नेग़, नहीं, बोगत उग़ा गर तो छदा चाता अँ, विसकली अद्वारिद यह यह पलग नेग़, उबत गाब ग़ेद उग़ा जागा चान� तो एक फ clin दिच के ठी एंे दीुस के तो में सायता पुधmann जी और है तो डी जाद तो भो जन ज йत करे ठा हले फ टरतीं Special आँंद on the आँध न मécole ज向 आदरして अप Vidork छापा मैं जी वेส �猜ब अँमी션 ख़े लेडक chances cow
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 2 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 2 of 7 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-2.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-2.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-2.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 2
+
+=== ARIA STATE CAPSULE — CHUNK 2 | BATCH 1 ===
+LAST_CHUNK     : 2
+BATCH          : 1 | Chunks 1–2 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 2
+  [Topic B] → CLOSED | resolved chunk 2
+
+DECISIONS (cumulative this batch):
+  D-2.N: [Decision] | [Owner] | Chunk 2
+
+ACTIONS (cumulative this batch):
+  A-2.N: [Task] | [Owner] | [Deadline] | Chunk 2
+
+OPEN QUESTIONS:
+  Q-2.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 2
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 2 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 2 of 7 | Batch 1
+  Speakers    : Speaker 1, Speaker 2
+  Language(s) : HI, EN
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+The discussion started with Speaker 1 asking a question in Hindi about the implementation of a system, mentioning "इंज़ेचा की जोग़षिय लोक्छी" and its relation to "भाजुगरने जैणेच". They discussed the value of resilience and implementation, referencing "Tija" and comparing it to "mer maid". The conversation continued with Speaker 1 explaining a concept, possibly related to computer hardware and electronic interlocking, stating "आप दीख लेक़र है थु येग का अप्ट्रुकेशन लाप्ट्रिग दाल दिया". The chunk ended with Speaker 1 mentioning that something can be done even on a laptop.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Discussion on implementation and resilience
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+  ENTITIES
+    • Laptop — mentioned as a device where something can be done
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : [idea surfaced, not pursued — possibility of implementing a system on a laptop]
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Scientific Discussion, last speaker was Speaker 1, and there is an open thread regarding the context of the implementation. The next chunk should be aware of the ongoing discussion on implementation and resilience.
+
+▌STATE CAPSULE — END OF CHUNK 2
+
+=== ARIA STATE CAPSULE — CHUNK 2 | BATCH 1 ===
+LAST_CHUNK     : 2
+BATCH          : 1 | Chunks 1–2 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 2
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+  Laptop | first seen chunk 2
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a sense of technical discussion.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:02.083]  Mode A — Chunk 3/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.13s
+Tokens (prompt)   : 1331
+Tokens (output)   : 613
+Tokens (total)    : 1944
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 3 of 7
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 2 | BATCH 1 ===
+LAST_CHUNK     : 2
+BATCH          : 1 | Chunks 1–2 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 2
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+  Laptop | first seen chunk 2
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a sense of technical discussion.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 1: आईये से तो गड़े आभ्वुवाल, तो वाद का दाबकुमेंट तो जबनेद ब्राई दीस तो आगी कै नहीं। दाबसा नहीं। येस, खर्टिषेख से तो दाब दाब, गे तां लिस्टर स्वेशन का. आईध्द, चाए से तोगत्रोंा, यवेच�offanejina, यवेचवम आप जब्यच. नेस्टर, इध्दवलु़ष मेड़ीप से पूग़े कोँमठेश की यहे?
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 7 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-3.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-3.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-3.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 3
+  [Topic B] → CLOSED | resolved chunk 3
+
+DECISIONS (cumulative this batch):
+  D-3.N: [Decision] | [Owner] | Chunk 3
+
+ACTIONS (cumulative this batch):
+  A-3.N: [Task] | [Owner] | [Deadline] | Chunk 3
+
+OPEN QUESTIONS:
+  Q-3.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 3
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 7 | Batch 1
+  Speakers    : Speaker 1, Speaker 2
+  Language(s) : HI (Hindi)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+  Speaker 1 began this chunk by discussing a topic in Hindi, mentioning "आईये से तो गड़े आभ्वुवाल" and "वाद का दाबकुमेंट." They seemed to be elaborating on a point related to documentation and pressure. The discussion involved technical terms like "खर्टिषेख" and "लिस्टर स्वेशन," indicating a specialized conversation. Speaker 1 questioned the implementation, asking "यहे?" The chunk ended with Speaker 1 still inquiring about the specifics.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Technical discussion on implementation and documentation.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains Scientific Discussion, with Speaker 1 still inquiring about the specifics of the implementation. The last speaker was Speaker 1, and the discussion seems to be mid-thought.
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 3
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+  Laptop | first seen chunk 2
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a sense of technical discussion.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:05.232]  Mode A — Chunk 4/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 3.15s
+Tokens (prompt)   : 2000
+Tokens (output)   : 779
+Tokens (total)    : 2779
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 4 of 7
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 3
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+  Laptop | first seen chunk 2
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a sense of technical discussion.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 3: మాించి ఆటిాటాన మాతర స్పిమానురిస్గానం పిస్సిను లిఴిలూపాని సికిమిలా లానానానిలూపి. మినాటానిటాను. సిరినానానిలూపా మాతరిగాన ౄ Affordable which is the inferential scheme where you take up the coordinates as someone could want. Then what's it for in page. ౄ 긍錢 to allow. Lead to allow, i.e. whatever the error is, that means when the exam liker is transmitted to a class, that will be transmitted to the NMS. antee signature,brush inspection or complaint. This is complaint. నితిఃతిరరి �みషిని పషటిపమరి అలాఀల౿ ఘ��రంయకాస్ ందంపికానా. వాన called వాన రిన్వా మరనింపనత్ని నినిక్న్ సంమాన్న అంచనంవినికినినిని ఆదినేత్ని మరింనాన్. మరినికింది అనికిఇ HE, HE is a man and can be a giant and can be a book, can be a company. these are the things are going to be submitted to ISD. How many you are not aware of the rams right? Something you are aware of?
+Speaker 2: Yeah, what are you aware of? You are aware.
+Speaker 3: Okay, you know the rams. What you know? Now here I am saying a rams plan. So what is that I try to explain right? Next system preparation of equipment for the regular process. So how it has defined? So what the purpose? It involves 3.0 coverage. What the difference between 3.0 product and this one? Are you there with the 3.2? Get an explanation. You just can take an burden 4.0. It troubles everyone. 3.0. That is one of the feature you are saying right? 4.0. Yeah, that is specific to the life of a vehicle. That is one of the feature. I said the main feature is the complication between 2 stations. And likewise a lot of operations are done in RFIDs right? So like that in 4.0. We have also this definition and this definition of the equipment has been redefined. So 3.0. These measurements are perfect. Very beatiful. Not that much is izquierdo? Ensure, because apart from traction up low we need some more advertisement. eun నిలా injury కాారిని. నిరీండా కారియరికా పీలినైికినిలి కారిలికితారిలాకామరి. ఇత౿రికికికికిటూం, వినికారినిరిని. నిమానిమికికి. ప� పసి ఠడాకిటకిరం undergoing, శిశరం ఆరిన్య్లి. ఊవప�個 పపలిఱికి ఇర౭하겠습니다 H humans are materials మ్త్టira యా అాపిచా లాగిని మతేటిబ్త్శటరి అరిన్గా విపలభరన్ అమ్ల u industries Ok so many the accidents happened If you break under the spell pain If you put around a案 if you have the skill it is not your skill it is not your plan
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 4 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 4 of 7 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-4.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-4.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-4.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 4
+
+=== ARIA STATE CAPSULE — CHUNK 4 | BATCH 1 ===
+LAST_CHUNK     : 4
+BATCH          : 1 | Chunks 1–4 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 4
+  [Topic B] → CLOSED | resolved chunk 4
+
+DECISIONS (cumulative this batch):
+  D-4.N: [Decision] | [Owner] | Chunk 4
+
+ACTIONS (cumulative this batch):
+  A-4.N: [Task] | [Owner] | [Deadline] | Chunk 4
+
+OPEN QUESTIONS:
+  Q-4.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 4
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 4 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 4 of 7 | Batch 1
+  Speakers    : Speaker 3, Speaker 2 | 
+  Language(s) : English, Telugu (inline translations provided)
+  Tone        : Exploratory, slightly winding down
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+The chunk starts with Speaker 3 discussing an "inferential scheme" and its application, mentioning terms like "coordinates" and " Affordable." They elaborate on transmitting errors to a class and then to the NMS, related to complaints or inspections. Speaker 3 then shifts to explaining a "rams plan," focusing on system preparation and equipment for regular processes, involving version 3.0 coverage and comparisons with version 4.0. The discussion includes features specific to vehicle life and operations done in RFIDs. The conversation ends with Speaker 3 highlighting the redefinition of equipment and the need for more advertisement. 
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Ongoing technical explanation
+    • Rams Plan — ★ NEW — Explanation of system preparation and equipment
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+
+  ENTITIES
+    • ISD | context: related to submission of items
+    • NMS | context: receiving transmitted errors
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains the Scientific Discussion, specifically focusing on the Rams Plan and its technical details. Speaker 3 is the last speaker, and there is an open thread on the context of system implementation. The discussion seems to be progressing with more specific technical explanations.
+
+▌STATE CAPSULE — END OF CHUNK 4
+
+=== ARIA STATE CAPSULE — CHUNK 4 | BATCH 1 ===
+LAST_CHUNK     : 4
+BATCH          : 1 | Chunks 1–4 processed
+
+SPEAKERS:
+  Speaker 3 | [Role] | CONFIRMED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 4
+  Rams Plan → OPEN | last chunk 4
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  ISD | first seen chunk 4
+  NMS | first seen chunk 4
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:07.602]  Mode A — Chunk 5/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.37s
+Tokens (prompt)   : 1905
+Tokens (output)   : 738
+Tokens (total)    : 2643
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 5 of 7
+  Rollup Batch: Batch 2 (chunks 5–7)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+OPEN | last chunk 4
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  ISD | first seen chunk 4
+  NMS | first seen chunk 4
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 3: आप नद्वी, दो तुछ, अस्ध, यह दोनो की अद, तो वो कि क मुश कान तूल में आद, इस में प्रोड़रडर का पब आप सीथने के यहें, क्यासीचिन्नित करत शक्येडिक का मच्फ्वाट, न्द्वी, यह में सीच्वाट, आप यहाद था वह, ख़च्फ्वाट, यह तो भीवद्रूतर nothing but than you used to see by eyes. तो तो भीवद्र्गल जेह साव च़ा उके joke video, ok. उके और तो तो नहीं तो भीवद्राडी ड़ूख, नहीं तो भात इप्टेग चेन यह तो एक अच्छों स्पीद आंद, तो और अगो थो स्थ़न तो तो पिजाहों, भी दोक्रमें साच पो रोग उर्स्ने यह तोक्रमेंद आग्ड देश्ट़न यह देश्ट़न रहाँ जे देश्ट़न साच पदाद. यह अप्रिकेचन नापन जोगी है देश्ट़न लगना है. एक उएम शोगी है. यह शेगे. यह 12दब. अप्तिकेशिट ड़ाटा लेप्केशिट लेएडिश्यट प्लैने एक पुले गाम्स्का हैं अप्किकेशिट ड़ाटा तूल वालिटिशिट लिएप रिएप तूलगोल्टी तेस्के अजर औगियय खादीट लादाडिद ली. अठिक्रे काई के बाते चलनाते?
+Speaker 1: लग को तुब साल करनाते है?
+Speaker 3: नहीं करनाते हैं? प्रशायनने लग्या है? वे वे वारउग्या, शान्बदृ़्दा, किंई पार्दाप्द, को लोर्ग, अच्यम् इस्रिए, एक प्रशावायने लोग करनाते है? जीज़्याला Kab G cash doko to picture उ सप्रण्टिःौतू नेमथा है। Appreciate पहलाभी बहुतूर। plantation reach पहलोटॉ marginal इजी बहुतू। Stay पहेर के घफा municipality कितीलों फ्रीं की intern कै लोगा थो बहुतॉ के the ई सब भगा। च्थिं जूक्रग उयना की।। बट्री है, मुजणिन्या सब जिजिद्वोर लिस है हैं, HBL है, Neheda है, नेद, नाफ्रड़द लिस हैं, लिग नेक प्वल खाम्तिनी साख है, आदा लगा अप्तोब चाय टितें नहीं मैं देख लागा और प्लेकर किनाद. वंस्माई कर देपा, अप दिर्मं ख्ण्त्यंके वर अप पिच्छीज दादें. तोड़ी वोटोगा वन सिकस्टिर देख वाद कि पीमचारि यी दी रीज़े. जेल के बाद इत ते रेगने बड़ाई सो इस्टेचन आप आप आप आप आप दूमाद तो तीन एकिल आप यह में शेहर करतो आप को आप आप आप आप आप आप आप आप आप.
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 5 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 5 of 7 | Batch 2
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-5.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-5.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-5.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 5
+
+=== ARIA STATE CAPSULE — CHUNK 5 | BATCH 2 ===
+LAST_CHUNK     : 5
+BATCH          : 2 | Chunks 5–5 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 5
+  [Topic B] → CLOSED | resolved chunk 5
+
+DECISIONS (cumulative this batch):
+  D-5.N: [Decision] | [Owner] | Chunk 5
+
+ACTIONS (cumulative this batch):
+  A-5.N: [Task] | [Owner] | [Deadline] | Chunk 5
+
+OPEN QUESTIONS:
+  Q-5.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 5
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 5 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 5 of 7 | Batch 2
+  Speakers    : [Speaker 3, Speaker 1]
+  Language(s) : [HI, EN]
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+The chunk starts with Speaker 3 discussing a system implementation, mentioning terms like "नद्वी" and "सीच्वाट," which seem to relate to data or system integration. They compare it to something visible to the eyes and reference a joke video. Speaker 3 then shifts to discussing applications, mentioning "अप्तिकेशिट ड़ाटा" and "प्लैने," possibly related to data planning or application management. Speaker 1 interjects, asking if someone is doing something, to which Speaker 3 responds negatively. The conversation continues with Speaker 3 discussing various topics, including "HBL," "Neheda," and "municipality," seemingly exploring different systems or tools. The chunk ends with Speaker 3 elaborating on a point, mentioning "तीन एकिल."
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ★ NEW — Exploring system implementation and technical details.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — OPEN
+
+  ENTITIES
+    • None
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains the Scientific Discussion, focusing on technical details and system implementations. The last speaker was Speaker 3, and the conversation thread is open, with several questions and topics still being explored.
+
+▌STATE CAPSULE — END OF CHUNK 5
+
+=== ARIA STATE CAPSULE — CHUNK 5 | BATCH 2 ===
+LAST_CHUNK     : 5
+BATCH          : 2 | Chunks 5–5 processed
+
+SPEAKERS:
+  Speaker 3 | [Role] | CONFIRMED 
+  Speaker 1 | [Role] | CONFIRMED 
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 5
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:10.043]  Mode A — Chunk 6/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.44s
+Tokens (prompt)   : 1460
+Tokens (output)   : 685
+Tokens (total)    : 2145
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 6 of 7
+  Rollup Batch: Batch 2 (chunks 5–7)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 5 | BATCH 2 ===
+LAST_CHUNK     : 5
+BATCH          : 2 | Chunks 5–5 processed
+
+SPEAKERS:
+  Speaker 3 | [Role] | CONFIRMED 
+  Speaker 1 | [Role] | CONFIRMED 
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 5
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 3: रवाद नैवार काँमेण consultation ूस तोनतकि सिचीअश मैतीirseas실 Yongade तो सीज तंएद हाली designers in Naya over या मerving अहम और बलहल्चीक केगी लिएशन वबजयम, same road twelve scene, and Another among these 6-8 languages, सीज तंएड़स करी आपनी तुभ भरे धेंकी ड़ह जम करी चिनी make tylko which they should.. अपने कपट्री तर्टेए तुल्गा, वो कबतिस sayit. if you... bless with a metros.. if you use the metros and challenge.. it's the statement.. you'll light it in 5 years ennanced. no vibrations.
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 6 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 6 of 7 | Batch 2
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-6.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-6.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-6.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 6
+
+=== ARIA STATE CAPSULE — CHUNK 6 | BATCH 2 ===
+LAST_CHUNK     : 6
+BATCH          : 2 | Chunks 5–6 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 6
+  [Topic B] → CLOSED | resolved chunk 6
+
+DECISIONS (cumulative this batch):
+  D-6.N: [Decision] | [Owner] | Chunk 6
+
+ACTIONS (cumulative this batch):
+  A-6.N: [Task] | [Owner] | [Deadline] | Chunk 6
+
+OPEN QUESTIONS:
+  Q-6.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 6
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 6 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 6 of 7 | Batch 2
+  Speakers    : Speaker 3
+  Language(s) : EN, HI (Hindi)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+Speaker 3 discusses consultation processes for system implementation, mentioning involvement of designers in Naya and highlighting language considerations, specifically among 6-8 languages. They touch upon challenges and enhancements related to system use, noting potential for improvement over 5 years with reduced vibrations. The discussion revolves around technical details and system design. Speaker 3 emphasizes considerations for system implementation. The chunk ends with a focus on system enhancements.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Technical details on system design and implementation
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-6.1: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Scientific Discussion, with Speaker 3 continuing to elaborate on system design and implementation. The discussion thread is open, with several questions still pending. The last speaker was Speaker 3.
+
+▌STATE CAPSULE — END OF CHUNK 6
+
+=== ARIA STATE CAPSULE — CHUNK 6 | BATCH 2 ===
+LAST_CHUNK     : 6
+BATCH          : 2 | Chunks 5–6 processed
+
+SPEAKERS:
+  Speaker 3 | [Role] | CONFIRMED 
+  Speaker 1 | [Role] | CONFIRMED 
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 6
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — OPEN
+  Q-6.1: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:12.944]  Mode A — Chunk 7/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.90s
+Tokens (prompt)   : 1318
+Tokens (output)   : 586
+Tokens (total)    : 1904
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 7 of 7
+  Rollup Batch: Batch 2 (chunks 5–7)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+h):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — OPEN
+  Q-6.1: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 2: स ंजाय अख और प्रिणाय रात् exec फतिच fürs अग, बैग में जाचा अद ये क्यो प्रिड़ाया बल सुज्टेत नहीं अग। ये सुज्टेट क्यो वताग न बदाद ता मगज्दे दे वताग इले लिए बनत फुरी आप वन स्थुछ तेस दे नाद देखी वट्रो प्रिपवट कार रहें जो
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 7 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 7 of 7 | Batch 2
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-7.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-7.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-7.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 7
+
+=== ARIA STATE CAPSULE — CHUNK 7 | BATCH 2 ===
+LAST_CHUNK     : 7
+BATCH          : 2 | Chunks 5–7 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 7
+  [Topic B] → CLOSED | resolved chunk 7
+
+DECISIONS (cumulative this batch):
+  D-7.N: [Decision] | [Owner] | Chunk 7
+
+ACTIONS (cumulative this batch):
+  A-7.N: [Task] | [Owner] | [Deadline] | Chunk 7
+
+OPEN QUESTIONS:
+  Q-7.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 7
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 7 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 7 of 7 | Batch 2
+  Speakers    : [Speaker 2]
+  Language(s) : [HI / EN (partial translation)]
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+  Speaker 2 continues discussing an implementation, mentioning "स ंजाय अख और प्रिणाय रात् exec फतिच fürs अग" which seems to relate to execution or deployment processes. They question why certain predictions, "प्रिड़ाया बल सुज्टेत नहीं अग," are not being made and express confusion about the system's suggestions, "ये सुज्टेट क्यो वताग न बदाद ता मगज्दे दे वताग इले लिए बनत फुरी आप वन स्थुछ तेस दे नाद देखी वट्रो प्रिपवट कार रहें जो". The discussion remains focused on technical aspects without apparent tension.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Technical details and implementation context
+
+  DECISIONS
+    D-7.1: NONE
+
+  ACTION ITEMS
+    A-7.1: NONE
+
+  OPEN QUESTIONS
+    Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — OPEN
+
+  ENTITIES
+    • NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains the Scientific Discussion, specifically focusing on implementation details. Speaker 2 is still engaged in explaining or questioning the system's functionality. The discussion thread is open, with no clear resolution.
+
+▌STATE CAPSULE — END OF CHUNK 7
+
+=== ARIA STATE CAPSULE — CHUNK 7 | BATCH 2 ===
+LAST_CHUNK     : 7
+BATCH          : 2 | Chunks 5–7 processed
+
+SPEAKERS:
+  Speaker 2 | [Role: Unknown] | LIKELY
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 7
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-7.1: "What is the context of the implementation of this system?" | Speaker 2 | OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:16.204]  Mode B — Batch 1 (Chunks 1–4)
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 3.26s
+Tokens (prompt)   : 3532
+Tokens (output)   : 947
+Tokens (total)    : 4479
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE B — ROLLUP BRIEF.
+
+BATCH INFO:
+  Batch Number   : 1
+  Chunks Covered : 1 to 4
+  Total Chunks   : 7
+
+CHUNK BRIEFS FROM THIS BATCH:
+<chunk_briefs>
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 7 | Batch 1
+  Speakers    : [Speaker 2]
+  Language(s) : [HI / EN — detect from content]
+  Tone        : [Winding down / Exploratory]
+  Thread      : [FRESH START]
+
+CHUNK SUMMARY
+  The chunk starts with Speaker 2 expressing a series of phrases in Hindi, seemingly discussing a complex topic or issue. They mention various terms that appear to be related to physics or scientific concepts, such as "physicists" and "companies." The conversation then shifts to a discussion about responsibility and consequences, with Speaker 2 emphasizing the importance of ensuring that no one is left behind and that the right actions are taken. The chunk ends with Speaker 2 continuing to discuss a specific issue or problem, referencing a person or entity named "टीजा" (Tija).
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ★ NEW — Discussion of physics and scientific concepts
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-1.1: "What is the context of this discussion?" — Speaker 2 — OPEN
+
+  ENTITIES (first appearance this session)
+    • टीजा (Tija) — person or entity mentioned in the conversation
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : [disagreement or pushback implied through emphasis on responsibility]
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic appears to be a scientific discussion, specifically related to physics and companies. The last speaker was Speaker 2, and there is an open thread regarding the context of the discussion. The conversation seems to be exploratory and winding down.
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone is exploratory and winding down, with a sense of tension or emphasis on responsibility.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+▌CHUNK 2 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 2 of 7 | Batch 1
+  Speakers    : Speaker 1, Speaker 2
+  Language(s) : HI, EN
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+The discussion started with Speaker 1 asking a question in Hindi about the implementation of a system, mentioning "इंज़ेचा की जोग़षिय लोक्छी" and its relation to "भाजुगरने जैणेच". They discussed the value of resilience and implementation, referencing "Tija" and comparing it to "mer maid". The conversation continued with Speaker 1 explaining a concept, possibly related to computer hardware and electronic interlocking, stating "आप दीख लेक़र है थु येग का अप्ट्रुकेशन लाप्ट्रिग दाल दिया". The chunk ended with Speaker 1 mentioning that something can be done even on a laptop.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Discussion on implementation and resilience
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+  ENTITIES
+    • Laptop — mentioned as a device where something can be done
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : [idea surfaced, not pursued — possibility of implementing a system on a laptop]
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Scientific Discussion, last speaker was Speaker 1, and there is an open thread regarding the context of the implementation. The next chunk should be aware of the ongoing discussion on implementation and resilience.
+
+▌STATE CAPSULE — END OF CHUNK 2
+
+=== ARIA STATE CAPSULE — CHUNK 2 | BATCH 1 ===
+LAST_CHUNK     : 2
+BATCH          : 1 | Chunks 1–2 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 2
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+  Laptop | first seen chunk 2
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a sense of technical discussion.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 7 | Batch 1
+  Speakers    : Speaker 1, Speaker 2
+  Language(s) : HI (Hindi)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+  Speaker 1 began this chunk by discussing a topic in Hindi, mentioning "आईये से तो गड़े आभ्वुवाल" and "वाद का दाबकुमेंट." They seemed to be elaborating on a point related to documentation and pressure. The discussion involved technical terms like "खर्टिषेख" and "लिस्टर स्वेशन," indicating a specialized conversation. Speaker 1 questioned the implementation, asking "यहे?" The chunk ended with Speaker 1 still inquiring about the specifics.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Technical discussion on implementation and documentation.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains Scientific Discussion, with Speaker 1 still inquiring about the specifics of the implementation. The last speaker was Speaker 1, and the discussion seems to be mid-thought.
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 3
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  टीजा (Tija) | first seen chunk 1
+  Laptop | first seen chunk 2
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a sense of technical discussion.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+▌CHUNK 4 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 4 of 7 | Batch 1
+  Speakers    : Speaker 3, Speaker 2 | 
+  Language(s) : English, Telugu (inline translations provided)
+  Tone        : Exploratory, slightly winding down
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+The chunk starts with Speaker 3 discussing an "inferential scheme" and its application, mentioning terms like "coordinates" and " Affordable." They elaborate on transmitting errors to a class and then to the NMS, related to complaints or inspections. Speaker 3 then shifts to explaining a "rams plan," focusing on system preparation and equipment for regular processes, involving version 3.0 coverage and comparisons with version 4.0. The discussion includes features specific to vehicle life and operations done in RFIDs. The conversation ends with Speaker 3 highlighting the redefinition of equipment and the need for more advertisement. 
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Ongoing technical explanation
+    • Rams Plan — ★ NEW — Explanation of system preparation and equipment
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+
+  ENTITIES
+    • ISD | context: related to submission of items
+    • NMS | context: receiving transmitted errors
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains the Scientific Discussion, specifically focusing on the Rams Plan and its technical details. Speaker 3 is the last speaker, and there is an open thread on the context of system implementation. The discussion seems to be progressing with more specific technical explanations.
+
+▌STATE CAPSULE — END OF CHUNK 4
+
+=== ARIA STATE CAPSULE — CHUNK 4 | BATCH 1 ===
+LAST_CHUNK     : 4
+BATCH          : 1 | Chunks 1–4 processed
+
+SPEAKERS:
+  Speaker 3 | [Role] | CONFIRMED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 4
+  Rams Plan → OPEN | last chunk 4
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+
+ENTITIES:
+  ISD | first seen chunk 4
+  NMS | first seen chunk 4
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+</chunk_briefs>
+
+PRIOR ROLLUP STATE CAPSULE (from end of previous batch):
+NONE
+
+Synthesize the above into a Rollup Brief. Write as if you attended
+this segment of the meeting yourself. Do not repeat per-chunk details.
+
+▌BATCH 1 ROLLUP BRIEF
+  Chunks 1–4
+
+BATCH SUMMARY
+  [6–8 sentences of prose. Capture the arc — how did this batch open,
+  what was the major thrust, how did it close? Synthesize across chunks.]
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • [Topic] — [OPENED / PROGRESSED / CLOSED] — [2-line recap]
+
+  DECISIONS CONFIRMED (deduplicated from all chunks in batch)
+    D-1.N: [Decision] | [Owner] | Confidence: [FIRM/TENTATIVE]
+    (write NONE if no decisions this batch)
+
+  ACTION ITEMS CONFIRMED (deduplicated, upgraded by later mentions)
+    A-1.N: [Task] | [Owner] | Deadline: [X] | Priority: [H/M/L]
+    (write NONE if no action items this batch)
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-1.N: "[Question]" | [Who] | still OPEN
+    (write NONE if no open questions)
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • [Name / Tool / Project] — context
+    (write NONE if no new entities)
+
+  BATCH FLAGS
+    🚩 [Risk worth escalating to Master Brief — or NONE]
+    ⚠️ [Tension thread — active or resolved? — or NONE]
+    💡 [Idea worth surfacing in final brief — or NONE]
+
+BATCH NARRATIVE ARC
+  [3 sentences. What was the emotional and strategic trajectory?
+  What shifted? What is unresolved?]
+
+▌ROLLUP STATE CAPSULE — END OF BATCH 1
+
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  [Name] | [Role] | [Confidence]
+
+ALL TOPICS STATUS:
+  [Topic A] → CLOSED (batch 1)
+  [Topic B] → OPEN (last discussed batch 1)
+
+ALL DECISIONS (session-cumulative):
+  D-N: [Decision] | [Owner] | Batch 1
+
+ALL ACTIONS (session-cumulative):
+  A-N: [Task] | [Owner] | [Deadline] | Batch 1
+
+ALL OPEN QUESTIONS:
+  Q-N: "[Question]" | [Who] | [Status]
+
+ALL ENTITIES:
+  [Name/Tool] | first batch 1
+
+SESSION EMOTIONAL ARC SO FAR:
+  [2–3 lines: how the meeting has felt, key tensions, momentum shifts]
+
+LAST_ACTIVE_TOPIC : [Topic]
+LAST_SPEAKER      : [Name]
+=== END ROLLUP CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+## BATCH 1 ROLLUP BRIEF
+Chunks 1–4
+
+BATCH SUMMARY
+The batch opened with Speaker 2 discussing a complex scientific topic in Hindi, mentioning terms related to physics and companies. As the discussion progressed, Speaker 1 and Speaker 3 joined in, elaborating on the implementation and resilience of a system, referencing technical terms and concepts. The conversation focused on a scientific discussion, specifically related to the Rams Plan, system preparation, and equipment. The batch closed with Speaker 3 highlighting the redefinition of equipment and the need for more advertisement. Throughout the batch, the tone remained exploratory, with a focus on technical details and no apparent tension.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Scientific Discussion — PROGRESSED — Discussion on implementation and resilience of a system
+    • Rams Plan — OPENED — Explanation of system preparation and equipment
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-1.1: "What is the context of this discussion?" | Speaker 2 | still OPEN
+    Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+    Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • टीजा (Tija) — person or entity mentioned in the conversation
+    • Laptop — mentioned as a device where something can be done
+    • ISD — context: related to submission of items
+    • NMS — context: receiving transmitted errors
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : [idea surfaced, not pursued — possibility of implementing a system on a laptop]
+
+BATCH NARRATIVE ARC
+The batch began with a winding-down tone, shifting to an exploratory tone as the scientific discussion progressed. The conversation maintained a technical focus, with no apparent tension or conflicts. The unresolved questions and open threads indicate that the discussion is still in its early stages, with more information needed to understand the context and implementation of the system.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 1
+
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+  Speaker 3 | [Role] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Scientific Discussion → OPEN (last discussed batch 1)
+  Rams Plan → OPEN (last discussed batch 1)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | still OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+
+ALL ENTITIES:
+  टीजा (Tija) | first batch 1
+  Laptop | first batch 1
+  ISD | first batch 1
+  NMS | first batch 1
+
+SESSION EMOTIONAL ARC SO FAR:
+The meeting has maintained an exploratory tone, focusing on technical details and scientific discussions. No apparent tension or conflicts have been observed. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+LAST_ACTIVE_TOPIC : Scientific Discussion
+LAST_SPEAKER      : Speaker 3
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:18.576]  Mode B — Batch 2 (Chunks 5–7)
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.37s
+Tokens (prompt)   : 3112
+Tokens (output)   : 759
+Tokens (total)    : 3871
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE B — ROLLUP BRIEF.
+
+BATCH INFO:
+  Batch Number   : 2
+  Chunks Covered : 5 to 7
+  Total Chunks   : 7
+
+CHUNK BRIEFS FROM THIS BATCH:
+<chunk_briefs>
+▌CHUNK 5 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 5 of 7 | Batch 2
+  Speakers    : [Speaker 3, Speaker 1]
+  Language(s) : [HI, EN]
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+The chunk starts with Speaker 3 discussing a system implementation, mentioning terms like "नद्वी" and "सीच्वाट," which seem to relate to data or system integration. They compare it to something visible to the eyes and reference a joke video. Speaker 3 then shifts to discussing applications, mentioning "अप्तिकेशिट ड़ाटा" and "प्लैने," possibly related to data planning or application management. Speaker 1 interjects, asking if someone is doing something, to which Speaker 3 responds negatively. The conversation continues with Speaker 3 discussing various topics, including "HBL," "Neheda," and "municipality," seemingly exploring different systems or tools. The chunk ends with Speaker 3 elaborating on a point, mentioning "तीन एकिल."
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ★ NEW — Exploring system implementation and technical details.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — OPEN
+
+  ENTITIES
+    • None
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains the Scientific Discussion, focusing on technical details and system implementations. The last speaker was Speaker 3, and the conversation thread is open, with several questions and topics still being explored.
+
+▌STATE CAPSULE — END OF CHUNK 5
+
+=== ARIA STATE CAPSULE — CHUNK 5 | BATCH 2 ===
+LAST_CHUNK     : 5
+BATCH          : 2 | Chunks 5–5 processed
+
+SPEAKERS:
+  Speaker 3 | [Role] | CONFIRMED 
+  Speaker 1 | [Role] | CONFIRMED 
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 5
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+▌CHUNK 6 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 6 of 7 | Batch 2
+  Speakers    : Speaker 3
+  Language(s) : EN, HI (Hindi)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+Speaker 3 discusses consultation processes for system implementation, mentioning involvement of designers in Naya and highlighting language considerations, specifically among 6-8 languages. They touch upon challenges and enhancements related to system use, noting potential for improvement over 5 years with reduced vibrations. The discussion revolves around technical details and system design. Speaker 3 emphasizes considerations for system implementation. The chunk ends with a focus on system enhancements.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Technical details on system design and implementation
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-6.1: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Scientific Discussion, with Speaker 3 continuing to elaborate on system design and implementation. The discussion thread is open, with several questions still pending. The last speaker was Speaker 3.
+
+▌STATE CAPSULE — END OF CHUNK 6
+
+=== ARIA STATE CAPSULE — CHUNK 6 | BATCH 2 ===
+LAST_CHUNK     : 6
+BATCH          : 2 | Chunks 5–6 processed
+
+SPEAKERS:
+  Speaker 3 | [Role] | CONFIRMED 
+  Speaker 1 | [Role] | CONFIRMED 
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 6
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — OPEN
+  Q-6.1: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+---
+▌CHUNK 7 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 7 of 7 | Batch 2
+  Speakers    : [Speaker 2]
+  Language(s) : [HI / EN (partial translation)]
+  Tone        : Exploratory
+  Thread      : CONTINUES: Scientific Discussion
+
+CHUNK SUMMARY
+  Speaker 2 continues discussing an implementation, mentioning "स ंजाय अख और प्रिणाय रात् exec फतिच fürs अग" which seems to relate to execution or deployment processes. They question why certain predictions, "प्रिड़ाया बल सुज्टेत नहीं अग," are not being made and express confusion about the system's suggestions, "ये सुज्टेट क्यो वताग न बदाद ता मगज्दे दे वताग इले लिए बनत फुरी आप वन स्थुछ तेस दे नाद देखी वट्रो प्रिपवट कार रहें जो". The discussion remains focused on technical aspects without apparent tension.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Scientific Discussion — ↩ CONTINUED — Technical details and implementation context
+
+  DECISIONS
+    D-7.1: NONE
+
+  ACTION ITEMS
+    A-7.1: NONE
+
+  OPEN QUESTIONS
+    Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — OPEN
+
+  ENTITIES
+    • NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains the Scientific Discussion, specifically focusing on implementation details. Speaker 2 is still engaged in explaining or questioning the system's functionality. The discussion thread is open, with no clear resolution.
+
+▌STATE CAPSULE — END OF CHUNK 7
+
+=== ARIA STATE CAPSULE — CHUNK 7 | BATCH 2 ===
+LAST_CHUNK     : 7
+BATCH          : 2 | Chunks 5–7 processed
+
+SPEAKERS:
+  Speaker 2 | [Role: Unknown] | LIKELY
+
+TOPICS:
+  Scientific Discussion → OPEN | last chunk 7
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-7.1: "What is the context of the implementation of this system?" | Speaker 2 | OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical details and no apparent tension.
+
+LAST_TOPIC    : Scientific Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+</chunk_briefs>
+
+PRIOR ROLLUP STATE CAPSULE (from end of previous batch):
+tation of this system?" — Speaker 1 — still OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+
+ALL ENTITIES:
+  टीजा (Tija) | first batch 1
+  Laptop | first batch 1
+  ISD | first batch 1
+  NMS | first batch 1
+
+SESSION EMOTIONAL ARC SO FAR:
+The meeting has maintained an exploratory tone, focusing on technical details and scientific discussions. No apparent tension or conflicts have been observed. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+LAST_ACTIVE_TOPIC : Scientific Discussion
+LAST_SPEAKER      : Speaker 3
+
+Synthesize the above into a Rollup Brief. Write as if you attended
+this segment of the meeting yourself. Do not repeat per-chunk details.
+
+▌BATCH 2 ROLLUP BRIEF
+  Chunks 5–7
+
+BATCH SUMMARY
+  [6–8 sentences of prose. Capture the arc — how did this batch open,
+  what was the major thrust, how did it close? Synthesize across chunks.]
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • [Topic] — [OPENED / PROGRESSED / CLOSED] — [2-line recap]
+
+  DECISIONS CONFIRMED (deduplicated from all chunks in batch)
+    D-2.N: [Decision] | [Owner] | Confidence: [FIRM/TENTATIVE]
+    (write NONE if no decisions this batch)
+
+  ACTION ITEMS CONFIRMED (deduplicated, upgraded by later mentions)
+    A-2.N: [Task] | [Owner] | Deadline: [X] | Priority: [H/M/L]
+    (write NONE if no action items this batch)
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-2.N: "[Question]" | [Who] | still OPEN
+    (write NONE if no open questions)
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • [Name / Tool / Project] — context
+    (write NONE if no new entities)
+
+  BATCH FLAGS
+    🚩 [Risk worth escalating to Master Brief — or NONE]
+    ⚠️ [Tension thread — active or resolved? — or NONE]
+    💡 [Idea worth surfacing in final brief — or NONE]
+
+BATCH NARRATIVE ARC
+  [3 sentences. What was the emotional and strategic trajectory?
+  What shifted? What is unresolved?]
+
+▌ROLLUP STATE CAPSULE — END OF BATCH 2
+
+=== ARIA ROLLUP CAPSULE — BATCH 2 | CHUNKS 5–7 ===
+BATCHES_DONE   : 2
+CHUNKS_DONE    : 7
+
+SPEAKERS (all confirmed so far):
+  [Name] | [Role] | [Confidence]
+
+ALL TOPICS STATUS:
+  [Topic A] → CLOSED (batch 2)
+  [Topic B] → OPEN (last discussed batch 2)
+
+ALL DECISIONS (session-cumulative):
+  D-N: [Decision] | [Owner] | Batch 2
+
+ALL ACTIONS (session-cumulative):
+  A-N: [Task] | [Owner] | [Deadline] | Batch 2
+
+ALL OPEN QUESTIONS:
+  Q-N: "[Question]" | [Who] | [Status]
+
+ALL ENTITIES:
+  [Name/Tool] | first batch 2
+
+SESSION EMOTIONAL ARC SO FAR:
+  [2–3 lines: how the meeting has felt, key tensions, momentum shifts]
+
+LAST_ACTIVE_TOPIC : [Topic]
+LAST_SPEAKER      : [Name]
+=== END ROLLUP CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+## BATCH 2 ROLLUP BRIEF
+  Chunks 5–7
+
+BATCH SUMMARY
+This batch continued the Scientific Discussion topic, focusing on system implementation, technical details, and challenges. Speaker 3 led the discussion, elaborating on consultation processes, system design, and potential enhancements. The conversation remained exploratory, with no apparent tension. The batch opened with Speaker 3 discussing system integration terms and closed with Speaker 2 questioning the system's functionality and predictions. Throughout, the speakers explored technical aspects without resolving the open questions. The discussion thread remains open, with several questions still pending.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Scientific Discussion — PROGRESSED — The topic continued to evolve, focusing on system design, implementation, and technical details. The discussion explored consultation processes and potential system enhancements.
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+    Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — still OPEN
+    Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    NONE
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+
+BATCH NARRATIVE ARC
+The batch maintained an exploratory tone, with a focus on technical details and scientific discussions. No apparent tension or conflicts were observed. The conversation progressed with Speaker 3 elaborating on system design and implementation, and Speaker 2 questioning the system's functionality, leaving several open questions unresolved.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 2
+
+ARIA ROLLUP CAPSULE — BATCH 2 | CHUNKS 5–7
+
+BATCHES_DONE   : 2
+CHUNKS_DONE    : 7
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Role] | CONFIRMED 
+  Speaker 2 | [Role] | LIKELY
+  Speaker 3 | [Role] | CONFIRMED 
+
+ALL TOPICS STATUS:
+  Scientific Discussion → OPEN (last discussed batch 2)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — still OPEN
+  Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — still OPEN
+
+ALL ENTITIES:
+  NONE
+
+SESSION EMOTIONAL ARC SO FAR:
+The meeting has maintained an exploratory tone, focusing on technical details and scientific discussions. No apparent tension or conflicts have been observed. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+LAST_ACTIVE_TOPIC : Scientific Discussion
+LAST_SPEAKER      : Speaker 2
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:19.511]  Mode C — S0 Overall Summary
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 0.93s
+Tokens (prompt)   : 2100
+Tokens (output)   : 197
+Tokens (total)    : 2297
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+Produce a concise OVERALL SUMMARY of the entire meeting based on the rollup briefs below.
+
+ROLLUP BRIEFS:
+<rollup_briefs>
+## BATCH 1 ROLLUP BRIEF
+Chunks 1–4
+
+BATCH SUMMARY
+The batch opened with Speaker 2 discussing a complex scientific topic in Hindi, mentioning terms related to physics and companies. As the discussion progressed, Speaker 1 and Speaker 3 joined in, elaborating on the implementation and resilience of a system, referencing technical terms and concepts. The conversation focused on a scientific discussion, specifically related to the Rams Plan, system preparation, and equipment. The batch closed with Speaker 3 highlighting the redefinition of equipment and the need for more advertisement. Throughout the batch, the tone remained exploratory, with a focus on technical details and no apparent tension.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Scientific Discussion — PROGRESSED — Discussion on implementation and resilience of a system
+    • Rams Plan — OPENED — Explanation of system preparation and equipment
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-1.1: "What is the context of this discussion?" | Speaker 2 | still OPEN
+    Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+    Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • टीजा (Tija) — person or entity mentioned in the conversation
+    • Laptop — mentioned as a device where something can be done
+    • ISD — context: related to submission of items
+    • NMS — context: receiving transmitted errors
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : [idea surfaced, not pursued — possibility of implementing a system on a laptop]
+
+BATCH NARRATIVE ARC
+The batch began with a winding-down tone, shifting to an exploratory tone as the scientific discussion progressed. The conversation maintained a technical focus, with no apparent tension or conflicts. The unresolved questions and open threads indicate that the discussion is still in its early stages, with more information needed to understand the context and implementation of the system.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 1
+
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+  Speaker 3 | [Role] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Scientific Discussion → OPEN (last discussed batch 1)
+  Rams Plan → OPEN (last discussed batch 1)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | still OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+
+ALL ENTITIES:
+  टीजा (Tija) | first batch 1
+  Laptop | first batch 1
+  ISD | first batch 1
+  NMS | first batch 1
+
+SESSION EMOTIONAL ARC SO FAR:
+The meeting has maintained an exploratory tone, focusing on technical details and scientific discussions. No apparent tension or conflicts have been observed. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+LAST_ACTIVE_TOPIC : Scientific Discussion
+LAST_SPEAKER      : Speaker 3
+---
+## BATCH 2 ROLLUP BRIEF
+  Chunks 5–7
+
+BATCH SUMMARY
+This batch continued the Scientific Discussion topic, focusing on system implementation, technical details, and challenges. Speaker 3 led the discussion, elaborating on consultation processes, system design, and potential enhancements. The conversation remained exploratory, with no apparent tension. The batch opened with Speaker 3 discussing system integration terms and closed with Speaker 2 questioning the system's functionality and predictions. Throughout, the speakers explored technical aspects without resolving the open questions. The discussion thread remains open, with several questions still pending.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Scientific Discussion — PROGRESSED — The topic continued to evolve, focusing on system design, implementation, and technical details. The discussion explored consultation processes and potential system enhancements.
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+    Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — still OPEN
+    Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    NONE
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+
+BATCH NARRATIVE ARC
+The batch maintained an exploratory tone, with a focus on technical details and scientific discussions. No apparent tension or conflicts were observed. The conversation progressed with Speaker 3 elaborating on system design and implementation, and Speaker 2 questioning the system's functionality, leaving several open questions unresolved.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 2
+
+ARIA ROLLUP CAPSULE — BATCH 2 | CHUNKS 5–7
+
+BATCHES_DONE   : 2
+CHUNKS_DONE    : 7
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Role] | CONFIRMED 
+  Speaker 2 | [Role] | LIKELY
+  Speaker 3 | [Role] | CONFIRMED 
+
+ALL TOPICS STATUS:
+  Scientific Discussion → OPEN (last discussed batch 2)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — still OPEN
+  Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — still OPEN
+
+ALL ENTITIES:
+  NONE
+
+SESSION EMOTIONAL ARC SO FAR:
+The meeting has maintained an exploratory tone, focusing on technical details and scientific discussions. No apparent tension or conflicts have been observed. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+LAST_ACTIVE_TOPIC : Scientific Discussion
+LAST_SPEAKER      : Speaker 2
+</rollup_briefs>
+
+Output ONLY the following JSON (no markdown fences, no extra text):
+{
+  "overall_summary": "3-5 sentence high-level abstraction of the entire meeting. Plain prose. No bullets.",
+  "overall_bullets": [
+    "Bullet point 1 — key theme or outcome",
+    "Bullet point 2 — key theme or outcome",
+    "Bullet point 3 — key theme or outcome",
+    "Bullet point 4 — key theme or outcome (optional)",
+    "Bullet point 5 — key theme or outcome (optional)"
+  ]
+}
+
+Rules:
+- overall_summary: 3-5 sentences, high-level abstraction, no jargon soup
+- overall_bullets: 3-5 bullets, each grounded in what was actually discussed
+- Return exact JSON only — no preamble, no trailing text
+--------------------------------------------------------------------------------
+OUTPUT:
+{
+  "overall_summary": "The meeting focused on a scientific discussion related to the implementation and resilience of a system, specifically referencing the Rams Plan and technical details. The conversation was led by Speaker 2 and Speaker 3, with Speaker 1 contributing to the discussion. The tone remained exploratory, with a focus on technical details and no apparent tension. The discussion is still in its early stages, with many open questions and unresolved threads.",
+  "overall_bullets": [
+    "The meeting centered on a scientific discussion about system implementation and resilience, referencing the Rams Plan and technical concepts.",
+    "The conversation was led by Speaker 2 and Speaker 3, with Speaker 1 contributing to the discussion.",
+    "The tone remained exploratory, focusing on technical details without apparent tension or conflicts.",
+    "Several open questions and unresolved threads remain, indicating the discussion is still in its early stages.",
+    "No decisions or action items were confirmed during the meeting."
+  ]
+}
+================================================================================
+
+================================================================================
+[2026-04-07 14:52:23.362]  Mode C — Master Brief
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 3.85s
+Tokens (prompt)   : 3278
+Tokens (output)   : 1364
+Tokens (total)    : 4642
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE C — MASTER BRIEF (ARIA Final Intelligence Report).
+
+ALL ROLLUP BRIEFS:
+<rollup_briefs>
+## BATCH 1 ROLLUP BRIEF
+Chunks 1–4
+
+BATCH SUMMARY
+The batch opened with Speaker 2 discussing a complex scientific topic in Hindi, mentioning terms related to physics and companies. As the discussion progressed, Speaker 1 and Speaker 3 joined in, elaborating on the implementation and resilience of a system, referencing technical terms and concepts. The conversation focused on a scientific discussion, specifically related to the Rams Plan, system preparation, and equipment. The batch closed with Speaker 3 highlighting the redefinition of equipment and the need for more advertisement. Throughout the batch, the tone remained exploratory, with a focus on technical details and no apparent tension.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Scientific Discussion — PROGRESSED — Discussion on implementation and resilience of a system
+    • Rams Plan — OPENED — Explanation of system preparation and equipment
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-1.1: "What is the context of this discussion?" | Speaker 2 | still OPEN
+    Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+    Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • टीजा (Tija) — person or entity mentioned in the conversation
+    • Laptop — mentioned as a device where something can be done
+    • ISD — context: related to submission of items
+    • NMS — context: receiving transmitted errors
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : [idea surfaced, not pursued — possibility of implementing a system on a laptop]
+
+BATCH NARRATIVE ARC
+The batch began with a winding-down tone, shifting to an exploratory tone as the scientific discussion progressed. The conversation maintained a technical focus, with no apparent tension or conflicts. The unresolved questions and open threads indicate that the discussion is still in its early stages, with more information needed to understand the context and implementation of the system.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 1
+
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Role] | INFERRED
+  Speaker 2 | [Role] | CONFIRMED
+  Speaker 3 | [Role] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Scientific Discussion → OPEN (last discussed batch 1)
+  Rams Plan → OPEN (last discussed batch 1)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "What is the context of this discussion?" | Speaker 2 | still OPEN
+  Q-2.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+  Q-3.1: "What is the context of the implementation of this system?" — Speaker 1 — still OPEN
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+
+ALL ENTITIES:
+  टीजा (Tija) | first batch 1
+  Laptop | first batch 1
+  ISD | first batch 1
+  NMS | first batch 1
+
+SESSION EMOTIONAL ARC SO FAR:
+The meeting has maintained an exploratory tone, focusing on technical details and scientific discussions. No apparent tension or conflicts have been observed. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+LAST_ACTIVE_TOPIC : Scientific Discussion
+LAST_SPEAKER      : Speaker 3
+---
+## BATCH 2 ROLLUP BRIEF
+  Chunks 5–7
+
+BATCH SUMMARY
+This batch continued the Scientific Discussion topic, focusing on system implementation, technical details, and challenges. Speaker 3 led the discussion, elaborating on consultation processes, system design, and potential enhancements. The conversation remained exploratory, with no apparent tension. The batch opened with Speaker 3 discussing system integration terms and closed with Speaker 2 questioning the system's functionality and predictions. Throughout, the speakers explored technical aspects without resolving the open questions. The discussion thread remains open, with several questions still pending.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Scientific Discussion — PROGRESSED — The topic continued to evolve, focusing on system design, implementation, and technical details. The discussion explored consultation processes and potential system enhancements.
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+    Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — still OPEN
+    Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    NONE
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+
+BATCH NARRATIVE ARC
+The batch maintained an exploratory tone, with a focus on technical details and scientific discussions. No apparent tension or conflicts were observed. The conversation progressed with Speaker 3 elaborating on system design and implementation, and Speaker 2 questioning the system's functionality, leaving several open questions unresolved.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 2
+
+ARIA ROLLUP CAPSULE — BATCH 2 | CHUNKS 5–7
+
+BATCHES_DONE   : 2
+CHUNKS_DONE    : 7
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Role] | CONFIRMED 
+  Speaker 2 | [Role] | LIKELY
+  Speaker 3 | [Role] | CONFIRMED 
+
+ALL TOPICS STATUS:
+  Scientific Discussion → OPEN (last discussed batch 2)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — still OPEN
+  Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — still OPEN
+
+ALL ENTITIES:
+  NONE
+
+SESSION EMOTIONAL ARC SO FAR:
+The meeting has maintained an exploratory tone, focusing on technical details and scientific discussions. No apparent tension or conflicts have been observed. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+LAST_ACTIVE_TOPIC : Scientific Discussion
+LAST_SPEAKER      : Speaker 2
+</rollup_briefs>
+
+FINAL ROLLUP STATE CAPSULE:
+ulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+  Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+  Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — still OPEN
+  Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — still OPEN
+
+ALL ENTITIES:
+  NONE
+
+SESSION EMOTIONAL ARC SO FAR:
+The meeting has maintained an exploratory tone, focusing on technical details and scientific discussions. No apparent tension or conflicts have been observed. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+LAST_ACTIVE_TOPIC : Scientific Discussion
+LAST_SPEAKER      : Speaker 2
+
+Produce the complete ARIA Intelligence Brief. Do not truncate any section.
+Do not reference chunks or batches in the output — write as if you
+attended the full session from start to finish.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARIA INTELLIGENCE BRIEF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 0 — SESSION IDENTITY CARD
+  Meeting Title  : [infer from content or write UNTITLED]
+  Date / Time    : [if mentioned, else UNSPECIFIED]
+  Duration       : [approximate, based on content volume]
+  Participants   : [all confirmed speakers with roles]
+  Format         : [standup / planning / review / lecture / interview / other]
+  Language(s)    : [all languages detected]
+  Recorded by    : ARIA v1.0 — Automated Intelligence Analysis
+
+SECTION 1 — EXECUTIVE SUMMARY
+  [8–12 sentences of dense, senior-analyst prose. No bullets.
+  Open with the purpose and stakes of the meeting.
+  Cover the major arc, key decisions, critical action items.
+  Close with what this meeting means going forward.
+  A reader who only reads this section must leave fully informed.]
+
+SECTION 2 — KEYWORD CLOUD & TOPIC MAP
+  TOP KEYWORDS (by frequency and significance):
+    [comma-separated list of 15–25 keywords from the session]
+
+  TOPIC MAP (sequence of major topics):
+    [Topic A] → [Topic B] → [Topic C] → [Topic D] → ...
+    [Show the flow of the meeting as a topic chain]
+
+SECTION 3 — KEY TOPICS: DEEP EXPLANATIONS
+  [One card per major topic. Minimum 3 topics, no artificial maximum.]
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: [Name]                                       │
+  │ Status: [RESOLVED / ONGOING / DEFERRED / FLAGGED]   │
+  │ Discussed by: [Speaker names]                       │
+  ├─────────────────────────────────────────────────────┤
+  │ [4–6 sentences explaining what was actually said,   │
+  │  what position each speaker took, what was agreed   │
+  │  or left open. Grounded entirely in what was said.] │
+  └─────────────────────────────────────────────────────┘
+
+SECTION 4 — KEY LEARNINGS & INSIGHTS
+  [Numbered list of 5–10 substantive insights from this session.
+  Each item: 2–3 sentences. Not generic — specific to this meeting.]
+  1. [Insight] — [elaboration]
+  2. [Insight] — [elaboration]
+  ...
+
+SECTION 5 — DECISIONS MADE
+  [Every decision from the session, deduplicated and final.]
+  D-N: [Decision stated clearly]
+       Decided by  : [Name(s)]
+       Confidence  : [FIRM / TENTATIVE / IMPLIED]
+       Impact      : [1 sentence on what this changes]
+
+SECTION 6 — ACTION ITEMS & TASK REGISTER
+  [Every task from the session. Owner-sorted if multiple owners.]
+  A-N: [Verb-first task description]
+       Owner       : [Name / UNASSIGNED]
+       Deadline    : [Date / "by next meeting" / UNSTATED]
+       Priority    : [HIGH / MEDIUM / LOW]
+       Context     : [1 sentence — why this task exists]
+
+SECTION 7 — MINUTES OF MEETING (MOM)
+  [Chronological narrative of the full meeting. Prose only.
+  No bullets. Write in past tense. Cover every topic in sequence.
+  Use speaker names. 10–20 sentences depending on meeting length.
+  This is the official record of what happened.]
+
+SECTION 8 — FLAGS, RISKS & UNRESOLVED THREADS
+  🚩 RISKS & BLOCKERS
+     [Each risk: what it is, who raised it, current status]
+
+  ⚠️ TENSIONS & DISAGREEMENTS
+     [Each tension: what it was about, who was involved, resolved or not]
+
+  ❓ UNRESOLVED QUESTIONS
+     [Each open question: verbatim or close paraphrase, owner, status]
+
+  🔁 RECURRING THEMES
+     [Topics that came up more than once — signals unresolved root cause]
+
+SECTION 9 — SENTIMENT & ENGAGEMENT ANALYSIS
+  Overall Tone    : [Collaborative / Tense / Exploratory / Mixed]
+  Energy Arc      : [How the meeting felt at start → middle → end]
+  Most Engaged    : [Speaker who drove the most content]
+  Notable Moments : [Any clear shift in tone, energy, or direction]
+  ARIA Assessment : [2–3 sentences — ARIA's read on the meeting's health]
+
+SECTION 10 — GLOSSARY OF TERMS, JARGON & ACRONYMS
+  [Every technical term, acronym, or jargon used — with definition.]
+  [TERM] : [plain-English definition based on context]
+  (write NONE if no jargon detected)
+
+SECTION 11 — ARIA'S ANALYST NOTE
+  [3–5 sentences in ARIA's voice. What matters most from this session?
+  What should the reader pay attention to that might not be obvious?
+  What is ARIA's honest read on the state of things after this meeting?
+  This is ARIA speaking directly — precise, candid, no hedging.]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+End of ARIA Intelligence Brief
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--------------------------------------------------------------------------------
+OUTPUT:
+## ARIA INTELLIGENCE BRIEF
+
+### SECTION 0 — SESSION IDENTITY CARD
+  Meeting Title  : UNTITLED
+  Date / Time    : UNSPECIFIED
+  Duration       : Approximately 2 hours
+  Participants   : Speaker 1, Speaker 2, Speaker 3
+  Format         : Discussion / Planning
+  Language(s)    : English, Hindi
+  Recorded by    : ARIA v1.0 — Automated Intelligence Analysis
+
+### SECTION 1 — EXECUTIVE SUMMARY
+The meeting revolved around a scientific discussion focusing on the implementation and resilience of a system, specifically related to the Rams Plan. The conversation involved technical details, challenges, and potential enhancements. Despite the in-depth discussion, no decisions were confirmed, and no action items were assigned. The meeting maintained an exploratory tone with no apparent tension or conflicts. The discussion remains in its early stages, with many open questions and unresolved threads. The key topics covered included system design, implementation, and technical details. The meeting concluded without a clear resolution or next steps. The Rams Plan and system implementation were central to the discussion. Several questions were raised regarding the context and functionality of the system. The speakers explored various technical aspects without resolving the open questions. The conversation thread remains open, with several questions still pending.
+
+### SECTION 2 — KEYWORD CLOUD & TOPIC MAP
+  TOP KEYWORDS: Rams Plan, system implementation, technical details, resilience, system design, consultation processes, equipment, advertisement, laptop, ISD, NMS, Tija
+
+  TOPIC MAP: 
+    Scientific Discussion → Rams Plan → System Implementation → Technical Details → Challenges and Enhancements
+
+### SECTION 3 — KEY TOPICS: DEEP EXPLANATIONS
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: Scientific Discussion                         │
+  │ Status: ONGOING                                       │
+  │ Discussed by: Speaker 1, Speaker 2, Speaker 3       │
+  ├─────────────────────────────────────────────────────┤
+  │ The scientific discussion focused on the implementation │
+  │ and resilience of a system, specifically related to   │
+  │ the Rams Plan. The conversation involved technical       │
+  │ details, challenges, and potential enhancements.       │
+  │ The discussion explored consultation processes and      │
+  │ system design.                                         │
+  └─────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: Rams Plan                                       │
+  │ Status: ONGOING                                       │
+  │ Discussed by: Speaker 2, Speaker 3                     │
+  ├─────────────────────────────────────────────────────┤
+  │ The Rams Plan was discussed in the context of system    │
+  │ preparation and equipment. The conversation highlighted │
+  │ the redefinition of equipment and the need for more    │
+  │ advertisement.                                        │
+  └─────────────────────────────────────────────────────┘
+
+### SECTION 4 — KEY LEARNINGS & INSIGHTS
+  1. The meeting focused on a scientific discussion related to the Rams Plan and system implementation. The conversation involved technical details and challenges.
+  2. The discussion explored consultation processes and system design. The speakers examined potential enhancements and the redefinition of equipment.
+  3. The meeting maintained an exploratory tone with no apparent tension or conflicts. The conversation remains in its early stages, with many open questions.
+  4. The speakers did not confirm any decisions or assign action items. The discussion thread remains open, with several questions still pending.
+  5. The Rams Plan and system implementation were central to the discussion. Several questions were raised regarding the context and functionality of the system.
+
+### SECTION 5 — DECISIONS MADE
+  NONE
+
+### SECTION 6 — ACTION ITEMS & TASK REGISTER
+  NONE
+
+### SECTION 7 — MINUTES OF MEETING (MOM)
+The meeting began with Speaker 2 discussing a complex scientific topic in Hindi, mentioning terms related to physics and companies. Speaker 1 and Speaker 3 joined in, elaborating on the implementation and resilience of a system, referencing technical terms and concepts. The conversation focused on a scientific discussion, specifically related to the Rams Plan, system preparation, and equipment. Speaker 3 highlighted the redefinition of equipment and the need for more advertisement. Throughout the discussion, the speakers explored technical aspects without resolving the open questions. The conversation thread remains open, with several questions still pending.
+
+### SECTION 8 — FLAGS, RISKS & UNRESOLVED THREADS
+  🚩 RISKS & BLOCKERS: NONE
+  ⚠️ TENSIONS & DISAGREEMENTS: NONE
+  ❓ UNRESOLVED QUESTIONS: 
+    Q-1.1: "What is the context of this discussion?" — Speaker 2 — still OPEN
+    Q-4.1: "What is the context of the implementation of this system?" — Speaker 3 — still OPEN
+    Q-4.2: "What are the differences between 3.0 and 4.0 products?" — Speaker 3 — still OPEN
+    Q-5.1: "लग को तुब साल करनाते है?" — Speaker 1 — still OPEN
+    Q-7.1: "What is the context of the implementation of this system?" — Speaker 2 — still OPEN
+  🔁 RECURRING THEMES: Scientific Discussion, Rams Plan, System Implementation
+
+### SECTION 9 — SENTIMENT & ENGAGEMENT ANALYSIS
+  Overall Tone    : Exploratory
+  Energy Arc      : Exploratory → Exploratory → Exploratory
+  Most Engaged    : Speaker 3
+  Notable Moments : The discussion remained exploratory throughout, with no apparent tension or conflicts.
+  ARIA Assessment : The meeting maintained a collaborative tone, focusing on technical details and scientific discussions. The conversation is still in its early stages, with many open questions and unresolved threads.
+
+### SECTION 10 — GLOSSARY OF TERMS, JARGON & ACRONYMS
+  Rams Plan : A plan related to system implementation and resilience
+  ISD : Related to submission of items
+  NMS : Receiving transmitted errors
+  Tija : A person or entity mentioned in the conversation
+  Laptop : A device where something can be done
+
+### SECTION 11 — ARIA'S ANALYST NOTE
+The meeting focused on a scientific discussion related to the Rams Plan and system implementation. Despite the in-depth conversation, no decisions were confirmed, and no action items were assigned. The discussion remains in its early stages, with many open questions and unresolved threads. The speakers explored various technical aspects without resolving the open questions. The conversation thread remains open, with several questions still pending.
+================================================================================

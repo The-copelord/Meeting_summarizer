@@ -8,6 +8,8 @@ import logging
 import re
 from typing import Optional
 
+from services.token_budget import BUDGET, truncate, log_budget_stats
+
 logger = logging.getLogger(__name__)
 
 # ── Prompts ───────────────────────────────────────────────────────────────────
@@ -72,11 +74,11 @@ def summarize_chunk(transcript: str, provider: str = "groq",
                     mistral_key: str = None) -> str:
     if not transcript.strip():
         return ""
-    if len(transcript) > 12000:
-        transcript = transcript[:12000] + "\n[... truncated ...]"
+    transcript = truncate(transcript, BUDGET["chunk_input_chars"], "chunk transcript")
+    log_budget_stats("summarize_chunk", len(transcript), BUDGET["chunk_input_chars"])
 
     prompt = CHUNK_SUMMARY_PROMPT.format(transcript=transcript)
-    result = _llm(prompt, system=CHUNK_SUMMARY_SYSTEM, max_tokens=600,
+    result = _llm(prompt, system=CHUNK_SUMMARY_SYSTEM, max_tokens=BUDGET["chunk_summary_max_tokens"],
                   provider=provider, model=model,
                   groq_key=groq_key, anthropic_key=anthropic_key,
                   openai_key=openai_key, together_key=together_key,
@@ -104,11 +106,13 @@ def generate_final_summary(chunk_summaries: list, provider: str = "groq",
                   anthropic_key=anthropic_key, openai_key=openai_key,
                   together_key=together_key, mistral_key=mistral_key)
 
-    if len(formatted) > 15000:
+    max_input = BUDGET["mode_c_input_chars"]
+    if len(formatted) > max_input:
+        log_budget_stats("final_summary input", len(formatted), max_input)
         formatted = _reduce(valid, **kwargs)
 
     prompt = FINAL_SUMMARY_PROMPT.format(chunk_summaries=formatted)
-    raw = _llm(prompt, system=FINAL_SUMMARY_SYSTEM, max_tokens=1500, **kwargs)
+    raw = _llm(prompt, system=FINAL_SUMMARY_SYSTEM, max_tokens=BUDGET["final_summary_max_tokens"], **kwargs)
 
     if not raw:
         return _empty()

@@ -70,6 +70,8 @@ def login(body: LoginRequest, db: Session = Depends(get_db)):
 @router.get("/settings")
 def get_settings(current_user: User = Depends(get_current_user),
                  db: Session = Depends(get_db)):
+    trial_used  = getattr(current_user, "trial_uploads_used", 0) or 0
+    is_sub      = bool(getattr(current_user, "is_subscribed", 0))
     return {
         "groq_api_key":      current_user.groq_api_key      or "",
         "anthropic_api_key": current_user.anthropic_api_key or "",
@@ -78,6 +80,13 @@ def get_settings(current_user: User = Depends(get_current_user),
         "mistral_api_key":   current_user.mistral_api_key   or "",
         "selected_provider": current_user.selected_provider or "groq",
         "selected_model":    current_user.selected_model    or "llama-3.3-70b-versatile",
+        "trial": {
+            "is_subscribed":      is_sub,
+            "uploads_used":       trial_used,
+            "uploads_limit":      None if is_sub else 3,
+            "uploads_remaining":  None if is_sub else max(0, 3 - trial_used),
+            "trial_exhausted":    (not is_sub) and trial_used >= 3,
+        },
     }
 
 
@@ -284,3 +293,62 @@ def clear_model_cache(
     db.query(ModelCache).filter(ModelCache.user_id == current_user.id).delete()
     db.commit()
     return {"message": "Model cache cleared"}
+
+# ── Trial + Subscription ──────────────────────────────────────────────────────
+
+TRIAL_UPLOAD_LIMIT = 3
+
+
+@router.get("/trial-status")
+def get_trial_status(
+    current_user: User = Depends(get_current_user),
+):
+    """Return the user's current trial and subscription state."""
+    trial_used = getattr(current_user, "trial_uploads_used", 0) or 0
+    is_sub     = bool(getattr(current_user, "is_subscribed", 0))
+    return {
+        "is_subscribed":      is_sub,
+        "uploads_used":       trial_used,
+        "uploads_limit":      None if is_sub else TRIAL_UPLOAD_LIMIT,
+        "uploads_remaining":  None if is_sub else max(0, TRIAL_UPLOAD_LIMIT - trial_used),
+        "trial_exhausted":    (not is_sub) and trial_used >= TRIAL_UPLOAD_LIMIT,
+        "can_upload":         is_sub or trial_used < TRIAL_UPLOAD_LIMIT,
+    }
+
+
+class SubscriptionRequest(BaseModel):
+    action: str  # "subscribe" | "unsubscribe"
+    # In production replace with a real payment provider token
+    payment_token: str = ""
+
+
+@router.post("/subscription")
+def manage_subscription(
+    body: SubscriptionRequest,
+    current_user: User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """
+    Activate or cancel a subscription.
+    In production: validate body.payment_token with your payment provider
+    (Stripe / Razorpay / etc.) before flipping the flag.
+    """
+    if body.action == "subscribe":
+        current_user.is_subscribed = 1
+        db.commit()
+        return {
+            "message": "Subscription activated. Upload restrictions removed.",
+            "is_subscribed": True,
+        }
+    elif body.action == "unsubscribe":
+        current_user.is_subscribed = 0
+        db.commit()
+        trial_used = getattr(current_user, "trial_uploads_used", 0) or 0
+        return {
+            "message": "Subscription cancelled. Trial limits now apply.",
+            "is_subscribed": False,
+            "uploads_used":  trial_used,
+            "uploads_remaining": max(0, TRIAL_UPLOAD_LIMIT - trial_used),
+        }
+    else:
+        raise HTTPException(status_code=400, detail="action must be 'subscribe' or 'unsubscribe'")

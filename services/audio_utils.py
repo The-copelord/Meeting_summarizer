@@ -135,6 +135,49 @@ def convert_to_mp3(input_path: str, output_path: str = None) -> str:
         raise RuntimeError(f"Failed to convert file to MP3: {e.stderr}")
 
 
+def denoise_audio(input_path: str, output_path: str, level: str = "medium") -> str:
+    """
+    Apply FFmpeg DSP filters to reduce background noise before transcription.
+
+    level:
+        "none"   — skip entirely, return input_path unchanged
+        "low"    — highpass + loudnorm (clean offices, mild rumble)
+        "medium" — highpass + FFT denoising + loudnorm (typical meetings with AC/ambient noise)
+        "high"   — highpass + FFT denoising + non-local-means + loudnorm (cafés, open offices)
+
+    Returns the path to the processed file (output_path), or input_path if level="none".
+    """
+    if level == "none":
+        return input_path
+
+    filter_chains = {
+        "low":    "highpass=f=80,loudnorm",
+        "medium": "highpass=f=80,afftdn=nf=-25,loudnorm",
+        "high":   "highpass=f=80,afftdn=nf=-25,anlmdn=s=7:p=0.002:r=0.002:m=15,loudnorm",
+    }
+    af = filter_chains.get(level, filter_chains["medium"])
+
+    try:
+        subprocess.run(
+            [
+                "ffmpeg", "-y",
+                "-i", input_path,
+                "-af", af,
+                "-ar", "44100",
+                "-ac", "1",
+                output_path,
+            ],
+            capture_output=True,
+            text=True,
+            check=True,
+        )
+        logger.info(f"Noise reduction ({level}) applied: {input_path} → {output_path}")
+        return output_path
+    except subprocess.CalledProcessError as e:
+        logger.warning(f"Noise reduction failed (FFmpeg error): {e.stderr} — using original audio")
+        return input_path
+
+
 def cleanup_directory(dir_path: str) -> None:
     """Removes all files in a directory, then the directory itself."""
     import shutil

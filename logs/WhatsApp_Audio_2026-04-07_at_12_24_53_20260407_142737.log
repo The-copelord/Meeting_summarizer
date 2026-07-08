@@ -1,0 +1,914 @@
+
+================================================================================
+[2026-04-07 14:30:12.073]  Mode A — Chunk 1/4
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.77s
+Tokens (prompt)   : 1287
+Tokens (output)   : 611
+Tokens (total)    : 1898
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 1 of 4
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+NONE
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 1: I don't think I'm allowed to do anything, I'm just thinking about it. I'm just thinking about it. So now, how does that make you feel? You can see in the chart. In the chart, we had this idea of Him also. And similarly, in the chart, you think of the 12th and the 11th chart. In the chart, cover is generated, movement is generated, Vezha is not, He knows the equation, cover is generated, Vezha is not, He knows the order, that is the question. So now we have a very important idea. In now, what do you understand? What are the notes, the string you have in the house? After next day, you start to talk with them, that is how to do the table. English making, are you really talking in English? After June, I'm going to do the table. It may be 10 meters, it may be 30, R9 is not 40 meters. So after 30 meters, 40 meters to enter. Those towers are high-class, only 40 meters. And those towers, it's time that you think of the Vezha. Vezha is the question more. Now here, for a different way of thinking, we have to think of the radio model. We tell it, we tell it for the radio also. So what do you do? I do, I do, I do. I do, I do, I do, I do, I do, I do.
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 4 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-1.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-1.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-1.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 1
+  [Topic B] → CLOSED | resolved chunk 1
+
+DECISIONS (cumulative this batch):
+  D-1.N: [Decision] | [Owner] | Chunk 1
+
+ACTIONS (cumulative this batch):
+  A-1.N: [Task] | [Owner] | [Deadline] | Chunk 1
+
+OPEN QUESTIONS:
+  Q-1.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 4 | Batch 1
+  Speakers    : [Speaker 1]
+  Language(s) : [EN]
+  Tone        : [Winding down / Exploratory]
+  Thread      : [FRESH START]
+
+CHUNK SUMMARY
+  The chunk starts with Speaker 1 expressing uncertainty about their actions, then transitions into a reflective conversation. They reference a chart and discuss ideas related to "Him," "Vezha," and a radio model. The conversation appears to revolve around understanding equations, generating cover and movement, and the significance of certain measurements. Speaker 1 repeatedly emphasizes "I do, I do, I do" at the end. The discussion seems to be exploratory, focusing on abstract concepts and their implications.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Radio model — ★ NEW — Discussion of applying a radio model to the current context.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-1.1: "So now we have a very important idea. In now, what do you understand?" — Speaker 1 — OPEN
+
+  ENTITIES
+    • Vezha — mentioned as a significant element in the discussion.
+    • Him — referenced in relation to understanding equations and generating cover and movement.
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : Idea of applying a radio model to the context.
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic appears to be the exploration of abstract concepts related to Vezha and radio models. The last speaker was Speaker 1, and there is an open thread regarding understanding the discussed ideas. The conversation seems to be at a mid-thought stage.
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+
+TOPICS:
+  Radio model → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "So now we have a very important idea. In now, what do you understand?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Vezha | first seen chunk 1
+  Him | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory and slightly winding down. There are no apparent tensions or risks.
+
+LAST_TOPIC    : Radio model
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 14:30:15.256]  Mode A — Chunk 3/4
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 3.18s
+Tokens (prompt)   : 1391
+Tokens (output)   : 506
+Tokens (total)    : 1897
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 3 of 4
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+
+TOPICS:
+  Radio model → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "So now we have a very important idea. In now, what do you understand?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Vezha | first seen chunk 1
+  Him | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory and slightly winding down. There are no apparent tensions or risks.
+
+LAST_TOPIC    : Radio model
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 2: If we are actually using the whole system in this country, so we are not using the whole system in this country. When we find it, we have to ask the government to do it. Like this, we can do it in a particular country and how we are going to do it. We don't need to ask people to do it. We don't need to ask people to do it. But if we are in this country, once they are considering it, they will do it. Once the input is wrong, then we cannot do it. For example, we are not using the whole system. So we can do it. After we get the problem done, we can measure the problem. We can measure the impact of human circumstances. We can actually do it in a particular country. But after we get the problem done, we can actually do it. After we get the problem done, we can actually do it. And if we want to do it, we can actually do it. We can actually do it. We can actually do it.
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 4 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-3.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-3.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-3.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 3
+  [Topic B] → CLOSED | resolved chunk 3
+
+DECISIONS (cumulative this batch):
+  D-3.N: [Decision] | [Owner] | Chunk 3
+
+ACTIONS (cumulative this batch):
+  A-3.N: [Task] | [Owner] | [Deadline] | Chunk 3
+
+OPEN QUESTIONS:
+  Q-3.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 3
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 4 | Batch 1
+  Speakers    : Speaker 2
+  Language(s) : EN
+  Tone        : Exploratory
+  Thread      : CONTINUES: Radio model
+
+CHUNK SUMMARY
+  Speaker 2 discusses the implementation of a system in a particular country, emphasizing the need for government involvement and the potential to measure the impact of human circumstances. They highlight the importance of accurate input and the ability to execute the system once the problem is resolved. The discussion revolves around the feasibility and execution of the system. Speaker 2 concludes by reiterating the possibility of implementing the system.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Radio model — ↩ CONTINUED — Implementation in a particular country
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    NONE
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains the radio model, with a focus on its implementation. The last speaker was Speaker 2, and the discussion thread appears to be mid-thought.
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Radio model → OPEN | last chunk 3
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "So now we have a very important idea. In now, what do you understand?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Vezha | first seen chunk 1
+  Him | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with no apparent tensions or risks.
+
+LAST_TOPIC    : Radio model
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 14:30:17.123]  Mode C — S0 Overall Summary
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 1.86s
+Tokens (prompt)   : 614
+Tokens (output)   : 147
+Tokens (total)    : 761
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+Produce a concise OVERALL SUMMARY of the entire meeting based on the rollup briefs below.
+
+ROLLUP BRIEFS:
+<rollup_briefs>
+[Chunk 1 Summary]
+The chunk starts with Speaker 1 expressing uncertainty about their actions, then transitions into a reflective conversation. They reference a chart and discuss ideas related to "Him," "Vezha," and a radio model. The conversation appears to revolve around understanding equations, generating cover and movement, and the significance of certain measurements. Speaker 1 repeatedly emphasizes "I do, I do, I do" at the end. The discussion seems to be exploratory, focusing on abstract concepts and their implications.
+---
+[Chunk 2 Summary]
+[CHUNK 2 — empty transcript]
+---
+[Chunk 3 Summary]
+Speaker 2 discusses the implementation of a system in a particular country, emphasizing the need for government involvement and the potential to measure the impact of human circumstances. They highlight the importance of accurate input and the ability to execute the system once the problem is resolved. The discussion revolves around the feasibility and execution of the system. Speaker 2 concludes by reiterating the possibility of implementing the system.
+---
+[Chunk 4 Summary]
+[CHUNK 4 — empty transcript]
+</rollup_briefs>
+
+Output ONLY the following JSON (no markdown fences, no extra text):
+{
+  "overall_summary": "3-5 sentence high-level abstraction of the entire meeting. Plain prose. No bullets.",
+  "overall_bullets": [
+    "Bullet point 1 — key theme or outcome",
+    "Bullet point 2 — key theme or outcome",
+    "Bullet point 3 — key theme or outcome",
+    "Bullet point 4 — key theme or outcome (optional)",
+    "Bullet point 5 — key theme or outcome (optional)"
+  ]
+}
+
+Rules:
+- overall_summary: 3-5 sentences, high-level abstraction, no jargon soup
+- overall_bullets: 3-5 bullets, each grounded in what was actually discussed
+- Return exact JSON only — no preamble, no trailing text
+--------------------------------------------------------------------------------
+OUTPUT:
+{
+  "overall_summary": "The meeting involved discussions on abstract concepts, equations, and system implementations. Speaker 1 explored ideas related to 'Him,' 'Vezha,' and a radio model, emphasizing understanding and implications. Speaker 2 discussed implementing a system in a particular country, highlighting government involvement, accurate input, and measuring human circumstances. The conversations revolved around feasibility, execution, and significance of certain measurements.",
+  "overall_bullets": [
+    "Exploratory discussion on abstract concepts and equations",
+    "Implementation of a system in a particular country with government involvement",
+    "Importance of accurate input and measuring human circumstances",
+    "Emphasis on feasibility and execution of the system"
+  ]
+}
+================================================================================
+
+================================================================================
+[2026-04-07 14:30:20.943]  Mode C — Master Brief
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 3.82s
+Tokens (prompt)   : 2717
+Tokens (output)   : 1226
+Tokens (total)    : 3943
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE C — MASTER BRIEF (ARIA Final Intelligence Report).
+
+ALL ROLLUP BRIEFS:
+<rollup_briefs>
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 4 | Batch 1
+  Speakers    : [Speaker 1]
+  Language(s) : [EN]
+  Tone        : [Winding down / Exploratory]
+  Thread      : [FRESH START]
+
+CHUNK SUMMARY
+  The chunk starts with Speaker 1 expressing uncertainty about their actions, then transitions into a reflective conversation. They reference a chart and discuss ideas related to "Him," "Vezha," and a radio model. The conversation appears to revolve around understanding equations, generating cover and movement, and the significance of certain measurements. Speaker 1 repeatedly emphasizes "I do, I do, I do" at the end. The discussion seems to be exploratory, focusing on abstract concepts and their implications.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Radio model — ★ NEW — Discussion of applying a radio model to the current context.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-1.1: "So now we have a very important idea. In now, what do you understand?" — Speaker 1 — OPEN
+
+  ENTITIES
+    • Vezha — mentioned as a significant element in the discussion.
+    • Him — referenced in relation to understanding equations and generating cover and movement.
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : Idea of applying a radio model to the context.
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic appears to be the exploration of abstract concepts related to Vezha and radio models. The last speaker was Speaker 1, and there is an open thread regarding understanding the discussed ideas. The conversation seems to be at a mid-thought stage.
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+
+TOPICS:
+  Radio model → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "So now we have a very important idea. In now, what do you understand?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Vezha | first seen chunk 1
+  Him | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory and slightly winding down. There are no apparent tensions or risks.
+
+LAST_TOPIC    : Radio model
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+[CHUNK 2 — empty transcript]
+---
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 4 | Batch 1
+  Speakers    : Speaker 2
+  Language(s) : EN
+  Tone        : Exploratory
+  Thread      : CONTINUES: Radio model
+
+CHUNK SUMMARY
+  Speaker 2 discusses the implementation of a system in a particular country, emphasizing the need for government involvement and the potential to measure the impact of human circumstances. They highlight the importance of accurate input and the ability to execute the system once the problem is resolved. The discussion revolves around the feasibility and execution of the system. Speaker 2 concludes by reiterating the possibility of implementing the system.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Radio model — ↩ CONTINUED — Implementation in a particular country
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    NONE
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains the radio model, with a focus on its implementation. The last speaker was Speaker 2, and the discussion thread appears to be mid-thought.
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Radio model → OPEN | last chunk 3
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "So now we have a very important idea. In now, what do you understand?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Vezha | first seen chunk 1
+  Him | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with no apparent tensions or risks.
+
+LAST_TOPIC    : Radio model
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+[CHUNK 4 — empty transcript]
+</rollup_briefs>
+
+FINAL ROLLUP STATE CAPSULE:
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  Speaker 1 | [Role] | CONFIRMED
+  Speaker 2 | [Role] | CONFIRMED
+
+TOPICS:
+  Radio model → OPEN | last chunk 3
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "So now we have a very important idea. In now, what do you understand?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Vezha | first seen chunk 1
+  Him | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with no apparent tensions or risks.
+
+LAST_TOPIC    : Radio model
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+Produce the complete ARIA Intelligence Brief. Do not truncate any section.
+Do not reference chunks or batches in the output — write as if you
+attended the full session from start to finish.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARIA INTELLIGENCE BRIEF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 0 — SESSION IDENTITY CARD
+  Meeting Title  : [infer from content or write UNTITLED]
+  Date / Time    : [if mentioned, else UNSPECIFIED]
+  Duration       : [approximate, based on content volume]
+  Participants   : [all confirmed speakers with roles]
+  Format         : [standup / planning / review / lecture / interview / other]
+  Language(s)    : [all languages detected]
+  Recorded by    : ARIA v1.0 — Automated Intelligence Analysis
+
+SECTION 1 — EXECUTIVE SUMMARY
+  [8–12 sentences of dense, senior-analyst prose. No bullets.
+  Open with the purpose and stakes of the meeting.
+  Cover the major arc, key decisions, critical action items.
+  Close with what this meeting means going forward.
+  A reader who only reads this section must leave fully informed.]
+
+SECTION 2 — KEYWORD CLOUD & TOPIC MAP
+  TOP KEYWORDS (by frequency and significance):
+    [comma-separated list of 15–25 keywords from the session]
+
+  TOPIC MAP (sequence of major topics):
+    [Topic A] → [Topic B] → [Topic C] → [Topic D] → ...
+    [Show the flow of the meeting as a topic chain]
+
+SECTION 3 — KEY TOPICS: DEEP EXPLANATIONS
+  [One card per major topic. Minimum 3 topics, no artificial maximum.]
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: [Name]                                       │
+  │ Status: [RESOLVED / ONGOING / DEFERRED / FLAGGED]   │
+  │ Discussed by: [Speaker names]                       │
+  ├─────────────────────────────────────────────────────┤
+  │ [4–6 sentences explaining what was actually said,   │
+  │  what position each speaker took, what was agreed   │
+  │  or left open. Grounded entirely in what was said.] │
+  └─────────────────────────────────────────────────────┘
+
+SECTION 4 — KEY LEARNINGS & INSIGHTS
+  [Numbered list of 5–10 substantive insights from this session.
+  Each item: 2–3 sentences. Not generic — specific to this meeting.]
+  1. [Insight] — [elaboration]
+  2. [Insight] — [elaboration]
+  ...
+
+SECTION 5 — DECISIONS MADE
+  [Every decision from the session, deduplicated and final.]
+  D-N: [Decision stated clearly]
+       Decided by  : [Name(s)]
+       Confidence  : [FIRM / TENTATIVE / IMPLIED]
+       Impact      : [1 sentence on what this changes]
+
+SECTION 6 — ACTION ITEMS & TASK REGISTER
+  [Every task from the session. Owner-sorted if multiple owners.]
+  A-N: [Verb-first task description]
+       Owner       : [Name / UNASSIGNED]
+       Deadline    : [Date / "by next meeting" / UNSTATED]
+       Priority    : [HIGH / MEDIUM / LOW]
+       Context     : [1 sentence — why this task exists]
+
+SECTION 7 — MINUTES OF MEETING (MOM)
+  [Chronological narrative of the full meeting. Prose only.
+  No bullets. Write in past tense. Cover every topic in sequence.
+  Use speaker names. 10–20 sentences depending on meeting length.
+  This is the official record of what happened.]
+
+SECTION 8 — FLAGS, RISKS & UNRESOLVED THREADS
+  🚩 RISKS & BLOCKERS
+     [Each risk: what it is, who raised it, current status]
+
+  ⚠️ TENSIONS & DISAGREEMENTS
+     [Each tension: what it was about, who was involved, resolved or not]
+
+  ❓ UNRESOLVED QUESTIONS
+     [Each open question: verbatim or close paraphrase, owner, status]
+
+  🔁 RECURRING THEMES
+     [Topics that came up more than once — signals unresolved root cause]
+
+SECTION 9 — SENTIMENT & ENGAGEMENT ANALYSIS
+  Overall Tone    : [Collaborative / Tense / Exploratory / Mixed]
+  Energy Arc      : [How the meeting felt at start → middle → end]
+  Most Engaged    : [Speaker who drove the most content]
+  Notable Moments : [Any clear shift in tone, energy, or direction]
+  ARIA Assessment : [2–3 sentences — ARIA's read on the meeting's health]
+
+SECTION 10 — GLOSSARY OF TERMS, JARGON & ACRONYMS
+  [Every technical term, acronym, or jargon used — with definition.]
+  [TERM] : [plain-English definition based on context]
+  (write NONE if no jargon detected)
+
+SECTION 11 — ARIA'S ANALYST NOTE
+  [3–5 sentences in ARIA's voice. What matters most from this session?
+  What should the reader pay attention to that might not be obvious?
+  What is ARIA's honest read on the state of things after this meeting?
+  This is ARIA speaking directly — precise, candid, no hedging.]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+End of ARIA Intelligence Brief
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--------------------------------------------------------------------------------
+OUTPUT:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARIA INTELLIGENCE BRIEF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 0 — SESSION IDENTITY CARD
+  Meeting Title  : UNTITLED
+  Date / Time    : UNSPECIFIED
+  Duration       : Approximately 3 chunks (partial)
+  Participants   : Speaker 1, Speaker 2
+  Format         : Exploratory discussion / planning
+  Language(s)    : EN
+  Recorded by    : ARIA v1.0 — Automated Intelligence Analysis
+
+SECTION 1 — EXECUTIVE SUMMARY
+The meeting began with Speaker 1 expressing uncertainty and transitioning into a reflective conversation about abstract concepts related to "Him," "Vezha," and a radio model. The discussion revolved around understanding equations, generating cover and movement, and the significance of certain measurements. Speaker 2 later joined the conversation, focusing on the implementation of a system in a particular country, emphasizing the need for government involvement and accurate input. No major decisions were made, but the idea of applying a radio model to the context was explored. The conversation remained exploratory with no apparent tensions or risks. The meeting concluded with an open thread regarding understanding the discussed ideas. Overall, the session was an exploratory discussion aimed at understanding and potentially implementing a system or model.
+
+SECTION 2 — KEYWORD CLOUD & TOPIC MAP
+  TOP KEYWORDS (by frequency and significance):
+    radio model, Vezha, Him, implementation, government involvement, equations, cover and movement
+
+  TOPIC MAP (sequence of major topics):
+    Introduction and uncertainty → Radio model and abstract concepts → Implementation in a particular country
+
+SECTION 3 — KEY TOPICS: DEEP EXPLANATIONS
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: Radio model                                       │
+  │ Status: ONGOING                                         │
+  │ Discussed by: Speaker 1, Speaker 2                       │
+  ├─────────────────────────────────────────────────────┤
+  │ The radio model was discussed as a potential approach   │
+  │ to understanding and implementing a system. Speaker 1   │
+  │ introduced the concept, emphasizing its significance   │
+  │ and potential applications. Speaker 2 later built upon  │
+  │ this idea, discussing its implementation in a particular │
+  │ country and the need for government involvement.       │
+  └─────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: Vezha and Him                                     │
+  │ Status: ONGOING                                         │
+  │ Discussed by: Speaker 1                                 │
+  ├─────────────────────────────────────────────────────┤
+  │ Vezha and Him were mentioned as significant elements    │
+  │ in the discussion, related to understanding equations  │
+  │ and generating cover and movement. Their exact roles  │
+  │ and implications remained unclear.                      │
+  └─────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: Implementation in a particular country           │
+  │ Status: ONGOING                                         │
+  │ Discussed by: Speaker 2                                 │
+  ├─────────────────────────────────────────────────────┤
+  │ Speaker 2 discussed the implementation of the system    │
+  │ in a particular country, emphasizing the need for      │
+  │ government involvement and accurate input. The         │
+  │ feasibility and execution of the system were explored. │
+  └─────────────────────────────────────────────────────┘
+
+SECTION 4 — KEY LEARNINGS & INSIGHTS
+  1. The radio model is being considered as a potential approach to understanding and implementing a system.
+  2. Vezha and Him are significant elements in the discussion, related to understanding equations and generating cover and movement.
+  3. Government involvement is crucial for the implementation of the system in a particular country.
+  4. Accurate input is essential for the successful execution of the system.
+  5. The discussion remained exploratory, with no major decisions made.
+
+SECTION 5 — DECISIONS MADE
+  NONE
+
+SECTION 6 — ACTION ITEMS & TASK REGISTER
+  NONE
+
+SECTION 7 — MINUTES OF MEETING (MOM)
+The meeting began with Speaker 1 expressing uncertainty and transitioning into a reflective conversation about abstract concepts related to "Him," "Vezha," and a radio model. Speaker 1 discussed the significance of understanding equations and generating cover and movement. Later, Speaker 2 joined the conversation, focusing on the implementation of a system in a particular country. Speaker 2 emphasized the need for government involvement and accurate input. The discussion revolved around the feasibility and execution of the system. The meeting concluded with an open thread regarding understanding the discussed ideas.
+
+SECTION 8 — FLAGS, RISKS & UNRESOLVED THREADS
+  🚩 RISKS & BLOCKERS
+     NONE
+
+  ⚠️ TENSIONS & DISAGREEMENTS
+     NONE
+
+  ❓ UNRESOLVED QUESTIONS
+     Q-1.1: "So now we have a very important idea. In now, what do you understand?" — Speaker 1 — OPEN
+
+  🔁 RECURRING THEMES
+     The radio model and its potential applications
+
+SECTION 9 — SENTIMENT & ENGAGEMENT ANALYSIS
+  Overall Tone    : Exploratory
+  Energy Arc      : Exploratory → Exploratory → Exploratory
+  Most Engaged    : Speaker 1
+  Notable Moments : The introduction of the radio model and its implications
+  ARIA Assessment : The meeting was an exploratory discussion with no major decisions made. The tone remained collaborative and exploratory throughout.
+
+SECTION 10 — GLOSSARY OF TERMS, JARGON & ACRONYMS
+  NONE
+
+SECTION 11 — ARIA'S ANALYST NOTE
+The meeting was an exploratory discussion focused on understanding and potentially implementing a system or model. The radio model was introduced as a significant concept, and its implications were discussed. However, no major decisions were made, and several questions remain unanswered. The tone remained collaborative and exploratory throughout.
+================================================================================

@@ -43,6 +43,10 @@ class User(Base):
     selected_provider = Column(String(64),  nullable=True, default="groq")
     created_at        = Column(DateTime(timezone=True), default=_now)
 
+    # Trial + Subscription
+    trial_uploads_used = Column(Integer, nullable=False, default=0)
+    is_subscribed      = Column(Integer, nullable=False, default=0)  # 0=free/trial, 1=subscribed
+
     jobs = relationship("Job", back_populates="user", cascade="all, delete-orphan")
 
 

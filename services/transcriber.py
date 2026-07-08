@@ -32,7 +32,8 @@ def _load_model():
 
         cuda_available = torch.cuda.is_available()
         device = "cuda" if cuda_available else "cpu"
-        compute_type = "float16" if cuda_available else "int8"
+        # int8_float16: same speed as float16 but ~40% less VRAM — critical for 4GB GPUs
+        compute_type = "int8_float16" if cuda_available else "int8"
 
         if cuda_available:
             gpu_name = torch.cuda.get_device_name(0)
@@ -112,7 +113,15 @@ def _transcribe_faster_whisper(audio_file: str) -> dict:
             beam_size=5,
             language=None,  # auto-detect
             vad_filter=True,
-            vad_parameters={"min_silence_duration_ms": 500},
+            vad_parameters={
+                "min_silence_duration_ms": 300,  # was 500 — catches shorter pauses
+                "speech_pad_ms": 200,            # pad edges to avoid clipping word boundaries
+                "threshold": 0.4,                # lower = more inclusive speech detection
+            },
+            condition_on_previous_text=False,    # prevents hallucination chains in noisy audio
+            compression_ratio_threshold=2.4,     # reject repetitive/hallucinated outputs
+            log_prob_threshold=-1.0,             # reject low-confidence segments
+            no_speech_threshold=0.6,             # more aggressive silence rejection
         )
         logger.info(
             f"Detected language '{info.language}' with probability {info.language_probability:.2f}"

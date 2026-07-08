@@ -89,11 +89,29 @@ def get_summary(
         except json.JSONDecodeError:
             summary = {}
 
+    # ARIA master brief and sections
+    master_brief = summary.get("master_brief", "")
+    sections     = summary.get("sections", {})
+    chunk_briefs = summary.get("chunk_briefs", [])
+    rollup_briefs = summary.get("rollup_briefs", [])
+
     return {
-        "job_id": job_id,
+        "job_id":           job_id,
         "original_filename": job.original_filename,
-        "transcript": result.transcript or "",
-        "summary": summary,
+        "transcript":       result.transcript or "",
+        "summary":          summary,
+        # Overall Summary (S0) — generated before Executive Summary
+        "overall_summary":  summary.get("overall_summary", ""),
+        "overall_bullets":  summary.get("overall_bullets", []),
+        # Convenience fields for frontend
+        "master_brief":     master_brief,
+        "sections":         sections,
+        "chunk_briefs":     chunk_briefs,
+        "rollup_briefs":    rollup_briefs,
+        "overview":         summary.get("overview", ""),
+        "key_points":       summary.get("key_points", []),
+        "decisions":        summary.get("decisions", []),
+        "action_items":     summary.get("action_items", []),
     }
 
 

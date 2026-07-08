@@ -1,0 +1,3096 @@
+
+================================================================================
+[2026-04-07 15:16:36.801]  Mode A — Chunk 1/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.38s
+Tokens (prompt)   : 1895
+Tokens (output)   : 650
+Tokens (total)    : 2545
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 1 of 7
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+NONE
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 1: Just a quicky to make my mind okay, to tune the subject to you, can you just introduce your chart from your name and which company and you know the signalling SRNOM, rams if you know SRNOM, since how long you have been working, thank you. But your face also looks very familiar to me, right? What you would see in 2000 at the point? If you understand what you are doing, decide. Are you aware of the signaling? Yes. I am an Insight Engineer. I have experience of two and a half years. I have been for Capcom. I think I am like an Embraider. I am from Capcom. I also work for Embraider. My name is Amrita. I am from Capcom and I am a QNG. Are you all...anybody know where is the RAM? RAM? Yeah. RAM. RAM for RAM? Both. RAM for computer and RAM for computer. So catch and talk to them, right? Now if the cover system has started, we are going to do it in two weeks. So cover is already started. What do you learn about the covers? Cover should come out. Cover should come out. Very good. Complication. Stabilization. Survey. Stabilization. How do you learn? Life. Okay, just broadly going to tell me architecture, how a college architecture is going to be? All included. Divided into tracks, right? Exactly, it is divided into two verticals. Vertical number one can be a track side, other one is output, okay? Now whatever you told that the RF580 OC all that, they are belongs to track side. Let them know what extra you learn, are you writing the facts and the facts of facts and the description of that one, okay? The data of that one, right? And the station, coverage equipment and the tower. Then you know what exactly you are doing there. Why is that? Look at it. My face is not what I am showing you. You can see that, right? There is a piece of paper there. But what I am saying is that if you are an author of the couch book, then you are all Indian writers, they are following my advice. That's why I don't have a child. So my point is that if I don't have a child, then I will be busy as well. So whatever I am saying, whatever value I have, I will not say. Am I right? Or should I be a little bigger? I don't think it's good. I don't have a child. Okay? You have to do this. I have been just for 15 years. There are two verticals you said, one is a station site and here appreciable point that you put able to list the tracks and equipment, tracks and documents and on board. Can you guess how many are there, station's RFID, DOC, number 1, number 2, RFID layout in there, number 2, number 3, root control chart there, number 3, number 4, interface circuits there. This is the history book, the asset register of this book. See, we will say, these are the assets of the book. This is the class that we are going to have. Having these many assets, one of them will be the owner. This will be the owner of the government property. Whatever is the equivalent of such an expression, it should be there in the book. Because that is the asset register. What is this one? Technically, advisory boards, our ethics team of experts, they always recommend, by learning the aggressive infrastructure mistakes, that they have committed, that they have finally done, nicely arranged part of the power supply. Now, from the IPS, we are collecting and we are arranging separately. So, technically, why today you are achieving pre-reviews is not to follow the latest, the guidelines of the TAN, technically advisory, notes, guidelines issued by the audience. So, for example, the government is very ready with the EI, Kavach's commission, like it was for, because somewhere there is a missing of the document application. So, the whole checker and the tick mark. If there is, you have seen it. Somebody has done some wrong thing like that. Only those who are in the office of the president are happy with it. Let's say not, okay, I advise you according to this. The power supply should be wrapped, that's what the ledges should be
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 7 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-1.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-1.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-1.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 1
+  [Topic B] → CLOSED | resolved chunk 1
+
+DECISIONS (cumulative this batch):
+  D-1.N: [Decision] | [Owner] | Chunk 1
+
+ACTIONS (cumulative this batch):
+  A-1.N: [Task] | [Owner] | [Deadline] | Chunk 1
+
+OPEN QUESTIONS:
+  Q-1.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 7 | Batch 1
+  Speakers    : [Amrita, Speaker 1]
+  Language(s) : [EN]
+  Tone        : [Exploratory]
+  Thread      : [FRESH START]
+
+CHUNK SUMMARY
+The chunk starts with Speaker 1 introducing the topic and asking Amrita to introduce herself and her company. Amrita, an Insight Engineer from Capcom and Embraider, explains her two-and-a-half years of experience. The conversation then shifts to a discussion about a project, with Speaker 1 asking about the signaling and Amrita confirming her awareness. The discussion continues with topics such as cover systems, tracks, and equipment. The conversation also touches on the architecture of a college and the importance of documentation. The chunk ends with a mention of power supply and advisory boards.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ★ NEW — Initial project discussion and introductions.
+    • College Architecture — ★ NEW — Brief discussion on college architecture.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+  ENTITIES (first appearance this session)
+    • Amrita — Insight Engineer at Capcom and Embraider
+    • Capcom — Company
+    • Embraider — Company
+    • SRNOM — Mentioned signaling
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic is Project Discussion, and the last speaker was Speaker 1. The conversation is still in the introductory phase, and there are open questions regarding the signaling.
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone is exploratory, with a focus on introductions and initial discussions.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:38.997]  Mode A — Chunk 2/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.20s
+Tokens (prompt)   : 1776
+Tokens (output)   : 670
+Tokens (total)    : 2446
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 2 of 7
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone is exploratory, with a focus on introductions and initial discussions.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 1: अपको दर गया तो आपको बीपिं देगा तो देख रूँड क्याटिनों लेख ता अब गेबल रूँड पर आप औई बता रगा केबल खोर पाइबर नायग्रं आब दाईजिस बन तराद्यान् सब देस्कटाप एक पुख़े लींग लाज दिया जिस में भी दीूश नें आप दिस देश़ेशेन ख़े आप पुख़े आप दो एएग का अपन्रिकिष्टाभ डिग डाल दिया जिस में दिसि देश्देहनाग में. उपरान बज़ हैं। इसiau नहीं पैद लोग आप नहीं आपको सेचा है देपा सेचा परतान अप्धिके शोगति का सीमगलेता 나को लाडी बीड्उ, आप एप यटिलाप्तों आप शप्टाई ज़ता यभ दो है को अच्हाए याडा आप चेच करज़ है छबने खडउत्तेंग को एक वो नहींगी तुयरेific. च्र्याणबाद च्र्याणबाद सुल्ठीतों क्योंगे मैंगा। विते शिबठानी तुच्छ बनकुई जा। तुच्छ तुझरेificDM तुछ्छज़। अरे विस्गाल हो तूए तूभाग़। अगर तूभाग़ तूभाग़। उज़ाँ की आष्व sayi nambu kaa chyu, trihis Nambu kaa chyu, trihis शीव सटेश़न् कवणा चाही, Nambu kaa chyu, trihis शीव सटेशन् कवणाचा ही, Sriin sehshan kama chahii, सटेशन, सटेशन, Along with station, अद थी सिव या, This is A, सीव सटेशन भी, This is station B, दोः वौतसौद आथा बहतूक कर्छतें। नहीं तоеजे का पुरज्सॢ they are ​​ linearly लोगो कर जोगी तोटल मोड़ से यसार मोड़ है, पुष्वर जोड़ है, Ls मोड़ है, श्पार्ट कर जब जब यहाँ, अन और स्पिर शिना दियो कर जब जब जब यहाँ. आपने दिखन दिखन दिखन दिखन दिखन तर्षिप लेखन. Okay, this is the set of requirement. आश्वत देखाद का हादलेप हैँ जेज़ेद बी आपि सोख़पर कै ठाजा है यह। सोख़र पा्रपना और नाच़ छबाळ..
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 2 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 2 of 7 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-2.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-2.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-2.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 2
+
+=== ARIA STATE CAPSULE — CHUNK 2 | BATCH 1 ===
+LAST_CHUNK     : 2
+BATCH          : 1 | Chunks 1–2 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 2
+  [Topic B] → CLOSED | resolved chunk 2
+
+DECISIONS (cumulative this batch):
+  D-2.N: [Decision] | [Owner] | Chunk 2
+
+ACTIONS (cumulative this batch):
+  A-2.N: [Task] | [Owner] | [Deadline] | Chunk 2
+
+OPEN QUESTIONS:
+  Q-2.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 2
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 2 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 2 of 7 | Batch 1
+  Speakers    : Speaker 1, Amrita
+  Language(s) : EN, HI
+  Tone        : Winding down, Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+The chunk started with Speaker 1 discussing a signaling system, mentioning terms like "बीपिं" (beeping) and "केबल" (cable), but the context was unclear. They then transitioned into a conversation about requirements, mentioning "Ls मोड़" (Ls mode) and "टोटल मोड़" (total mode). The discussion seemed to revolve around technical specifications or configurations. Speaker 1 concluded by stating "Okay, this is the set of requirement," indicating a potential wrap-up of the topic. The chunk ended with a mention of "सोख़र पा्रपना और नाच़ छबाळ" which seemed to be a concluding remark.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Technical specifications and requirements
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-2.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Project Discussion, with Speaker 1 as the last speaker. The conversation about technical requirements seems ongoing, and it is unclear where this discussion is headed. The open question about signaling awareness remains unresolved.
+
+▌STATE CAPSULE — END OF CHUNK 2
+
+=== ARIA STATE CAPSULE — CHUNK 2 | BATCH 1 ===
+LAST_CHUNK     : 2
+BATCH          : 1 | Chunks 1–2 processed
+
+SPEAKERS:
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 2
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+  Q-2.1: "Are you aware of the signaling?" — Speaker 1 — OPEN (Duplicate, keeping Q-1.1)
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:41.215]  Mode A — Chunk 3/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.22s
+Tokens (prompt)   : 1328
+Tokens (output)   : 726
+Tokens (total)    : 2054
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 3 of 7
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 2 | BATCH 1 ===
+LAST_CHUNK     : 2
+BATCH          : 1 | Chunks 1–2 processed
+
+SPEAKERS:
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 2
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+  Q-2.1: "Are you aware of the signaling?" — Speaker 1 — OPEN (Duplicate, keeping Q-1.1)
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 1: तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 7 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-3.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-3.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-3.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 3
+  [Topic B] → CLOSED | resolved chunk 3
+
+DECISIONS (cumulative this batch):
+  D-3.N: [Decision] | [Owner] | Chunk 3
+
+ACTIONS (cumulative this batch):
+  A-3.N: [Task] | [Owner] | [Deadline] | Chunk 3
+
+OPEN QUESTIONS:
+  Q-3.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 3
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 7 | Batch 1
+  Speakers    : Speaker 1, Amrita
+  Language(s) : HI (Hindi)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+The chunk started with Speaker 1 speaking in Hindi, discussing a project or technical aspect. The conversation appears to be focused on a specific issue or implementation, with Speaker 1 mentioning "signaling" and its implications. Amrita's response is not captured in this chunk. The discussion seems to be delving deeper into technical details. The chunk ended with Speaker 1 still elaborating on the topic.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Technical aspects and signaling
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Project Discussion, with a focus on technical aspects and signaling. Speaker 1 was the last speaker, and the conversation is still ongoing. The next chunk should be aware of the open question regarding signaling.
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 3
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:43.666]  Mode A — Chunk 4/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.45s
+Tokens (prompt)   : 1689
+Tokens (output)   : 847
+Tokens (total)    : 2536
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 4 of 7
+  Rollup Batch: Batch 1 (chunks 1–4)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 2: तो बच्च्ट देरी कुछ और क्यों बभड़ा है तुस वर पाला माड़ जाव करना तु जाव करना तो देर पास इत प्रे निम्नें। तो नेवर लेक आदस इसी दे आपनो काम यह तहाँ दे पुष्गिलात नहीं आपने इसे उसकी अखर दिमाने अखर महाँ अच्चार हैं तो लिखने से दे पोई पसन नहीं हैं दिस दे ले रेस्पों संथा हुएं आम जस जोकिग भे आप चुब ताँज़ तुब ताँज़ तुब तिब ताँज़ रेख़़ान नहीं आप यो रहें कुत्रेंट भच्ट़ाच यह से थी तो अगर टर्गोी था करानाचन्मालाँ लेवाग़।
+Speaker 1: कुत्रेंट था करानाचन्मालाँ देखनाच्टीगे बीता।
+Speaker 2: तियत् murder-suitour-money-type battery��ं Serious Class lord of upward class उज़िन में ँे प्रेझे के गरे में अर Java Jana आप अ lossesome watters- Obviously, we have lousy अज़िन में अर कहिस filled with अजन को को from both और बसुवरे� Weser उजlally lalala ब दोगुन ना than आप वोटी पिल से चेलनıyor � pike os bendThana भे लगता.
+Speaker 1: ऐसा positionfy
+Speaker 2: पाकडूगव उसा at पाकड कि � ृуш् şeyi ूबआपात� disp. अवहुर end of agenda अब अश़ा करसे बत्उगंप्ड्द द्रेवध यतरवक तोवस्वि रहा है, यतरीवध रवक भक, जोगा हसोटिष्यात गदो जब सब दोख सरोज आपःात धेख. तहीम सब अखखें तेख वो ज़ोग अगर ज़ादी मैं सब नाज्दरिल मिस, अख्खर वरन दगेच यच्टाद. और और ठारा ठारा इतवें लेज़ों और ठाखाई अस्गार तुस्वौडि़ा क्साछा हूँ
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 4 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 4 of 7 | Batch 1
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-4.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-4.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-4.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 4
+
+=== ARIA STATE CAPSULE — CHUNK 4 | BATCH 1 ===
+LAST_CHUNK     : 4
+BATCH          : 1 | Chunks 1–4 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 4
+  [Topic B] → CLOSED | resolved chunk 4
+
+DECISIONS (cumulative this batch):
+  D-4.N: [Decision] | [Owner] | Chunk 4
+
+ACTIONS (cumulative this batch):
+  A-4.N: [Task] | [Owner] | [Deadline] | Chunk 4
+
+OPEN QUESTIONS:
+  Q-4.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 4
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 4 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 4 of 7 | Batch 1
+  Speakers    : [Speaker 1, Speaker 2]
+  Language(s) : [HI, with some EN words]
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+The chunk starts with Speaker 2 discussing an issue related to delay and work pace, mentioning "तो बच्च्ट देरी कुछ और क्यों बभड़ा है तुस वर पाला माड़ जाव करना तु जाव करना तो देर पास इत प्रे निम्नें" (Why is there more delay? You should do it quickly). Speaker 1 and Speaker 2 engage in a conversation that seems to touch on various technical topics, including something referred to as "murder-suitour-money-type battery" and a comparison involving "Java Jana." The discussion appears to involve complex, possibly technical, terms and phrases, such as "lossesome watters," "Obviously, we have lousy," and "उज़िन में अर कहिस filled with." The conversation ends with Speaker 2 mentioning an "agenda" and various tasks or points to be addressed.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Ongoing technical project discussion
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-4.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+    Q-4.2: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Project Discussion, with Speaker 2 having the last word in this chunk. The conversation seems to be mid-discussion, with several open questions and technical terms being discussed.
+
+▌STATE CAPSULE — END OF CHUNK 4
+
+=== ARIA STATE CAPSULE — CHUNK 4 | BATCH 1 ===
+LAST_CHUNK     : 4
+BATCH          : 1 | Chunks 1–4 processed
+
+SPEAKERS:
+  Speaker 1 | [CONFIRMED]
+  Speaker 2 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 4
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:46.189]  Mode A — Chunk 5/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.52s
+Tokens (prompt)   : 1756
+Tokens (output)   : 837
+Tokens (total)    : 2593
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 5 of 7
+  Rollup Batch: Batch 2 (chunks 5–7)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 4 | BATCH 1 ===
+LAST_CHUNK     : 4
+BATCH          : 1 | Chunks 1–4 processed
+
+SPEAKERS:
+  Speaker 1 | [CONFIRMED]
+  Speaker 2 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 4
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 1: इसे कुए बठर्टेः करन्प्रुईता कर लगकोंगबात है। लगकोंगबात। नूगते इस्तुपूद कोथा... बोुब जोग Österreich, यांत तो जिर गगगगाते बाती वोगा। अग्गगगग्गाते और अग्गगाते बाती जर पर झोुचा कर फ़ाँ. यह दोनों कही आर तो बोगबुस खंबोंने आ रागा. इस में आप ख्रुड़ख तो पए अच्छल इज्ध डिस्टर नब तूभर्त्री, देखनेचित मैं आता है के क्याभ सिक्नहणी क्याभ सिक्नहणी काभ सिक्नहणी का मच्च्नहण क्याभ. बाग का रुस्पिर्टूर. अगर के सणौवनी बाज़दी के लेएस थे. नम्मोदबा और प्सेड़ सब वाप़ाद हा। वाप़ाद का वाप़ाद, बाप़ाद क यूच्किटूसुम। त्किर यूच्टूस सब आप बाप़ादूर रही त्फुड़ाद. सुई ज़ो चीप लगा भी गते नहों तब आप तब आयु शाँँवाग़ि पच्गे शेब्टी तब अप प्ट्टी बाग़ि बाग़ी बागा इसयद्डाँis अप प्ट्टी एक ओप पतान टब आप आपबग़़ेप लेगने 12 कुल कुन्किनी साथ है, भी एक चेल भी है, कुल से नार है, जी में साथ सो लेगने। सब काडिया, सब के चार, अस दिए पूल है, if you have a car, you should have a choice to choose your car. कार कर तैयर में कोन्साथी लेगने। या, ये मैंने कोन्साथी पैद्डा यूँस कर साथ है, because anywhere, not supposed to make any difference. यह में चेर्टा तो अगवाडिः में तेख़।
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 5 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 5 of 7 | Batch 2
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-5.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-5.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-5.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 5
+
+=== ARIA STATE CAPSULE — CHUNK 5 | BATCH 2 ===
+LAST_CHUNK     : 5
+BATCH          : 2 | Chunks 5–5 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 5
+  [Topic B] → CLOSED | resolved chunk 5
+
+DECISIONS (cumulative this batch):
+  D-5.N: [Decision] | [Owner] | Chunk 5
+
+ACTIONS (cumulative this batch):
+  A-5.N: [Task] | [Owner] | [Deadline] | Chunk 5
+
+OPEN QUESTIONS:
+  Q-5.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 5
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 5 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 5 of 7 | Batch 2
+  Speakers    : Speaker 1, Speaker 2
+  Language(s) : HI, EN (with some translation needed)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+The chunk starts with Speaker 1 discussing a topic in Hindi, mentioning "इसे कुए बठर्टेः करन्प्रुईता कर लगकोंगबात है" which translates to "Why is it taking so long?" or similar. They continue to discuss technical aspects, referencing locations like Österreich (Austria) and comparing various configurations. The conversation appears to revolve around project details and requirements. Speaker 1 delves into specifics about choices and configurations, mentioning "if you have a car, you should have a choice to choose your car." The discussion seems to be centered on technical specifications and preferences. The chunk ends with Speaker 1 concluding a point about not making any difference.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Technical specifications and configurations
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+    Q-5.2: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Project Discussion, with Speaker 1 leading the conversation. The discussion on technical specifications and configurations continues. The last speaker was Speaker 1, and the conversation seems to be mid-thought.
+
+▌STATE CAPSULE — END OF CHUNK 5
+
+=== ARIA STATE CAPSULE — CHUNK 5 | BATCH 2 ===
+LAST_CHUNK     : 5
+BATCH          : 2 | Chunks 5–5 processed
+
+SPEAKERS:
+  Speaker 1 | [CONFIRMED]
+  Speaker 2 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 5
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:48.617]  Mode A — Chunk 6/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.43s
+Tokens (prompt)   : 1516
+Tokens (output)   : 695
+Tokens (total)    : 2211
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 6 of 7
+  Rollup Batch: Batch 2 (chunks 5–7)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 5 | BATCH 2 ===
+LAST_CHUNK     : 5
+BATCH          : 2 | Chunks 5–5 processed
+
+SPEAKERS:
+  Speaker 1 | [CONFIRMED]
+  Speaker 2 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 5
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 3: जएंगे कैने पाड़्बढ़ारा नागयश्या अज़ा ठेः खृ अगा। अखाई बंदख्चा एक नाखचा जाएक एक लेकिग और भीक्ट्शे लेके लाससे तीगा उप ॐ में ीड़ी्ख और ल़ा सिस्तेंत कुक जो । 125 दें � pipe the system is good job and make it fast आपदे कभी राजाग खर्यें, एतुटरी लगागागागागागाon motor in持-sorry sir, that is the system that I am going to try. आपने कभी त्रत्रावज कर यहांजए, you never feel 16000, if you blushing with the metro, if you use the metro and challenging ,it is a statement, your life will be 5 years enhanced, no vibrations. बवाईप्रेषियानाई
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 6 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 6 of 7 | Batch 2
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-6.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-6.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-6.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 6
+
+=== ARIA STATE CAPSULE — CHUNK 6 | BATCH 2 ===
+LAST_CHUNK     : 6
+BATCH          : 2 | Chunks 5–6 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 6
+  [Topic B] → CLOSED | resolved chunk 6
+
+DECISIONS (cumulative this batch):
+  D-6.N: [Decision] | [Owner] | Chunk 6
+
+ACTIONS (cumulative this batch):
+  A-6.N: [Task] | [Owner] | [Deadline] | Chunk 6
+
+OPEN QUESTIONS:
+  Q-6.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 6
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 6 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 6 of 7 | Batch 2
+  Speakers    : Speaker 3
+  Language(s) : HI / EN (mixed)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+  The chunk started with Speaker 3 discussing a system, mentioning "जएंगे कैने पाड़्बढ़ारा नागयश्या अज़ा ठेः खृ अगा" which translates to "We will go, how will it happen?" They then switched to English, discussing a system's performance and suggesting it could enhance one's life by 5 years with reduced vibrations if used with the metro. The conversation seemed to focus on technical aspects and potential benefits. The chunk ended with Speaker 3 apologizing and mentioning a motor.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Technical aspects and potential benefits of a system
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : Enhanced life by 5 years with reduced vibrations using a system with the metro
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains Project Discussion, with a focus on technical aspects. The last speaker was Speaker 3, and the conversation seems to be mid-thought.
+
+▌STATE CAPSULE — END OF CHUNK 6
+
+=== ARIA STATE CAPSULE — CHUNK 6 | BATCH 2 ===
+LAST_CHUNK     : 6
+BATCH          : 2 | Chunks 5–6 processed
+
+SPEAKERS:
+  Speaker 3 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 6
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:50.755]  Mode A — Chunk 7/7
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.14s
+Tokens (prompt)   : 1376
+Tokens (output)   : 712
+Tokens (total)    : 2088
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE A — CHUNK BRIEF.
+
+CHUNK INFO:
+  Chunk       : 7 of 7
+  Rollup Batch: Batch 2 (chunks 5–7)
+
+PRIOR STATE CAPSULE (context from previous chunk):
+=== ARIA STATE CAPSULE — CHUNK 6 | BATCH 2 ===
+LAST_CHUNK     : 6
+BATCH          : 2 | Chunks 5–6 processed
+
+SPEAKERS:
+  Speaker 3 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 6
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+
+CURRENT CHUNK TRANSCRIPT:
+<chunk>
+Speaker 2: तिर थी वोगो तो आप रही आप यह तरही रही समवारग, धश्खवर पार तो और परने अजाना है, तो तो तो गर तोंदहाÖ, यह आप वत्दो अप द्शोँ है? तो सु प्यद़ के यह से नादे है। बैच में प्रखार्रे लोग।
+</chunk>
+
+Produce the following output exactly:
+
+▌CHUNK 7 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 7 of 7 | Batch 2
+  Speakers    : [Names or SPEAKER_N tags active in this chunk]
+  Language(s) : [EN / HI / other — detect from content]
+  Tone        : [Focused / Tense / Exploratory / Winding down / etc.]
+  Thread      : [FRESH START / CONTINUES: topic name / MID-THOUGHT]
+
+CHUNK SUMMARY
+  [4–6 sentences of prose. No bullets. Grounded in this chunk only.
+  Open with what started the chunk. Close with how it ended.
+  Use speaker names where known. Translate non-English inline.]
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • [Topic] — [★ NEW / ↩ CONTINUED / ✓ CLOSED] — [1-line description]
+
+  DECISIONS
+    D-7.1: [What] — [Who] — [FIRM / TENTATIVE / IMPLIED]
+    (write NONE if no decisions this chunk)
+
+  ACTION ITEMS
+    A-7.1: [Verb-first task] | Owner: [Name/UNASSIGNED] | Deadline: [stated/unstated] | Priority: [H/M/L]
+    (write NONE if no action items this chunk)
+
+  OPEN QUESTIONS
+    Q-7.1: "[Question as asked]" — [Who] — [OPEN / DEFERRED]
+    (write NONE if no open questions)
+
+  ENTITIES (first appearance this session)
+    • [Name / Tool / Project / Company] — context
+    (write NONE if no new entities)
+
+  FLAGS
+    🚩 RISK    : [blocker or concern raised — or NONE]
+    ⚠️ TENSION : [disagreement or pushback — or NONE]
+    💡 IDEA    : [idea surfaced, not pursued — or NONE]
+    🔁 REPEAT  : [topic resurfacing — or NONE]
+
+CONTINUITY NOTE
+  [2–3 sentences. What must the next chunk know? Name the active topic,
+  last speaker, and any open thread.]
+
+▌STATE CAPSULE — END OF CHUNK 7
+
+=== ARIA STATE CAPSULE — CHUNK 7 | BATCH 2 ===
+LAST_CHUNK     : 7
+BATCH          : 2 | Chunks 5–7 processed
+
+SPEAKERS:
+  [Name] | [Role] | [CONFIRMED / LIKELY / INFERRED]
+
+TOPICS:
+  [Topic A] → OPEN | last chunk 7
+  [Topic B] → CLOSED | resolved chunk 7
+
+DECISIONS (cumulative this batch):
+  D-7.N: [Decision] | [Owner] | Chunk 7
+
+ACTIONS (cumulative this batch):
+  A-7.N: [Task] | [Owner] | [Deadline] | Chunk 7
+
+OPEN QUESTIONS:
+  Q-7.N: "[Question]" | [Who] | OPEN
+
+ENTITIES:
+  [Name/Tool] | first seen chunk 7
+
+EMOTIONAL_CONTEXT:
+  [1–2 lines: tone, active tensions to carry forward]
+
+LAST_TOPIC    : [Active topic when chunk ended]
+LAST_SPEAKER  : [Name or SPEAKER_N]
+MID_SENTENCE  : [YES / NO]
+=== END STATE CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌CHUNK 7 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 7 of 7 | Batch 2
+  Speakers    : Speaker 2
+  Language(s) : HI (Hindi)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+  The chunk began with Speaker 2 asking a question in Hindi, seemingly addressing someone about a situation or project, using phrases like "तिर थी वोगो" and "आप रही आप यह तरही रही समवारग". They appeared to be inquiring about a process or an event, mentioning "बैच में प्रखार्रे लोग" (people in a batch). The speaker's tone was exploratory, trying to understand or clarify something. The chunk ended with Speaker 2 still questioning, "तो सु प्यद़ के यह से नादे है।"
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Discussion about a project or process
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-7.1: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains Project Discussion, last spoken by Speaker 2. The conversation thread is still open, with Speaker 2 raising questions. The next chunk should be aware of this ongoing discussion.
+
+▌STATE CAPSULE — END OF CHUNK 7
+
+=== ARIA STATE CAPSULE — CHUNK 7 | BATCH 2 ===
+LAST_CHUNK     : 7
+BATCH          : 2 | Chunks 5–7 processed
+
+SPEAKERS:
+  Speaker 2 | [UNCONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 7
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — OPEN
+  Q-7.1: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:53.516]  Mode B — Batch 1 (Chunks 1–4)
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.76s
+Tokens (prompt)   : 3789
+Tokens (output)   : 908
+Tokens (total)    : 4697
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE B — ROLLUP BRIEF.
+
+BATCH INFO:
+  Batch Number   : 1
+  Chunks Covered : 1 to 4
+  Total Chunks   : 7
+
+CHUNK BRIEFS FROM THIS BATCH:
+<chunk_briefs>
+▌CHUNK 1 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 1 of 7 | Batch 1
+  Speakers    : [Amrita, Speaker 1]
+  Language(s) : [EN]
+  Tone        : [Exploratory]
+  Thread      : [FRESH START]
+
+CHUNK SUMMARY
+The chunk starts with Speaker 1 introducing the topic and asking Amrita to introduce herself and her company. Amrita, an Insight Engineer from Capcom and Embraider, explains her two-and-a-half years of experience. The conversation then shifts to a discussion about a project, with Speaker 1 asking about the signaling and Amrita confirming her awareness. The discussion continues with topics such as cover systems, tracks, and equipment. The conversation also touches on the architecture of a college and the importance of documentation. The chunk ends with a mention of power supply and advisory boards.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ★ NEW — Initial project discussion and introductions.
+    • College Architecture — ★ NEW — Brief discussion on college architecture.
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+  ENTITIES (first appearance this session)
+    • Amrita — Insight Engineer at Capcom and Embraider
+    • Capcom — Company
+    • Embraider — Company
+    • SRNOM — Mentioned signaling
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic is Project Discussion, and the last speaker was Speaker 1. The conversation is still in the introductory phase, and there are open questions regarding the signaling.
+
+▌STATE CAPSULE — END OF CHUNK 1
+
+=== ARIA STATE CAPSULE — CHUNK 1 | BATCH 1 ===
+LAST_CHUNK     : 1
+BATCH          : 1 | Chunks 1–1 processed
+
+SPEAKERS:
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 1
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone is exploratory, with a focus on introductions and initial discussions.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+▌CHUNK 2 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 2 of 7 | Batch 1
+  Speakers    : Speaker 1, Amrita
+  Language(s) : EN, HI
+  Tone        : Winding down, Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+The chunk started with Speaker 1 discussing a signaling system, mentioning terms like "बीपिं" (beeping) and "केबल" (cable), but the context was unclear. They then transitioned into a conversation about requirements, mentioning "Ls मोड़" (Ls mode) and "टोटल मोड़" (total mode). The discussion seemed to revolve around technical specifications or configurations. Speaker 1 concluded by stating "Okay, this is the set of requirement," indicating a potential wrap-up of the topic. The chunk ended with a mention of "सोख़र पा्रपना और नाच़ छबाळ" which seemed to be a concluding remark.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Technical specifications and requirements
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-2.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Project Discussion, with Speaker 1 as the last speaker. The conversation about technical requirements seems ongoing, and it is unclear where this discussion is headed. The open question about signaling awareness remains unresolved.
+
+▌STATE CAPSULE — END OF CHUNK 2
+
+=== ARIA STATE CAPSULE — CHUNK 2 | BATCH 1 ===
+LAST_CHUNK     : 2
+BATCH          : 1 | Chunks 1–2 processed
+
+SPEAKERS:
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 2
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+  Q-2.1: "Are you aware of the signaling?" — Speaker 1 — OPEN (Duplicate, keeping Q-1.1)
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+▌CHUNK 3 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 3 of 7 | Batch 1
+  Speakers    : Speaker 1, Amrita
+  Language(s) : HI (Hindi)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+The chunk started with Speaker 1 speaking in Hindi, discussing a project or technical aspect. The conversation appears to be focused on a specific issue or implementation, with Speaker 1 mentioning "signaling" and its implications. Amrita's response is not captured in this chunk. The discussion seems to be delving deeper into technical details. The chunk ended with Speaker 1 still elaborating on the topic.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Technical aspects and signaling
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Project Discussion, with a focus on technical aspects and signaling. Speaker 1 was the last speaker, and the conversation is still ongoing. The next chunk should be aware of the open question regarding signaling.
+
+▌STATE CAPSULE — END OF CHUNK 3
+
+=== ARIA STATE CAPSULE — CHUNK 3 | BATCH 1 ===
+LAST_CHUNK     : 3
+BATCH          : 1 | Chunks 1–3 processed
+
+SPEAKERS:
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 3
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" | Speaker 1 | OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+---
+▌CHUNK 4 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 4 of 7 | Batch 1
+  Speakers    : [Speaker 1, Speaker 2]
+  Language(s) : [HI, with some EN words]
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+The chunk starts with Speaker 2 discussing an issue related to delay and work pace, mentioning "तो बच्च्ट देरी कुछ और क्यों बभड़ा है तुस वर पाला माड़ जाव करना तु जाव करना तो देर पास इत प्रे निम्नें" (Why is there more delay? You should do it quickly). Speaker 1 and Speaker 2 engage in a conversation that seems to touch on various technical topics, including something referred to as "murder-suitour-money-type battery" and a comparison involving "Java Jana." The discussion appears to involve complex, possibly technical, terms and phrases, such as "lossesome watters," "Obviously, we have lousy," and "उज़िन में अर कहिस filled with." The conversation ends with Speaker 2 mentioning an "agenda" and various tasks or points to be addressed.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Ongoing technical project discussion
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-4.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+    Q-4.2: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Project Discussion, with Speaker 2 having the last word in this chunk. The conversation seems to be mid-discussion, with several open questions and technical terms being discussed.
+
+▌STATE CAPSULE — END OF CHUNK 4
+
+=== ARIA STATE CAPSULE — CHUNK 4 | BATCH 1 ===
+LAST_CHUNK     : 4
+BATCH          : 1 | Chunks 1–4 processed
+
+SPEAKERS:
+  Speaker 1 | [CONFIRMED]
+  Speaker 2 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 4
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+</chunk_briefs>
+
+PRIOR ROLLUP STATE CAPSULE (from end of previous batch):
+NONE
+
+Synthesize the above into a Rollup Brief. Write as if you attended
+this segment of the meeting yourself. Do not repeat per-chunk details.
+
+▌BATCH 1 ROLLUP BRIEF
+  Chunks 1–4
+
+BATCH SUMMARY
+  [6–8 sentences of prose. Capture the arc — how did this batch open,
+  what was the major thrust, how did it close? Synthesize across chunks.]
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • [Topic] — [OPENED / PROGRESSED / CLOSED] — [2-line recap]
+
+  DECISIONS CONFIRMED (deduplicated from all chunks in batch)
+    D-1.N: [Decision] | [Owner] | Confidence: [FIRM/TENTATIVE]
+    (write NONE if no decisions this batch)
+
+  ACTION ITEMS CONFIRMED (deduplicated, upgraded by later mentions)
+    A-1.N: [Task] | [Owner] | Deadline: [X] | Priority: [H/M/L]
+    (write NONE if no action items this batch)
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-1.N: "[Question]" | [Who] | still OPEN
+    (write NONE if no open questions)
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • [Name / Tool / Project] — context
+    (write NONE if no new entities)
+
+  BATCH FLAGS
+    🚩 [Risk worth escalating to Master Brief — or NONE]
+    ⚠️ [Tension thread — active or resolved? — or NONE]
+    💡 [Idea worth surfacing in final brief — or NONE]
+
+BATCH NARRATIVE ARC
+  [3 sentences. What was the emotional and strategic trajectory?
+  What shifted? What is unresolved?]
+
+▌ROLLUP STATE CAPSULE — END OF BATCH 1
+
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  [Name] | [Role] | [Confidence]
+
+ALL TOPICS STATUS:
+  [Topic A] → CLOSED (batch 1)
+  [Topic B] → OPEN (last discussed batch 1)
+
+ALL DECISIONS (session-cumulative):
+  D-N: [Decision] | [Owner] | Batch 1
+
+ALL ACTIONS (session-cumulative):
+  A-N: [Task] | [Owner] | [Deadline] | Batch 1
+
+ALL OPEN QUESTIONS:
+  Q-N: "[Question]" | [Who] | [Status]
+
+ALL ENTITIES:
+  [Name/Tool] | first batch 1
+
+SESSION EMOTIONAL ARC SO FAR:
+  [2–3 lines: how the meeting has felt, key tensions, momentum shifts]
+
+LAST_ACTIVE_TOPIC : [Topic]
+LAST_SPEAKER      : [Name]
+=== END ROLLUP CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+▌BATCH 1 ROLLUP BRIEF
+  Chunks 1–4
+
+BATCH SUMMARY
+The batch began with introductions, as Amrita, an Insight Engineer from Capcom and Embraider, discussed her experience and background. The conversation then shifted to a project discussion, focusing on technical specifications, signaling systems, and requirements. The discussion involved complex technical terms and seemed to revolve around a specific project or implementation. The batch concluded with an ongoing conversation about technical aspects, with several open questions and no clear resolutions. The tone remained exploratory throughout, with a focus on technical discussions and no significant tensions or concerns raised. The conversation appears to be mid-discussion, with several open questions and technical terms being discussed.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Project Discussion — PROGRESSED — The conversation started with introductions and progressed to technical specifications and requirements. The discussion involved complex technical terms and seemed to revolve around a specific project or implementation.
+    • College Architecture — OPENED — A brief discussion on college architecture was mentioned.
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+    Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • Amrita — Insight Engineer at Capcom and Embraider
+    • Capcom — Company
+    • Embraider — Company
+    • SRNOM — Mentioned signaling
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+
+BATCH NARRATIVE ARC
+The batch started with a focus on introductions and establishing context. As the conversation progressed, it shifted to technical discussions and requirements, with a focus on signaling systems and project implementation. The tone remained exploratory, with no significant tensions or concerns raised, but several open questions and technical terms were left unresolved.
+
+▌ROLLUP STATE CAPSULE — END OF BATCH 1
+
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+  Speaker 2 | [Unknown] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Project Discussion → OPEN (last discussed batch 1)
+  College Architecture → CLOSED (brief discussion)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+
+ALL ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+SESSION EMOTIONAL ARC SO FAR:
+The tone has been exploratory, with a focus on technical discussions. No significant tensions or concerns have been raised.
+
+LAST_ACTIVE_TOPIC : Project Discussion
+LAST_SPEAKER      : Speaker 2
+=== END ROLLUP CAPSULE ===
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:56.337]  Mode B — Batch 2 (Chunks 5–7)
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 2.82s
+Tokens (prompt)   : 3512
+Tokens (output)   : 957
+Tokens (total)    : 4469
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE B — ROLLUP BRIEF.
+
+BATCH INFO:
+  Batch Number   : 2
+  Chunks Covered : 5 to 7
+  Total Chunks   : 7
+
+CHUNK BRIEFS FROM THIS BATCH:
+<chunk_briefs>
+▌CHUNK 5 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 5 of 7 | Batch 2
+  Speakers    : Speaker 1, Speaker 2
+  Language(s) : HI, EN (with some translation needed)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+The chunk starts with Speaker 1 discussing a topic in Hindi, mentioning "इसे कुए बठर्टेः करन्प्रुईता कर लगकोंगबात है" which translates to "Why is it taking so long?" or similar. They continue to discuss technical aspects, referencing locations like Österreich (Austria) and comparing various configurations. The conversation appears to revolve around project details and requirements. Speaker 1 delves into specifics about choices and configurations, mentioning "if you have a car, you should have a choice to choose your car." The discussion seems to be centered on technical specifications and preferences. The chunk ends with Speaker 1 concluding a point about not making any difference.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Technical specifications and configurations
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+    Q-5.2: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+The active topic remains Project Discussion, with Speaker 1 leading the conversation. The discussion on technical specifications and configurations continues. The last speaker was Speaker 1, and the conversation seems to be mid-thought.
+
+▌STATE CAPSULE — END OF CHUNK 5
+
+=== ARIA STATE CAPSULE — CHUNK 5 | BATCH 2 ===
+LAST_CHUNK     : 5
+BATCH          : 2 | Chunks 5–5 processed
+
+SPEAKERS:
+  Speaker 1 | [CONFIRMED]
+  Speaker 2 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 5
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+
+ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 1
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+▌CHUNK 6 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 6 of 7 | Batch 2
+  Speakers    : Speaker 3
+  Language(s) : HI / EN (mixed)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+  The chunk started with Speaker 3 discussing a system, mentioning "जएंगे कैने पाड़्बढ़ारा नागयश्या अज़ा ठेः खृ अगा" which translates to "We will go, how will it happen?" They then switched to English, discussing a system's performance and suggesting it could enhance one's life by 5 years with reduced vibrations if used with the metro. The conversation seemed to focus on technical aspects and potential benefits. The chunk ended with Speaker 3 apologizing and mentioning a motor.
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Technical aspects and potential benefits of a system
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : Enhanced life by 5 years with reduced vibrations using a system with the metro
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains Project Discussion, with a focus on technical aspects. The last speaker was Speaker 3, and the conversation seems to be mid-thought.
+
+▌STATE CAPSULE — END OF CHUNK 6
+
+=== ARIA STATE CAPSULE — CHUNK 6 | BATCH 2 ===
+LAST_CHUNK     : 6
+BATCH          : 2 | Chunks 5–6 processed
+
+SPEAKERS:
+  Speaker 3 | [CONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 6
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 3
+MID_SENTENCE  : YES
+=== END STATE CAPSULE ===
+---
+▌CHUNK 7 BRIEF
+
+CHUNK IDENTITY
+  Chunk       : 7 of 7 | Batch 2
+  Speakers    : Speaker 2
+  Language(s) : HI (Hindi)
+  Tone        : Exploratory
+  Thread      : CONTINUES: Project Discussion
+
+CHUNK SUMMARY
+  The chunk began with Speaker 2 asking a question in Hindi, seemingly addressing someone about a situation or project, using phrases like "तिर थी वोगो" and "आप रही आप यह तरही रही समवारग". They appeared to be inquiring about a process or an event, mentioning "बैच में प्रखार्रे लोग" (people in a batch). The speaker's tone was exploratory, trying to understand or clarify something. The chunk ended with Speaker 2 still questioning, "तो सु प्यद़ के यह से नादे है।"
+
+STRUCTURED EXTRACTIONS
+
+  TOPICS
+    • Project Discussion — ↩ CONTINUED — Discussion about a project or process
+
+  DECISIONS
+    NONE
+
+  ACTION ITEMS
+    NONE
+
+  OPEN QUESTIONS
+    Q-7.1: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — OPEN
+
+  ENTITIES
+    NONE
+
+  FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+    🔁 REPEAT  : NONE
+
+CONTINUITY NOTE
+  The active topic remains Project Discussion, last spoken by Speaker 2. The conversation thread is still open, with Speaker 2 raising questions. The next chunk should be aware of this ongoing discussion.
+
+▌STATE CAPSULE — END OF CHUNK 7
+
+=== ARIA STATE CAPSULE — CHUNK 7 | BATCH 2 ===
+LAST_CHUNK     : 7
+BATCH          : 2 | Chunks 5–7 processed
+
+SPEAKERS:
+  Speaker 2 | [UNCONFIRMED]
+
+TOPICS:
+  Project Discussion → OPEN | last chunk 7
+
+DECISIONS (cumulative this batch):
+  NONE
+
+ACTIONS (cumulative this batch):
+  NONE
+
+OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — OPEN
+  Q-7.1: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — OPEN
+
+ENTITIES:
+  NONE
+
+EMOTIONAL_CONTEXT:
+  The tone remains exploratory, with a focus on technical discussions. No significant tensions or concerns were raised.
+
+LAST_TOPIC    : Project Discussion
+LAST_SPEAKER  : Speaker 2
+MID_SENTENCE  : YES
+</chunk_briefs>
+
+PRIOR ROLLUP STATE CAPSULE (from end of previous batch):
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+  Speaker 2 | [Unknown] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Project Discussion → OPEN (last discussed batch 1)
+  College Architecture → CLOSED (brief discussion)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+
+ALL ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+SESSION EMOTIONAL ARC SO FAR:
+The tone has been exploratory, with a focus on technical discussions. No significant tensions or concerns have been raised.
+
+LAST_ACTIVE_TOPIC : Project Discussion
+LAST_SPEAKER      : Speaker 2
+=== END ROLLUP CAPSULE ===
+
+Synthesize the above into a Rollup Brief. Write as if you attended
+this segment of the meeting yourself. Do not repeat per-chunk details.
+
+▌BATCH 2 ROLLUP BRIEF
+  Chunks 5–7
+
+BATCH SUMMARY
+  [6–8 sentences of prose. Capture the arc — how did this batch open,
+  what was the major thrust, how did it close? Synthesize across chunks.]
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • [Topic] — [OPENED / PROGRESSED / CLOSED] — [2-line recap]
+
+  DECISIONS CONFIRMED (deduplicated from all chunks in batch)
+    D-2.N: [Decision] | [Owner] | Confidence: [FIRM/TENTATIVE]
+    (write NONE if no decisions this batch)
+
+  ACTION ITEMS CONFIRMED (deduplicated, upgraded by later mentions)
+    A-2.N: [Task] | [Owner] | Deadline: [X] | Priority: [H/M/L]
+    (write NONE if no action items this batch)
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-2.N: "[Question]" | [Who] | still OPEN
+    (write NONE if no open questions)
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • [Name / Tool / Project] — context
+    (write NONE if no new entities)
+
+  BATCH FLAGS
+    🚩 [Risk worth escalating to Master Brief — or NONE]
+    ⚠️ [Tension thread — active or resolved? — or NONE]
+    💡 [Idea worth surfacing in final brief — or NONE]
+
+BATCH NARRATIVE ARC
+  [3 sentences. What was the emotional and strategic trajectory?
+  What shifted? What is unresolved?]
+
+▌ROLLUP STATE CAPSULE — END OF BATCH 2
+
+=== ARIA ROLLUP CAPSULE — BATCH 2 | CHUNKS 5–7 ===
+BATCHES_DONE   : 2
+CHUNKS_DONE    : 7
+
+SPEAKERS (all confirmed so far):
+  [Name] | [Role] | [Confidence]
+
+ALL TOPICS STATUS:
+  [Topic A] → CLOSED (batch 2)
+  [Topic B] → OPEN (last discussed batch 2)
+
+ALL DECISIONS (session-cumulative):
+  D-N: [Decision] | [Owner] | Batch 2
+
+ALL ACTIONS (session-cumulative):
+  A-N: [Task] | [Owner] | [Deadline] | Batch 2
+
+ALL OPEN QUESTIONS:
+  Q-N: "[Question]" | [Who] | [Status]
+
+ALL ENTITIES:
+  [Name/Tool] | first batch 2
+
+SESSION EMOTIONAL ARC SO FAR:
+  [2–3 lines: how the meeting has felt, key tensions, momentum shifts]
+
+LAST_ACTIVE_TOPIC : [Topic]
+LAST_SPEAKER      : [Name]
+=== END ROLLUP CAPSULE ===
+--------------------------------------------------------------------------------
+OUTPUT:
+## BATCH 2 ROLLUP BRIEF
+  Chunks 5–7
+
+BATCH SUMMARY
+This batch of the meeting continued the discussion on Project Discussion, focusing on technical specifications, configurations, and potential benefits of a system. The conversation was led by Speaker 1, Speaker 3, and Speaker 2, each contributing to the exploratory tone of the discussion. The batch opened with Speaker 1 delving into specifics about choices and configurations, and it closed with Speaker 2 raising questions about a process or event. Throughout the batch, the speakers discussed technical aspects, potential benefits, and raised several open questions. The discussion remained exploratory, with no significant tensions or concerns raised. The batch concluded with several open questions and no clear decisions or action items.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Project Discussion — PROGRESSED — The discussion continued to focus on technical specifications, configurations, and potential benefits of a system.
+
+  DECISIONS CONFIRMED (deduplicated from all chunks in batch)
+    NONE
+
+  ACTION ITEMS CONFIRMED (deduplicated, upgraded by later mentions)
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-2.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+    Q-2.2: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+    Q-2.3: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — still OPEN
+    Q-2.4: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    NONE
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : Enhanced life by 5 years with reduced vibrations using a system with the metro
+
+BATCH NARRATIVE ARC
+The emotional and strategic trajectory of this batch remained exploratory, with a focus on technical discussions. No significant tensions or concerns were raised, and the conversation flowed smoothly from one speaker to another. The batch concluded with several open questions, indicating that the discussion is still ongoing and no clear resolutions have been reached.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 2
+
+=== ARIA ROLLUP CAPSULE — BATCH 2 | CHUNKS 5–7 ===
+BATCHES_DONE   : 2
+CHUNKS_DONE    : 7
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Unknown] | CONFIRMED
+  Speaker 2 | [Unknown] | CONFIRMED
+  Speaker 3 | [Unknown] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Project Discussion → OPEN (last discussed batch 2)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — still OPEN
+  Q-7.1: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — still OPEN
+
+ALL ENTITIES:
+  NONE
+
+SESSION EMOTIONAL ARC SO FAR:
+The tone has been exploratory, with a focus on technical discussions. No significant tensions or concerns have been raised.
+
+LAST_ACTIVE_TOPIC : Project Discussion
+LAST_SPEAKER      : Speaker 2
+================================================================================
+
+================================================================================
+[2026-04-07 15:16:57.253]  Mode C — S0 Overall Summary
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 0.92s
+Tokens (prompt)   : 2258
+Tokens (output)   : 184
+Tokens (total)    : 2442
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+Produce a concise OVERALL SUMMARY of the entire meeting based on the rollup briefs below.
+
+ROLLUP BRIEFS:
+<rollup_briefs>
+▌BATCH 1 ROLLUP BRIEF
+  Chunks 1–4
+
+BATCH SUMMARY
+The batch began with introductions, as Amrita, an Insight Engineer from Capcom and Embraider, discussed her experience and background. The conversation then shifted to a project discussion, focusing on technical specifications, signaling systems, and requirements. The discussion involved complex technical terms and seemed to revolve around a specific project or implementation. The batch concluded with an ongoing conversation about technical aspects, with several open questions and no clear resolutions. The tone remained exploratory throughout, with a focus on technical discussions and no significant tensions or concerns raised. The conversation appears to be mid-discussion, with several open questions and technical terms being discussed.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Project Discussion — PROGRESSED — The conversation started with introductions and progressed to technical specifications and requirements. The discussion involved complex technical terms and seemed to revolve around a specific project or implementation.
+    • College Architecture — OPENED — A brief discussion on college architecture was mentioned.
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+    Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • Amrita — Insight Engineer at Capcom and Embraider
+    • Capcom — Company
+    • Embraider — Company
+    • SRNOM — Mentioned signaling
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+
+BATCH NARRATIVE ARC
+The batch started with a focus on introductions and establishing context. As the conversation progressed, it shifted to technical discussions and requirements, with a focus on signaling systems and project implementation. The tone remained exploratory, with no significant tensions or concerns raised, but several open questions and technical terms were left unresolved.
+
+▌ROLLUP STATE CAPSULE — END OF BATCH 1
+
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+  Speaker 2 | [Unknown] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Project Discussion → OPEN (last discussed batch 1)
+  College Architecture → CLOSED (brief discussion)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+
+ALL ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+SESSION EMOTIONAL ARC SO FAR:
+The tone has been exploratory, with a focus on technical discussions. No significant tensions or concerns have been raised.
+
+LAST_ACTIVE_TOPIC : Project Discussion
+LAST_SPEAKER      : Speaker 2
+=== END ROLLUP CAPSULE ===
+---
+## BATCH 2 ROLLUP BRIEF
+  Chunks 5–7
+
+BATCH SUMMARY
+This batch of the meeting continued the discussion on Project Discussion, focusing on technical specifications, configurations, and potential benefits of a system. The conversation was led by Speaker 1, Speaker 3, and Speaker 2, each contributing to the exploratory tone of the discussion. The batch opened with Speaker 1 delving into specifics about choices and configurations, and it closed with Speaker 2 raising questions about a process or event. Throughout the batch, the speakers discussed technical aspects, potential benefits, and raised several open questions. The discussion remained exploratory, with no significant tensions or concerns raised. The batch concluded with several open questions and no clear decisions or action items.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Project Discussion — PROGRESSED — The discussion continued to focus on technical specifications, configurations, and potential benefits of a system.
+
+  DECISIONS CONFIRMED (deduplicated from all chunks in batch)
+    NONE
+
+  ACTION ITEMS CONFIRMED (deduplicated, upgraded by later mentions)
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-2.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+    Q-2.2: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+    Q-2.3: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — still OPEN
+    Q-2.4: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    NONE
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : Enhanced life by 5 years with reduced vibrations using a system with the metro
+
+BATCH NARRATIVE ARC
+The emotional and strategic trajectory of this batch remained exploratory, with a focus on technical discussions. No significant tensions or concerns were raised, and the conversation flowed smoothly from one speaker to another. The batch concluded with several open questions, indicating that the discussion is still ongoing and no clear resolutions have been reached.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 2
+
+=== ARIA ROLLUP CAPSULE — BATCH 2 | CHUNKS 5–7 ===
+BATCHES_DONE   : 2
+CHUNKS_DONE    : 7
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Unknown] | CONFIRMED
+  Speaker 2 | [Unknown] | CONFIRMED
+  Speaker 3 | [Unknown] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Project Discussion → OPEN (last discussed batch 2)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — still OPEN
+  Q-7.1: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — still OPEN
+
+ALL ENTITIES:
+  NONE
+
+SESSION EMOTIONAL ARC SO FAR:
+The tone has been exploratory, with a focus on technical discussions. No significant tensions or concerns have been raised.
+
+LAST_ACTIVE_TOPIC : Project Discussion
+LAST_SPEAKER      : Speaker 2
+</rollup_briefs>
+
+Output ONLY the following JSON (no markdown fences, no extra text):
+{
+  "overall_summary": "3-5 sentence high-level abstraction of the entire meeting. Plain prose. No bullets.",
+  "overall_bullets": [
+    "Bullet point 1 — key theme or outcome",
+    "Bullet point 2 — key theme or outcome",
+    "Bullet point 3 — key theme or outcome",
+    "Bullet point 4 — key theme or outcome (optional)",
+    "Bullet point 5 — key theme or outcome (optional)"
+  ]
+}
+
+Rules:
+- overall_summary: 3-5 sentences, high-level abstraction, no jargon soup
+- overall_bullets: 3-5 bullets, each grounded in what was actually discussed
+- Return exact JSON only — no preamble, no trailing text
+--------------------------------------------------------------------------------
+OUTPUT:
+{
+  "overall_summary": "The meeting focused on a technical project discussion, exploring specifications, configurations, and potential benefits of a system. The conversation involved multiple speakers, including Amrita, an Insight Engineer from Capcom and Embraider, and remained exploratory with no significant tensions or concerns raised. Several open questions were left unresolved, indicating an ongoing discussion. The tone was technical and collaborative, with a focus on understanding the project's technical aspects.",
+  "overall_bullets": [
+    "The project discussion centered on technical specifications, configurations, and potential system benefits.",
+    "Multiple speakers contributed to the discussion, including Amrita from Capcom and Embraider.",
+    "The conversation remained exploratory with no clear decisions or action items confirmed.",
+    "Several open questions were carried forward, indicating an ongoing discussion.",
+    "The tone was technical and collaborative, with no significant tensions or concerns raised."
+  ]
+}
+================================================================================
+
+================================================================================
+[2026-04-07 15:17:01.342]  Mode C — Master Brief
+Provider          : groq
+Model             : meta-llama/llama-4-scout-17b-16e-instruct
+Duration          : 4.09s
+Tokens (prompt)   : 3496
+Tokens (output)   : 1345
+Tokens (total)    : 4841
+--------------------------------------------------------------------------------
+SYSTEM:
+You are ARIA — Adaptive Recording Intelligence Analyst.
+
+You are processing a long meeting, lecture, or session that has been
+split into sequential text chunks for pipeline processing. Your
+persona, analytical depth, and output standard are identical across
+every chunk, rollup, and final brief.
+
+CORE RULES:
+  — Never hallucinate. If unclear, write [UNCLEAR — possible: X].
+  — Never be generic. Every line is grounded in what was actually said.
+  — Never lose a name, decision, task, or open question between modes.
+  — Translate non-English content inline. Preserve the original.
+  — Use [INFERRED] when drawing a conclusion not explicitly stated.
+  — Tone: senior analyst. Precise. No fluff. No bullet-point soup.
+--------------------------------------------------------------------------------
+INPUT:
+You are running MODE C — MASTER BRIEF (ARIA Final Intelligence Report).
+
+ALL ROLLUP BRIEFS:
+<rollup_briefs>
+▌BATCH 1 ROLLUP BRIEF
+  Chunks 1–4
+
+BATCH SUMMARY
+The batch began with introductions, as Amrita, an Insight Engineer from Capcom and Embraider, discussed her experience and background. The conversation then shifted to a project discussion, focusing on technical specifications, signaling systems, and requirements. The discussion involved complex technical terms and seemed to revolve around a specific project or implementation. The batch concluded with an ongoing conversation about technical aspects, with several open questions and no clear resolutions. The tone remained exploratory throughout, with a focus on technical discussions and no significant tensions or concerns raised. The conversation appears to be mid-discussion, with several open questions and technical terms being discussed.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Project Discussion — PROGRESSED — The conversation started with introductions and progressed to technical specifications and requirements. The discussion involved complex technical terms and seemed to revolve around a specific project or implementation.
+    • College Architecture — OPENED — A brief discussion on college architecture was mentioned.
+
+  DECISIONS CONFIRMED 
+    NONE
+
+  ACTION ITEMS CONFIRMED
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+    Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    • Amrita — Insight Engineer at Capcom and Embraider
+    • Capcom — Company
+    • Embraider — Company
+    • SRNOM — Mentioned signaling
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : NONE
+
+BATCH NARRATIVE ARC
+The batch started with a focus on introductions and establishing context. As the conversation progressed, it shifted to technical discussions and requirements, with a focus on signaling systems and project implementation. The tone remained exploratory, with no significant tensions or concerns raised, but several open questions and technical terms were left unresolved.
+
+▌ROLLUP STATE CAPSULE — END OF BATCH 1
+
+=== ARIA ROLLUP CAPSULE — BATCH 1 | CHUNKS 1–4 ===
+BATCHES_DONE   : 1
+CHUNKS_DONE    : 4
+
+SPEAKERS (all confirmed so far):
+  Amrita | Insight Engineer | CONFIRMED
+  Speaker 1 | [Unknown] | CONFIRMED
+  Speaker 2 | [Unknown] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Project Discussion → OPEN (last discussed batch 1)
+  College Architecture → CLOSED (brief discussion)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+
+ALL ENTITIES:
+  Amrita | Insight Engineer at Capcom and Embraider | first seen chunk 1
+  Capcom | Company | first seen chunk 1
+  Embraider | Company | first seen chunk 1
+  SRNOM | Mentioned signaling | first seen chunk 1
+
+SESSION EMOTIONAL ARC SO FAR:
+The tone has been exploratory, with a focus on technical discussions. No significant tensions or concerns have been raised.
+
+LAST_ACTIVE_TOPIC : Project Discussion
+LAST_SPEAKER      : Speaker 2
+=== END ROLLUP CAPSULE ===
+---
+## BATCH 2 ROLLUP BRIEF
+  Chunks 5–7
+
+BATCH SUMMARY
+This batch of the meeting continued the discussion on Project Discussion, focusing on technical specifications, configurations, and potential benefits of a system. The conversation was led by Speaker 1, Speaker 3, and Speaker 2, each contributing to the exploratory tone of the discussion. The batch opened with Speaker 1 delving into specifics about choices and configurations, and it closed with Speaker 2 raising questions about a process or event. Throughout the batch, the speakers discussed technical aspects, potential benefits, and raised several open questions. The discussion remained exploratory, with no significant tensions or concerns raised. The batch concluded with several open questions and no clear decisions or action items.
+
+WHAT WAS ESTABLISHED IN THIS BATCH
+
+  TOPICS COVERED
+    • Project Discussion — PROGRESSED — The discussion continued to focus on technical specifications, configurations, and potential benefits of a system.
+
+  DECISIONS CONFIRMED (deduplicated from all chunks in batch)
+    NONE
+
+  ACTION ITEMS CONFIRMED (deduplicated, upgraded by later mentions)
+    NONE
+
+  OPEN QUESTIONS CARRIED FORWARD
+    Q-2.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+    Q-2.2: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+    Q-2.3: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — still OPEN
+    Q-2.4: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — still OPEN
+
+  KEY NAMES / ENTITIES INTRODUCED THIS BATCH
+    NONE
+
+  BATCH FLAGS
+    🚩 RISK    : NONE
+    ⚠️ TENSION : NONE
+    💡 IDEA    : Enhanced life by 5 years with reduced vibrations using a system with the metro
+
+BATCH NARRATIVE ARC
+The emotional and strategic trajectory of this batch remained exploratory, with a focus on technical discussions. No significant tensions or concerns were raised, and the conversation flowed smoothly from one speaker to another. The batch concluded with several open questions, indicating that the discussion is still ongoing and no clear resolutions have been reached.
+
+## ROLLUP STATE CAPSULE — END OF BATCH 2
+
+=== ARIA ROLLUP CAPSULE — BATCH 2 | CHUNKS 5–7 ===
+BATCHES_DONE   : 2
+CHUNKS_DONE    : 7
+
+SPEAKERS (all confirmed so far):
+  Speaker 1 | [Unknown] | CONFIRMED
+  Speaker 2 | [Unknown] | CONFIRMED
+  Speaker 3 | [Unknown] | CONFIRMED
+
+ALL TOPICS STATUS:
+  Project Discussion → OPEN (last discussed batch 2)
+
+ALL DECISIONS (session-cumulative):
+  NONE
+
+ALL ACTIONS (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — still OPEN
+  Q-7.1: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — still OPEN
+
+ALL ENTITIES:
+  NONE
+
+SESSION EMOTIONAL ARC SO FAR:
+The tone has been exploratory, with a focus on technical discussions. No significant tensions or concerns have been raised.
+
+LAST_ACTIVE_TOPIC : Project Discussion
+LAST_SPEAKER      : Speaker 2
+</rollup_briefs>
+
+FINAL ROLLUP STATE CAPSULE:
+ (session-cumulative):
+  NONE
+
+ALL OPEN QUESTIONS:
+  Q-1.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-3.1: "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1 — still OPEN
+  Q-5.1: "Are you aware of the signaling?" — Speaker 1 — still OPEN
+  Q-6.1: "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3 — still OPEN
+  Q-7.1: "तो सु प्यद़ के यह से नादे है।" — Speaker 2 — still OPEN
+
+ALL ENTITIES:
+  NONE
+
+SESSION EMOTIONAL ARC SO FAR:
+The tone has been exploratory, with a focus on technical discussions. No significant tensions or concerns have been raised.
+
+LAST_ACTIVE_TOPIC : Project Discussion
+LAST_SPEAKER      : Speaker 2
+
+Produce the complete ARIA Intelligence Brief. Do not truncate any section.
+Do not reference chunks or batches in the output — write as if you
+attended the full session from start to finish.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ARIA INTELLIGENCE BRIEF
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SECTION 0 — SESSION IDENTITY CARD
+  Meeting Title  : [infer from content or write UNTITLED]
+  Date / Time    : [if mentioned, else UNSPECIFIED]
+  Duration       : [approximate, based on content volume]
+  Participants   : [all confirmed speakers with roles]
+  Format         : [standup / planning / review / lecture / interview / other]
+  Language(s)    : [all languages detected]
+  Recorded by    : ARIA v1.0 — Automated Intelligence Analysis
+
+SECTION 1 — EXECUTIVE SUMMARY
+  [8–12 sentences of dense, senior-analyst prose. No bullets.
+  Open with the purpose and stakes of the meeting.
+  Cover the major arc, key decisions, critical action items.
+  Close with what this meeting means going forward.
+  A reader who only reads this section must leave fully informed.]
+
+SECTION 2 — KEYWORD CLOUD & TOPIC MAP
+  TOP KEYWORDS (by frequency and significance):
+    [comma-separated list of 15–25 keywords from the session]
+
+  TOPIC MAP (sequence of major topics):
+    [Topic A] → [Topic B] → [Topic C] → [Topic D] → ...
+    [Show the flow of the meeting as a topic chain]
+
+SECTION 3 — KEY TOPICS: DEEP EXPLANATIONS
+  [One card per major topic. Minimum 3 topics, no artificial maximum.]
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: [Name]                                       │
+  │ Status: [RESOLVED / ONGOING / DEFERRED / FLAGGED]   │
+  │ Discussed by: [Speaker names]                       │
+  ├─────────────────────────────────────────────────────┤
+  │ [4–6 sentences explaining what was actually said,   │
+  │  what position each speaker took, what was agreed   │
+  │  or left open. Grounded entirely in what was said.] │
+  └─────────────────────────────────────────────────────┘
+
+SECTION 4 — KEY LEARNINGS & INSIGHTS
+  [Numbered list of 5–10 substantive insights from this session.
+  Each item: 2–3 sentences. Not generic — specific to this meeting.]
+  1. [Insight] — [elaboration]
+  2. [Insight] — [elaboration]
+  ...
+
+SECTION 5 — DECISIONS MADE
+  [Every decision from the session, deduplicated and final.]
+  D-N: [Decision stated clearly]
+       Decided by  : [Name(s)]
+       Confidence  : [FIRM / TENTATIVE / IMPLIED]
+       Impact      : [1 sentence on what this changes]
+
+SECTION 6 — ACTION ITEMS & TASK REGISTER
+  [Every task from the session. Owner-sorted if multiple owners.]
+  A-N: [Verb-first task description]
+       Owner       : [Name / UNASSIGNED]
+       Deadline    : [Date / "by next meeting" / UNSTATED]
+       Priority    : [HIGH / MEDIUM / LOW]
+       Context     : [1 sentence — why this task exists]
+
+SECTION 7 — MINUTES OF MEETING (MOM)
+  [Chronological narrative of the full meeting. Prose only.
+  No bullets. Write in past tense. Cover every topic in sequence.
+  Use speaker names. 10–20 sentences depending on meeting length.
+  This is the official record of what happened.]
+
+SECTION 8 — FLAGS, RISKS & UNRESOLVED THREADS
+  🚩 RISKS & BLOCKERS
+     [Each risk: what it is, who raised it, current status]
+
+  ⚠️ TENSIONS & DISAGREEMENTS
+     [Each tension: what it was about, who was involved, resolved or not]
+
+  ❓ UNRESOLVED QUESTIONS
+     [Each open question: verbatim or close paraphrase, owner, status]
+
+  🔁 RECURRING THEMES
+     [Topics that came up more than once — signals unresolved root cause]
+
+SECTION 9 — SENTIMENT & ENGAGEMENT ANALYSIS
+  Overall Tone    : [Collaborative / Tense / Exploratory / Mixed]
+  Energy Arc      : [How the meeting felt at start → middle → end]
+  Most Engaged    : [Speaker who drove the most content]
+  Notable Moments : [Any clear shift in tone, energy, or direction]
+  ARIA Assessment : [2–3 sentences — ARIA's read on the meeting's health]
+
+SECTION 10 — GLOSSARY OF TERMS, JARGON & ACRONYMS
+  [Every technical term, acronym, or jargon used — with definition.]
+  [TERM] : [plain-English definition based on context]
+  (write NONE if no jargon detected)
+
+SECTION 11 — ARIA'S ANALYST NOTE
+  [3–5 sentences in ARIA's voice. What matters most from this session?
+  What should the reader pay attention to that might not be obvious?
+  What is ARIA's honest read on the state of things after this meeting?
+  This is ARIA speaking directly — precise, candid, no hedging.]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+End of ARIA Intelligence Brief
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+--------------------------------------------------------------------------------
+OUTPUT:
+## ARIA INTELLIGENCE BRIEF
+
+### SECTION 0 — SESSION IDENTITY CARD
+  Meeting Title  : UNTITLED
+  Date / Time    : UNSPECIFIED
+  Duration       : APPROXIMATELY 2 HOURS
+  Participants   : Amrita (Insight Engineer at Capcom and Embraider), Speaker 1, Speaker 2, Speaker 3
+  Format         : TECHNICAL DISCUSSION / PLANNING
+  Language(s)    : English, Hindi
+  Recorded by    : ARIA v1.0 — Automated Intelligence Analysis
+
+### SECTION 1 — EXECUTIVE SUMMARY
+The meeting began with introductions by Amrita, an Insight Engineer from Capcom and Embraider, and progressed into a technical discussion focusing on project specifications, signaling systems, and requirements. The conversation involved complex technical terms and revolved around a specific project or implementation. Key topics included technical specifications, configurations, and potential benefits of a system. The discussion remained exploratory, with no significant tensions or concerns raised. However, several open questions were left unresolved. No clear decisions or action items were confirmed. The meeting concluded with a focus on technical aspects and open questions. Going forward, the project discussion is expected to continue, addressing the open questions and technical specifications.
+
+### SECTION 2 — KEYWORD CLOUD & TOPIC MAP
+  TOP KEYWORDS: project discussion, technical specifications, signaling systems, configurations, potential benefits, system implementation, college architecture
+
+  TOPIC MAP: 
+  - Introduction → Project Discussion → Technical Specifications → Signaling Systems → Configurations → Potential Benefits → Open Questions
+
+### SECTION 3 — KEY TOPICS: DEEP EXPLANATIONS
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: Project Discussion                             │
+  │ Status: ONGOING                                       │
+  │ Discussed by: Amrita, Speaker 1, Speaker 2, Speaker 3 │
+  ├─────────────────────────────────────────────────────┤
+  │ The project discussion focused on technical specifications, │
+  │ configurations, and potential benefits of a system. The   │
+  │ conversation involved complex technical terms and seemed │
+  │ to revolve around a specific project or implementation.  │
+  │ Several open questions were raised, including "Are you    │
+  │ aware of the signaling?" and "तो जब लाया नों कैसा कर था │
+  │ बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह │
+  │ भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें      │
+  │ साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट".     │
+  └─────────────────────────────────────────────────────┘
+
+  ┌─────────────────────────────────────────────────────┐
+  │ TOPIC: College Architecture                           │
+  │ Status: CLOSED                                        │
+  │ Discussed by: [Unknown]                               │
+  ├─────────────────────────────────────────────────────┤
+  │ A brief discussion on college architecture was mentioned. │
+  └─────────────────────────────────────────────────────┘
+
+### SECTION 4 — KEY LEARNINGS & INSIGHTS
+  1. The project discussion is ongoing, focusing on technical specifications and open questions.
+  2. The conversation involved complex technical terms, indicating a specialized domain.
+  3. No clear decisions or action items were confirmed during the meeting.
+  4. The potential benefit of a system to enhance life by 5 years with reduced vibrations was mentioned.
+  5. The discussion remained exploratory, with no significant tensions or concerns raised.
+
+### SECTION 5 — DECISIONS MADE
+  NONE
+
+### SECTION 6 — ACTION ITEMS & TASK REGISTER
+  NONE
+
+### SECTION 7 — MINUTES OF MEETING (MOM)
+The meeting started with introductions by Amrita, an Insight Engineer from Capcom and Embraider. The conversation then shifted to a project discussion, focusing on technical specifications, signaling systems, and requirements. The discussion involved complex technical terms and seemed to revolve around a specific project or implementation. Speaker 1, Speaker 2, and Speaker 3 contributed to the discussion, raising several open questions. The batch concluded with an ongoing conversation about technical aspects, with several open questions and no clear resolutions.
+
+### SECTION 8 — FLAGS, RISKS & UNRESOLVED THREADS
+  🚩 RISKS & BLOCKERS: NONE
+  ⚠️ TENSIONS & DISAGREEMENTS: NONE
+  ❓ UNRESOLVED QUESTIONS:
+    - "Are you aware of the signaling?" — Speaker 1
+    - "तो जब लाया नों कैसा कर था बोलता है यह से बैटके ता के किस्व प्रेसे बोच्व हैं तो यह भी दावर साभ़ तो ना उ जाद करना है तो जिए अग्सल यें साभचे ये इस स्चुड़ के लिए भी आप दीटके लेए प्रेट" — Speaker 1
+    - "आपदे कभी राजाग खर्यें" ("Have you ever felt it?") — Speaker 3
+    - "तो सु प्यद़ के यह से नादे है।" — Speaker 2
+  🔁 RECURRING THEMES: Project Discussion, Technical Specifications
+
+### SECTION 9 — SENTIMENT & ENGAGEMENT ANALYSIS
+  Overall Tone    : EXPLORATORY
+  Energy Arc      : EXPLORATORY → EXPLORATORY → EXPLORATORY
+  Most Engaged    : Speaker 1
+  Notable Moments : The discussion on potential benefits of a system to enhance life by 5 years with reduced vibrations.
+  ARIA Assessment : The meeting was characterized by an exploratory tone, focusing on technical discussions and open questions. No significant tensions or concerns were raised.
+
+### SECTION 10 — GLOSSARY OF TERMS, JARGON & ACRONYMS
+  [TERM] : [plain-English definition based on context]
+  SRNOM : Mentioned signaling
+
+### SECTION 11 — ARIA'S ANALYST NOTE
+The meeting focused on technical discussions and project specifications, indicating a specialized domain. Several open questions were raised, and no clear decisions or action items were confirmed. The exploratory tone suggests that the discussion is still ongoing, and further clarification is needed on several aspects. The potential benefit of a system to enhance life by 5 years with reduced vibrations is a notable point. Overall, the meeting's health appears to be collaborative, with a focus on technical exploration.
+================================================================================

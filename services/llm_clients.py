@@ -8,9 +8,56 @@ Fetches available models dynamically from each provider's API.
 import logging
 import os
 import re
+import threading
+import time
+from datetime import datetime
+from pathlib import Path
 from typing import Optional
 
 logger = logging.getLogger(__name__)
+
+# ── Per-thread LLM call log ───────────────────────────────────────────────────
+_thread_local = threading.local()
+
+
+def set_llm_log_path(path: str):
+    """Set the log file path for LLM calls in the current thread."""
+    _thread_local.log_path = path
+
+
+def _write_llm_log(label: str, provider: str, model: str,
+                   system: str, prompt: str, output: str, elapsed: float,
+                   prompt_tokens: int = 0, completion_tokens: int = 0):
+    log_path = getattr(_thread_local, "log_path", None)
+    if not log_path:
+        return
+    try:
+        Path(log_path).parent.mkdir(parents=True, exist_ok=True)
+        ts   = datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")[:-3]
+        sep  = "=" * 80
+        thin = "-" * 80
+        total_tokens = prompt_tokens + completion_tokens
+        entry = (
+            f"\n{sep}\n"
+            f"[{ts}]  {label}\n"
+            f"Provider          : {provider}\n"
+            f"Model             : {model}\n"
+            f"Duration          : {elapsed:.2f}s\n"
+            f"Tokens (prompt)   : {prompt_tokens}\n"
+            f"Tokens (output)   : {completion_tokens}\n"
+            f"Tokens (total)    : {total_tokens}\n"
+            f"{thin}\n"
+            f"SYSTEM:\n{system}\n"
+            f"{thin}\n"
+            f"INPUT:\n{prompt}\n"
+            f"{thin}\n"
+            f"OUTPUT:\n{output}\n"
+            f"{sep}\n"
+        )
+        with open(log_path, "a", encoding="utf-8") as f:
+            f.write(entry)
+    except Exception as e:
+        logger.warning(f"[LLMLog] Failed to write: {e}")
 
 # ── Model filter — exclude non-text-generation models ────────────────────────
 _EXCLUDE_PATTERNS = [
@@ -173,9 +220,11 @@ def call_llm(
     openai_key: str = None,
     together_key: str = None,
     mistral_key: str = None,
+    label: str = "",
 ) -> str:
     """
     Call the specified provider+model. Falls back through providers if call fails.
+    Every call (success or failure) is written to the per-job LLM log file.
     """
     # Resolve keys — user key takes priority over env var
     _anthropic = anthropic_key or os.getenv("ANTHROPIC_API_KEY")
@@ -188,12 +237,6 @@ def call_llm(
         "mistral":   mistral_key   or os.getenv("MISTRAL_API_KEY"),
     }
 
-    # Try the selected provider first
-    result = _call_provider(prompt, system, max_tokens, provider, model, keys)
-    if result:
-        return result
-
-    # Fallback chain
     fallback_order = ["groq", "anthropic", "claude", "openai", "together", "mistral"]
     fallback_models = {
         "groq":      "llama-3.3-70b-versatile",
@@ -203,22 +246,50 @@ def call_llm(
         "together":  "meta-llama/Llama-3.3-70B-Instruct-Turbo",
         "mistral":   "mistral-small-latest",
     }
-    for fb_provider in fallback_order:
-        if fb_provider == provider:
-            continue
-        if not keys.get(fb_provider):
-            continue
-        logger.info(f"Falling back to {fb_provider}")
-        result = _call_provider(prompt, system, max_tokens,
-                                fb_provider, fallback_models[fb_provider], keys)
-        if result:
-            return result
 
-    logger.error("All LLM providers failed. Set at least one API key.")
-    return ""
+    t_start = time.time()
+    used_provider, used_model = provider, model
+    raw = None
+
+    # Try the selected provider first
+    raw = _call_provider(prompt, system, max_tokens, provider, model, keys)
+
+    if raw is None:
+        # Fallback chain
+        for fb_provider in fallback_order:
+            if fb_provider == provider:
+                continue
+            if not keys.get(fb_provider):
+                continue
+            logger.info(f"Falling back to {fb_provider}")
+            fb_model = fallback_models[fb_provider]
+            raw = _call_provider(prompt, system, max_tokens, fb_provider, fb_model, keys)
+            if raw is not None:
+                used_provider, used_model = fb_provider, fb_model
+                break
+
+    if raw is None:
+        logger.error("All LLM providers failed. Set at least one API key.")
+        raw = ("", 0, 0)
+
+    text, prompt_tokens, completion_tokens = raw
+    elapsed = time.time() - t_start
+    _write_llm_log(
+        label=label or "LLM call",
+        provider=used_provider,
+        model=used_model,
+        system=system,
+        prompt=prompt,
+        output=text,
+        elapsed=elapsed,
+        prompt_tokens=prompt_tokens,
+        completion_tokens=completion_tokens,
+    )
+    return text
 
 
-def _call_provider(prompt, system, max_tokens, provider, model, keys) -> Optional[str]:
+def _call_provider(prompt, system, max_tokens, provider, model, keys) -> Optional[tuple]:
+    """Returns (text, prompt_tokens, completion_tokens) or None on failure."""
     key = keys.get(provider)
     if not key:
         return None
@@ -239,7 +310,7 @@ def _call_provider(prompt, system, max_tokens, provider, model, keys) -> Optiona
     return None
 
 
-def _call_groq(prompt, system, max_tokens, model, key) -> str:
+def _call_groq(prompt, system, max_tokens, model, key) -> tuple:
     from groq import Groq
     client = Groq(api_key=key)
     messages = []
@@ -249,10 +320,13 @@ def _call_groq(prompt, system, max_tokens, model, key) -> str:
     resp = client.chat.completions.create(
         model=model, messages=messages, max_tokens=max_tokens, temperature=0.3
     )
-    return resp.choices[0].message.content.strip()
+    text = resp.choices[0].message.content.strip()
+    pt = resp.usage.prompt_tokens if resp.usage else 0
+    ct = resp.usage.completion_tokens if resp.usage else 0
+    return text, pt, ct
 
 
-def _call_anthropic(prompt, system, max_tokens, model, key) -> str:
+def _call_anthropic(prompt, system, max_tokens, model, key) -> tuple:
     import anthropic
     client = anthropic.Anthropic(api_key=key)
     full = f"{system}\n\n{prompt}" if system else prompt
@@ -260,10 +334,13 @@ def _call_anthropic(prompt, system, max_tokens, model, key) -> str:
         model=model, max_tokens=max_tokens,
         messages=[{"role": "user", "content": full}]
     )
-    return resp.content[0].text.strip()
+    text = resp.content[0].text.strip()
+    pt = resp.usage.input_tokens if resp.usage else 0
+    ct = resp.usage.output_tokens if resp.usage else 0
+    return text, pt, ct
 
 
-def _call_openai(prompt, system, max_tokens, model, key) -> str:
+def _call_openai(prompt, system, max_tokens, model, key) -> tuple:
     from openai import OpenAI
     client = OpenAI(api_key=key)
     messages = []
@@ -273,10 +350,13 @@ def _call_openai(prompt, system, max_tokens, model, key) -> str:
     resp = client.chat.completions.create(
         model=model, messages=messages, max_tokens=max_tokens, temperature=0.3
     )
-    return resp.choices[0].message.content.strip()
+    text = resp.choices[0].message.content.strip()
+    pt = resp.usage.prompt_tokens if resp.usage else 0
+    ct = resp.usage.completion_tokens if resp.usage else 0
+    return text, pt, ct
 
 
-def _call_together(prompt, system, max_tokens, model, key) -> str:
+def _call_together(prompt, system, max_tokens, model, key) -> tuple:
     from openai import OpenAI  # Together uses OpenAI-compatible API
     client = OpenAI(api_key=key, base_url="https://api.together.xyz/v1")
     messages = []
@@ -286,10 +366,13 @@ def _call_together(prompt, system, max_tokens, model, key) -> str:
     resp = client.chat.completions.create(
         model=model, messages=messages, max_tokens=max_tokens, temperature=0.3
     )
-    return resp.choices[0].message.content.strip()
+    text = resp.choices[0].message.content.strip()
+    pt = resp.usage.prompt_tokens if resp.usage else 0
+    ct = resp.usage.completion_tokens if resp.usage else 0
+    return text, pt, ct
 
 
-def _call_mistral(prompt, system, max_tokens, model, key) -> str:
+def _call_mistral(prompt, system, max_tokens, model, key) -> tuple:
     from mistralai import Mistral
     client = Mistral(api_key=key)
     messages = []
@@ -299,4 +382,7 @@ def _call_mistral(prompt, system, max_tokens, model, key) -> str:
     resp = client.chat.complete(
         model=model, messages=messages, max_tokens=max_tokens, temperature=0.3
     )
-    return resp.choices[0].message.content.strip()
+    text = resp.choices[0].message.content.strip()
+    pt = resp.usage.prompt_tokens if resp.usage else 0
+    ct = resp.usage.completion_tokens if resp.usage else 0
+    return text, pt, ct

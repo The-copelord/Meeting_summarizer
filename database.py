@@ -53,6 +53,8 @@ def _migrate_add_columns():
         ("mistral_api_key",   "VARCHAR(512)"),
         ("selected_model",    "VARCHAR(256)"),
         ("selected_provider", "VARCHAR(64)"),
+        ("trial_uploads_used", "INTEGER DEFAULT 0 NOT NULL"),
+        ("is_subscribed",      "INTEGER DEFAULT 0 NOT NULL"),
     ]
     with engine.connect() as conn:
         for col_name, col_type in new_columns:
